@@ -9,10 +9,9 @@ return  (req, res, next) => {
         }
         const decoded = jwt.verify(token, TOKEN_SECRET);
         req.user = decoded;
-       
     }
-     catch (error) {
-       return res.status(400).send("Invalid token.");
+    catch (error) {
+        return res.status(400).send("Invalid token.");
     }
     return next();
 }
