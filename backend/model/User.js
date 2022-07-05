@@ -28,6 +28,10 @@ const userSchema = new mongoose.Schema({
     min: 6,
     max: 1024,
   },
+  user_type:{
+    type:Number,
+    required: true,
+  }
 
   
 });
