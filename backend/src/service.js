@@ -18,6 +18,11 @@ async function addUser(body, hashPassword) {
     return await user.save();
   }
 
+  async function getUserByEmail(email) {
+    return await User.findOne({email});
+  }
+
   module.exports = {
     addUser,
+    getUserByEmail,
   }
