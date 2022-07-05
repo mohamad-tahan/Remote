@@ -22,7 +22,18 @@ async function addUser(body, hashPassword) {
     return await User.findOne({email});
   }
 
+  async function getUserById(id) {
+    return await User.findById(id);
+  }
+
+  async function getUsers() {
+    return await User.find();
+  }
+
   module.exports = {
     addUser,
     getUserByEmail,
+    getUserById,
+    getUsers,
+    
   }
