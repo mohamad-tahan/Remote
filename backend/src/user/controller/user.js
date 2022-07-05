@@ -1,4 +1,4 @@
-const { addUser, getUserByEmail } = require("../../service");
+const {addUser,getUserByEmail,getUserById,getUsers,} = require("../../service");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const TOKEN_SECRET = process.env.TOKEN_SECRET || "";
@@ -15,8 +15,7 @@ async function register(req, res) {
     console.log("addUserResult =>", addUserResult);
 
     return res.send({ user: addUserResult._id });
-  }
-   catch (error) {
+  } catch (error) {
     console.log(error);
   }
 }
@@ -25,15 +24,13 @@ async function register(req, res) {
 async function login(req, res) {
   try {
     const user = await getUserByEmail(req.body.email);
-    if (!user)
-     return res.status(400).send("Invalid credentials");
+    if (!user) return res.status(400).send("Invalid credentials");
 
     const validPassword = await bcrypt.compare(
       req.body.password,
       user.password
     );
-    if (!validPassword)
-     return res.status(400).send("Invalid credentials");
+    if (!validPassword) return res.status(400).send("Invalid credentials");
 
     const token = jwt.sign(
       { _id: user._id, name: user.name, email: user.email },
@@ -47,7 +44,25 @@ async function login(req, res) {
   }
 }
 
+
+async function getUser(req, res) {
+  try {
+    //get specific user by id
+    if (req.query.id) {
+      const id = req.query.id;
+      const result = await getUserById(id);
+      return res.status(200).send(result)
+    }
+    //get all users
+    const result = await getUsers();
+    return res.send(result);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   register,
   login,
+  getUser,
 };
