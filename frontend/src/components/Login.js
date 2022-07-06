@@ -3,14 +3,15 @@ import { BsFacebook } from 'react-icons/bs';
 import { AiFillLinkedin } from 'react-icons/ai';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import React, { useState } from "react";
+import jwt_decode from "jwt-decode"
 
 function Login(){
 const [swap, setSwap] = useState(true);
 
 const [name, setName] = useState("");
 const [username, setUserName] = useState("");
-const [email, setEmailRegister] = useState("");
-const [password, setPasswordRegister] = useState("");
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
 
 const handleSignup = async (e) => {
   e.preventDefault();
@@ -30,12 +31,62 @@ const handleSignup = async (e) => {
 
     if (response.user) {
       alert("You are successfully registered.");
+      setName("");
+      setUserName("");
+      setEmail("");
+      setPassword("");
     }
     else{
       alert("Error signing up.");
     }
    
+   
 };
+
+
+
+const handleSignin = async (e) => {
+  e.preventDefault();
+  const response = await loginUser({
+    email,
+    password,
+  });
+
+  if ("token" in response) {
+    var user = jwt_decode(response.token);
+    console.log(user);
+    localStorage.setItem("user_id", user._id);
+    localStorage.setItem("username", user.username);
+
+    try {
+      alert("You are now Logged in.");
+      localStorage.setItem("token", response["token"]);
+      setEmail("");
+      setPassword("");
+    
+    } catch {
+      alert("Failed");
+      console.log(response);
+    }
+  } else {
+    console.log("You are not Authorized!");
+  }
+};
+async function loginUser(credentials) {
+  
+  return fetch("http://localhost:3000/api/user/auth/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    
+    body: JSON.stringify(credentials),
+  }).then((response) => response.json() )
+  
+  .catch(err => alert("You Are Not Authorized. Sign Up")); 
+}
+
+
 
 return(
     <div className='wholeContainer'>
@@ -49,10 +100,10 @@ return(
           <a  className="social"><AiOutlineInstagram/></a>
         </div>
        
-        <input type="text" placeholder="Name" onChange={(e) => setName(e.target.value)}/>
-        <input type="text" placeholder="Username" onChange={(e) => setUserName(e.target.value)}/>
-        <input type="email" placeholder="Email" onChange={(e) => setEmailRegister(e.target.value)}/>
-        <input type="password" placeholder="Password" onChange={(e) => setPasswordRegister(e.target.value)}/>
+        <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}/>
+        <input type="text" placeholder="Username"  value={username} onChange={(e) => setUserName(e.target.value)}/>
+        <input type="email" placeholder="Email"  value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <input type="password" placeholder="Password"  value={password}onChange={(e) => setPassword(e.target.value)}/>
         <button  className="btn-signin" id="sup" onClick={handleSignup}>Sign Up</button>
       </form>
     </div>
@@ -65,9 +116,9 @@ return(
           <a  className="social"><AiOutlineInstagram/></a>
         </div>
         <span className="span">Already have an account? </span>
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <button className="btn-signin">Sign In</button>
+        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+        <button onClick={handleSignin} className="btn-signin">Sign In</button>
       </form>
     </div>
 
