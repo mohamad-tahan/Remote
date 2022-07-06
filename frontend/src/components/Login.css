@@ -96,6 +96,7 @@
 }
 
 .btn-signin {
+  cursor: pointer;
   color: #111;
   font-size: 12px;
   font-weight: bold;
@@ -124,13 +125,13 @@ input[type="password"] {
   font-weight: bold;
 }
 
-button:active {
+/* button:active {
   transform: scale(0.95);
 }
 
 button:focus {
   outline: none;
-}
+} */
 
 .ghost {
   background: transparent;
