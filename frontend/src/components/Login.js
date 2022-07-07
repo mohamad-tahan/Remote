@@ -7,7 +7,18 @@ import jwt_decode from "jwt-decode"
 import toast from 'react-hot-toast';
 
 function Login(){
- 
+
+  function validateInputs(){
+    if(!name|| !username || !email || !password ){
+      toast.error("All fields are required.");
+      return ;
+    }
+    if(name.length < 3|| username.length < 3|| !email.length < 3 || !password.length<3 ){
+      toast.error("Inputs should be more than 3");
+      return ;
+    }
+  }
+
 const [swap, setSwap] = useState(true);
 
 const [name, setName] = useState("");
@@ -17,7 +28,8 @@ const [password, setPassword] = useState("");
 
 const handleSignup = async (e) => {
   e.preventDefault();
-
+  validateInputs()
+ 
     const res = await fetch("http://127.0.0.1:3000/api/user/auth/register", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -30,6 +42,7 @@ const handleSignup = async (e) => {
     });
     const response = await res.json();
 
+   
     if (response.user) {
       toast.success(`You Are Now Registered.`);
       setName("");
