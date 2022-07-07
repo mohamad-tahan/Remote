@@ -1,4 +1,4 @@
-const {addUser,getUserByEmail,getUserById,getUsers,} = require("../../service");
+const {addUser,getUserByEmail,getUserById,getUsers} = require("../../user_functions");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const TOKEN_SECRET = process.env.TOKEN_SECRET || "";
@@ -36,7 +36,7 @@ async function login(req, res) {
       { _id: user._id, name: user.name, username:user.username, email: user.email },
       TOKEN_SECRET
     );
-    
+
     return res.header("token", token).send({ token: `${token}` });
   } catch (error) {
     console.log(error);
@@ -60,6 +60,7 @@ async function getUser(req, res) {
     console.log(error);
   }
 }
+
 
 module.exports = {
   register,
