@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     min: 3,
     max: 255,
+    minLength:3
   },
   username: {
     type: String,
@@ -14,6 +15,7 @@ const userSchema = new mongoose.Schema({
     min: 3,
     max: 255,
     unique: true,
+    minLength:3
   },
   email: {
     type: String,
@@ -21,17 +23,25 @@ const userSchema = new mongoose.Schema({
     min: 6,
     max: 255,
     unique: true,
+    minLength:3
   },
   password: {
     type: String,
     required: true,
     min: 6,
     max: 1024,
+    minLength:3
   },
   user_type:{
     type:Number,
     required: true,
-  }
+  },
+
+  files: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'File'
+  }],
+
 
   
 });
