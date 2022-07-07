@@ -4,8 +4,10 @@ import { AiFillLinkedin } from 'react-icons/ai';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import React, { useState } from "react";
 import jwt_decode from "jwt-decode"
+import toast from 'react-hot-toast';
 
 function Login(){
+ 
 const [swap, setSwap] = useState(true);
 
 const [name, setName] = useState("");
@@ -27,23 +29,20 @@ const handleSignup = async (e) => {
       }),
     });
     const response = await res.json();
-    console.log(response)
 
     if (response.user) {
-      alert("You are successfully registered.");
+      toast.success(`You Are Now Registered.`);
       setName("");
       setUserName("");
       setEmail("");
       setPassword("");
     }
     else{
-      alert("Error signing up.");
+      toast.errot("Error signing up.");
     }
    
    
 };
-
-
 
 const handleSignin = async (e) => {
   e.preventDefault();
@@ -59,17 +58,17 @@ const handleSignin = async (e) => {
     localStorage.setItem("username", user.username);
 
     try {
-      alert("You are now Logged in.");
+      toast.success(`You Are Now Logged in.`);
       localStorage.setItem("token", response["token"]);
       setEmail("");
       setPassword("");
     
     } catch {
-      alert("Failed");
+      toast.error("Failed.")
       console.log(response);
     }
   } else {
-    console.log("You are not Authorized!");
+    toast.error("You are not Authorized!");
   }
 };
 async function loginUser(credentials) {
@@ -83,7 +82,7 @@ async function loginUser(credentials) {
     body: JSON.stringify(credentials),
   }).then((response) => response.json() )
   
-  .catch(err => alert("You Are Not Authorized. Sign Up")); 
+  .catch(err => toast.error("You Are Not Authorized. Sign Up")); 
 }
 
 
