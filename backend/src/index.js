@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const {register,login,getUser } = require('./user/controller/user');
+const {register,login,getUser,updateUser } = require('./user/controller/user');
 const{addFiles,getFilesbyId,updateFile, removeFile} = require('./file/controller/file');
 const{addLanguages} = require('./language/controller/language')
 const router = Router();
@@ -17,5 +17,9 @@ router.get('/auth/getFilesbyId', getFilesbyId);
 
 router.put('/auth/updateFile', updateFile);
 router.delete('/auth/removeFile', removeFile);
+
+router.put('/auth/updateUser', updateUser);
+
+
 
 module.exports = router;
