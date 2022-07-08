@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const TOKEN_SECRET = process.env.TOKEN_SECRET || "";
 
 const User = require("../../../model/User")
+const File = require("../../../model/File")
 
 async function addFiles(req, res) {
     try {
@@ -28,7 +29,20 @@ async function addFiles(req, res) {
     }
   }
 
+  async function getFilesbyId(req, res) {
+    try {
+      if (req.query.id) {
+        const result = await File.findOne({ _id: req.query.id });
+        console.log("result of specific file of user =>", result);
+        return res.send(result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   module.exports = {
     addFiles,
+    getFilesbyId
   }
