@@ -3,7 +3,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const TOKEN_SECRET = process.env.TOKEN_SECRET || "";
 
-const User = require("../../../model/User")
+const User = require("../../../model/User");
+const File = require("../../../model/File")
 //registering user
 async function register(req, res) {
   try {
@@ -80,10 +81,28 @@ async function updateUser(req, res) {
   }
 }
 
+async function removeUser(req, res) {
+  try {
+    const user = await User.findOne({ _id: req.query.id });
+    const deleteResult = await user.remove();
+
+    await File.updateOne(
+      { _id: user.files},
+      { $pull: { files: user._id } }
+    );
+
+    return res.send({ message: "user Removed" });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
 
 module.exports = {
   register,
   login,
   getUser,
-  updateUser
+  updateUser,
+  removeUser
 };
