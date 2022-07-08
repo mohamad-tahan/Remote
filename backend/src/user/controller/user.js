@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const TOKEN_SECRET = process.env.TOKEN_SECRET || "";
 
+const User = require("../../../model/User")
 //registering user
 async function register(req, res) {
   try {
@@ -62,8 +63,27 @@ async function getUser(req, res) {
 }
 
 
+async function updateUser(req, res) {
+  try {
+    const user = await User.findByIdAndUpdate(
+      { _id: req.query.id },
+      {
+        $set: {
+          name: req.body.name,
+         username : req.body.username,
+        },
+      }
+    );
+    return res.send("User Updated");
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
 module.exports = {
   register,
   login,
   getUser,
+  updateUser
 };
