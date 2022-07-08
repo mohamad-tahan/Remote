@@ -11,16 +11,16 @@ router.get('/auth/getUser', userMiddleware(), (req, res) => getUser(req, res));
 
 router.post('/auth/addFiles', userMiddleware(), addFiles);
 
-router.post('/auth/addLanguages',addLanguages);
+router.post('/auth/addLanguages',userMiddleware(), addLanguages);
 
-router.get('/auth/getFilesbyId', getFilesbyId);
+router.get('/auth/getFilesbyId', userMiddleware(), getFilesbyId);
 
-router.put('/auth/updateFile', updateFile);
-router.delete('/auth/removeFile', removeFile);
+router.put('/auth/updateFile', userMiddleware(), updateFile);
+router.delete('/auth/removeFile',userMiddleware(),  removeFile);
 
-router.put('/auth/updateUser', updateUser);
+router.put('/auth/updateUser', userMiddleware(), updateUser);
 
-router.delete('/auth/removeUser', removeUser);
+router.delete('/auth/removeUser', userMiddleware(), removeUser);
 
 
 
