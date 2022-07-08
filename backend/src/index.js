@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const {register,login,getUser } = require('./user/controller/user');
-const{addFiles} = require('./file/controller/file');
+const{addFiles,getFilesbyId} = require('./file/controller/file');
 const{addLanguages} = require('./language/controller/language')
 const router = Router();
 const userMiddleware = require('../middleware/userMiddleware')
@@ -12,5 +12,7 @@ router.get('/auth/getUser', userMiddleware(), (req, res) => getUser(req, res));
 router.post('/auth/addFiles', userMiddleware(), addFiles);
 
 router.post('/auth/addLanguages',addLanguages);
+
+router.get('/auth/getFilesbyId', getFilesbyId);
 
 module.exports = router;
