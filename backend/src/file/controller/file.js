@@ -41,8 +41,28 @@ async function addFiles(req, res) {
     }
   }
 
+  async function updateFile(req, res) {
+    try {
+      const file = await File.findByIdAndUpdate(
+        { _id: req.query.id },
+        {
+          $set: {
+            name: req.body.name,
+            code: req.body.code
+          },
+        }
+      );
+      return res.send("File Updated");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
 
   module.exports = {
     addFiles,
-    getFilesbyId
+    getFilesbyId,
+    updateFile,
+   
   }
