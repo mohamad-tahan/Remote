@@ -58,11 +58,27 @@ async function addFiles(req, res) {
     }
   }
 
+  async function removeFile(req, res) {
+    try {
+      const file = await File.findOne({ _id: req.query.id });
+  
+      const deleteResult = await file.remove();
+  
+      await User.updateOne(
+        { _id: file.user },
+        { $pull: { files: file._id } }
+      );
+  
+      return res.send({ message: "File Removed" });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
 
   module.exports = {
     addFiles,
     getFilesbyId,
     updateFile,
-   
+    removeFile
   }
