@@ -1,7 +1,7 @@
 
 .logoPic > img {
     width:100%;
-    height: 600px;
+    height: 570px;
 
 }
 
@@ -11,6 +11,11 @@
     background-color: black;
     min-height: 600px;
     padding: 0 40px;
+
+ 
+}
+.description:hover{
+ 
 }
 .title{
   
