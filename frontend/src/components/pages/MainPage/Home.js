@@ -22,7 +22,13 @@ const Home = () => {
         
      </div>
  
-     
+     <div className="description">
+        <p className="title title2">Experience web <br/> development with Remote.</p>
+        <p className="text">Create, share, and live code with others.</p>
+        <div className="icons"> <TbBrandJavascript/></div>
+        
+        
+     </div>
 
 
         </div>
