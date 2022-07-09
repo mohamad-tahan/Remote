@@ -4,8 +4,8 @@
   height: 50px;
   width: 100%;
   justify-content: space-between;
-  background: #0f0e0e;
-  border-bottom: 1px solid gray;
+  background: rgb(15, 14, 14);
+  border-bottom: 1px solid rgb(25, 25, 25);
   text-decoration: none;
   text-align: center;
   font-size: 14px;
