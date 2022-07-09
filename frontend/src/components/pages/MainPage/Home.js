@@ -8,6 +8,7 @@ import { SiCss3 } from 'react-icons/si';
 import { FaReact } from 'react-icons/fa';
 import { TbBrandPhp } from 'react-icons/tb';
 import idePic from "../../../pics/idePic.png"
+import Footer from "./Footer";
 
 const Home = () => {
     return (
@@ -23,9 +24,10 @@ const Home = () => {
         <p className="text">Remote is a simple yet powerful Live <br/>
          IDE, Editor, Compiler, Interpreter that<br/> runs and hosts in 10+ programming<br/> languages.
         </p><br/> <br/> 
-        <button className='btn-createRemote btn-start'>Star Your Coding Journey</button>
-        
+        <button className='btn-createRemote btn-start'>Start Your Coding Journey</button>
+     
      </div>
+   
  
      <div className="description">
         <p className="title title2">Experience web <br/> development with Remote.</p>
@@ -52,6 +54,9 @@ const Home = () => {
         with a community <br/> who’ve crafted 
         1000+ <br/>  remotes.
         </p>
+     </div>
+     <div>
+        <Footer/>
      </div>
  
 
