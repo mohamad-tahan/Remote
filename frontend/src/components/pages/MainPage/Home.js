@@ -4,19 +4,10 @@ import "./Home.css"
 import { TbBrandJavascript } from 'react-icons/tb';
 import { FaPython } from 'react-icons/fa';
 import { DiJavascript } from 'react-icons/di';
-import { IoLogoJavascript } from 'react-icons/io';
+import { SiCss3 } from 'react-icons/si';
 import { FaReact } from 'react-icons/fa';
-import { VscGithub } from 'react-icons/vsc';
 import { TbBrandPhp } from 'react-icons/tb';
 import idePic from "../../../pics/idePic.png"
-
-
-
-
-
-
-
-
 
 const Home = () => {
     return (
@@ -40,18 +31,17 @@ const Home = () => {
         <p className="title title2">Experience web <br/> development with Remote.</p>
         <p className="text text2">Programming made easier. <br/> Create, share, and live <br/> code with others.</p>
         
-        
         <div className="icons"> 
        <p><FaReact/></p> 
        <p> <TbBrandJavascript/></p> 
-       <p><VscGithub/></p> 
+       <p><SiCss3/></p> 
        <p><FaPython/></p> 
        <p><DiJavascript/></p> 
        <p><TbBrandPhp/></p> 
-       
         </div>
        
      </div>
+
      <div className="description">
         <img alt="" src={idePic}/>
      </div>
@@ -62,10 +52,8 @@ const Home = () => {
         with a community <br/> who’ve crafted 
         1000+ <br/>  remotes.
         </p>
-        
      </div>
  
-
 
         </div>
     )
