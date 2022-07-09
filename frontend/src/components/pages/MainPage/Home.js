@@ -17,6 +17,7 @@ import idePic from "../../../pics/idePic.png"
 
 
 
+
 const Home = () => {
     return (
         <div className="main">
@@ -37,9 +38,9 @@ const Home = () => {
  
      <div className="description">
         <p className="title title2">Experience web <br/> development with Remote.</p>
-        <p className="text text2">Create, share, and live code with others.</p>
-        <br/>
-        <br/>
+        <p className="text text2">Programming made easier. <br/> Create, share, and live <br/> code with others.</p>
+        
+        
         <div className="icons"> 
        <p><FaReact/></p> 
        <p> <TbBrandJavascript/></p> 
@@ -54,6 +55,16 @@ const Home = () => {
      <div className="description">
         <img alt="" src={idePic}/>
      </div>
+
+     <div className="description">
+        <p className="title title2">Code from anywhere with Remote.</p>
+        <p className="text">Build projects and create  static <br/> webistes
+        with a community <br/> who’ve crafted 
+        1000+ <br/>  remotes.
+        </p>
+        
+     </div>
+ 
 
 
         </div>
