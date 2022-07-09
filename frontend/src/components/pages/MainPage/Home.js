@@ -13,7 +13,14 @@ const Home = () => {
     <img alt="" src={remoteLogo} />
     </div>
 
-  
+    <div className="description">
+        <p className="title">What is Remote?</p>
+        <p className="text">Remote is a simple yet powerful Live <br/>
+         IDE, Editor, Compiler, Interpreter that<br/> runs and hosts in 10+ programming<br/> languages.
+        </p><br/> <br/> 
+        <button className='btn-createRemote btn-start'>Star Your Coding Journey</button>
+        
+     </div>
  
      
 
