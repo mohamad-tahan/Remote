@@ -2,6 +2,19 @@ import Navbar from "./Navbar";
 import remoteLogo from "../../../pics/remoteLogo.png"
 import "./Home.css"
 import { TbBrandJavascript } from 'react-icons/tb';
+import { FaPython } from 'react-icons/fa';
+import { DiJavascript } from 'react-icons/di';
+import { IoLogoJavascript } from 'react-icons/io';
+import { FaReact } from 'react-icons/fa';
+import { VscGithub } from 'react-icons/vsc';
+import { TbBrandPhp } from 'react-icons/tb';
+import idePic from "../../../pics/idePic.png"
+
+
+
+
+
+
 
 
 const Home = () => {
@@ -24,11 +37,21 @@ const Home = () => {
  
      <div className="description">
         <p className="title title2">Experience web <br/> development with Remote.</p>
-        <p className="text">Create, share, and live code with others.</p>
-        <div className="icons"> <TbBrandJavascript/></div>
-        
-        
+        <p className="text text2">Create, share, and live code with others.</p>
+        <br/>
+        <br/>
+        <div className="icons"> 
+       <p><FaReact/></p> 
+       <p> <TbBrandJavascript/></p> 
+       <p><VscGithub/></p> 
+       <p><FaPython/></p> 
+       <p><DiJavascript/></p> 
+       <p><TbBrandPhp/></p> 
+       
+        </div>
+       
      </div>
+  
 
 
         </div>
