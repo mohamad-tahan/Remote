@@ -51,7 +51,9 @@ const Home = () => {
         </div>
        
      </div>
-  
+     <div className="description">
+        <img alt="" src={idePic}/>
+     </div>
 
 
         </div>
