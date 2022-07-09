@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route} from "react-router-dom";
-import Login from "./components/Login";
+import Login from "./components/pages/LoginPage/Login";
 import { Toaster } from 'react-hot-toast';
 
 function App() {
