@@ -4,7 +4,7 @@ import {FaBars,FaUserAlt}from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import {AiFillHome, AiOutlinePlus} from "react-icons/ai";
 
-const Sidebar = ({children}) => {
+const Sidebar = () => {
     const[isOpen ,setIsOpen] = useState(false);
     const toggle = () => setIsOpen (!isOpen);
 
@@ -28,8 +28,8 @@ const Sidebar = ({children}) => {
        
     ]
     return (
-        <div className="container">
-           <div style={{width: isOpen ? "250px" : "50px"}} className="sidebar">
+        <div className="containerr">
+           <div style={{width: isOpen ? "200px" : "50px"}} className="sidebar">
                <div className="top_section">
                    <h1 style={{display: isOpen ? "block" : "none"}} className="username">@username</h1>
                    <div style={{marginLeft: isOpen ? "50px" : "0px"}} className="bars">
@@ -45,7 +45,7 @@ const Sidebar = ({children}) => {
                    ))
                }
            </div>
-           <main>{children} </main>
+ 
         </div>
     );
 };
