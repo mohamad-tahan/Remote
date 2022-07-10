@@ -3,6 +3,9 @@ import './Sidebar.css'
 import {FaBars,FaUserAlt}from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import {AiFillHome, AiOutlinePlus} from "react-icons/ai";
+import {RiLogoutBoxLine} from "react-icons/ri";
+
+
 
 const Sidebar = () => {
     const[isOpen ,setIsOpen] = useState(false);
@@ -24,9 +27,16 @@ const Sidebar = () => {
             name:"Profile",
             icon:<FaUserAlt/>
         },
+        {
+            path:"/logout",
+            name:"Log Out",
+            icon:<RiLogoutBoxLine/>
+        },
+       
      
        
     ]
+   
     return (
         <div className="containerr">
            <div style={{width: isOpen ? "200px" : "50px"}} className="sidebar">
