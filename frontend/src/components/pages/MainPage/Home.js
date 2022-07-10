@@ -20,18 +20,19 @@ const Home = () => {
     </div>
 
     <div className="description">
-        <p className="title">What is Remote?</p>
-        <p className="text">Remote is a simple yet powerful Live <br/>
+        <p className="titlee">What is Remote?</p>
+        <p className="textt">Remote is a simple yet powerful Live <br/>
          IDE, Editor, Compiler, Interpreter that<br/> runs and hosts in 10+ programming<br/> languages.
-        </p><br/> <br/> 
+        </p><br/> 
+
         <button className='btn-createRemote btn-start'>Start Your Coding Journey</button>
      
      </div>
    
  
      <div className="description">
-        <p className="title title2">Experience web <br/> development with Remote.</p>
-        <p className="text text2">Programming made easier. <br/> Create, share, and live <br/> code with others.</p>
+        <p className="titlee title2">Experience web <br/> development with Remote.</p>
+        <p className="textt text2">Programming made easier. <br/> Create, share, and live <br/> code with others.</p>
         
         <div className="icons"> 
        <p><FaReact/></p> 
@@ -49,8 +50,8 @@ const Home = () => {
      </div>
 
      <div className="description">
-        <p className="title title2">Code from anywhere with Remote.</p>
-        <p className="text">Build projects and create  static <br/> webistes
+        <p className="titlee title2">Code from anywhere with Remote.</p>
+        <p className="textt">Build projects and create  static <br/> webistes
         with a community <br/> who’ve crafted 
         1000+ <br/>  remotes.
         </p>
