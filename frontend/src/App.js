@@ -1,10 +1,10 @@
+import "./App.css"
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Login from "./components/pages/LoginPage/Login";
 import { Toaster } from 'react-hot-toast';
 import Navbar from "./components/pages/MainPage/Navbar";
 import Home from "./components/pages/MainPage/Home.js";
-
-import "./App.css"
+import Remote from "./components/pages/Ide/Remote";
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/navbar" element={<Navbar />}></Route>
         <Route path="/home" element={<Home />}></Route>
+        <Route path="/remote" element={<Remote />}></Route>
        
        
 
