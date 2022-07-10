@@ -1,22 +1,23 @@
+.logoPic{
+    align-items: center;
+    text-align: center;
+}
 
 .logoPic > img {
-    width:100%;
-    height: 570px;
-
+    padding-top: 30px;
+    padding-right: 20px;
+    width:750px;
+    height: 560px;
+    opacity: 0.8;
 }
 
 .description{
-  
     text-align: center;
     background-color: black;
     min-height: 600px;
     padding: 0 40px;
+}
 
- 
-}
-.description:hover{
- 
-}
 .title{
   
     padding-top: 100px;
@@ -31,16 +32,17 @@
     font-weight: lighter;
 }
 .btn-start{
- 
     font-size: larger;
 }
 
 .title2{
     line-height: 110%
 }
+
 .text2{
     padding-top: 10px;
 }
+
 .icons{
     display: flex;
     justify-content: center;
@@ -48,6 +50,7 @@
     font-size: 55px;
     padding-right: 10px;
 }
+
 .icons p{
     padding-right: 20px;
 }
@@ -57,13 +60,12 @@
     color: white;
     font-size: 65px;
     transition: all 200ms ease 0s;
-
 }
 
 .description img{
     padding-top: 30px;
     width: 100% ;
     height: 580px;
-   }
+}
 
 
