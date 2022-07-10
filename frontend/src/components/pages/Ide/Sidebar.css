@@ -18,7 +18,7 @@ main{
     color: white;
     height: 580px;
     width: 200px;
-    transition: all 0.5s;
+    /* transition: all 0.5s; */
     cursor: pointer;
     border-radius: 30px;
     margin-left: 30px;
@@ -45,14 +45,14 @@ main{
 .link{
     display: flex;
     color: white;
-    padding: 10px 15px;
+    padding: 12px 15px;
     gap: 15px;
-    transition: all 0.5s;
+    transition: all 0.9s;
 }
 
 .link:hover{
     background: rgb(0, 0, 44);
-    color: #000;
+    color: rgb(100, 99, 99);
     transition: all 0.3s;
 }
 
@@ -61,8 +61,9 @@ main{
 }
 
 .icon, .link_text{
-    font-size: 16px;
+    font-size: 14px;
     padding-top: 8px;
     padding-bottom: 8px;
+    transition: all 0.1s;
    
 }
