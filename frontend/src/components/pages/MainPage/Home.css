@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+
 .logoPic{
     align-items: center;
     text-align: center;
@@ -18,20 +21,24 @@
     padding: 0 40px;
 }
 
-.title{
+.titlee{
   
     padding-top: 100px;
     font-size: 64px;
     color: white;
     font-weight: normal;
 }
-.text{
+.textt{
     color: #808080;
     font-size: 45px;
     line-height: 120%;
-    font-weight: lighter;
+    font-weight: light;
+    padding-top: 50px;
+  font-family: "Poppins", sans-serif;
+   
 }
 .btn-start{
+    margin-top: 60px;
     font-size: larger;
 }
 
@@ -39,8 +46,9 @@
     line-height: 110%
 }
 
+
 .text2{
-    padding-top: 10px;
+    padding-top: 40px;
 }
 
 .icons{
@@ -49,6 +57,7 @@
     color: #444444;
     font-size: 55px;
     padding-right: 10px;
+    margin-top: 40px;
 }
 
 .icons p{
