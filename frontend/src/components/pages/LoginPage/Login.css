@@ -108,9 +108,9 @@
   transition: transform 80ms ease-in;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"] {
+.wholeContainer input[type="text"],
+.wholeContainer input[type="email"],
+.wholeContainer input[type="password"] {
   width: 240px;
   text-align: center;
   background: transparent;
@@ -124,14 +124,6 @@ input[type="password"] {
   color: #fff;
   font-weight: bold;
 }
-
-/* button:active {
-  transform: scale(0.95);
-}
-
-button:focus {
-  outline: none;
-} */
 
 .ghost {
   background: transparent;
