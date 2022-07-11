@@ -5,8 +5,10 @@ import { AiOutlineInstagram } from 'react-icons/ai';
 import React, { useState } from "react";
 import jwt_decode from "jwt-decode"
 import toast from 'react-hot-toast';
+import {useNavigate} from "react-router-dom";
 
 function Login(){
+  let nav = useNavigate();
 
   function validateInputs(){
     if(!name|| !username || !email || !password ){
@@ -73,6 +75,7 @@ const handleSignin = async (e) => {
     try {
       toast.success(`You Are Now Logged in.`);
       localStorage.setItem("token", response["token"]);
+      nav("/remote");
       setEmail("");
       setPassword("");
     
