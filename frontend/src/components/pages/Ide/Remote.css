@@ -9,12 +9,15 @@
   width: 580px;
   height: 300px;
   margin-right: 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid rgb(25, 25, 25);
   margin-top: 2px;
   color: white;
   box-shadow: 2px 2px 2px 1px #2e2d50;
-  font-size: 15px;
+  padding: 6px 10px;
+
+    resize: none;
+  
 }
 
 .output {
@@ -22,11 +25,14 @@
   width: 320px;
   height: 480px;
   margin-right: 40px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid rgb(25, 25, 25);
   color: white;
   margin-top: 2px;
   box-shadow: 2px 2px 2px 1px #2e2d50;
+  padding: 6px 10px;
+
+    resize: none;
 }
 
 .input {
@@ -34,20 +40,24 @@
   background-color: rgb(0, 0, 44);
   width: 580px;
   height: 150px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid rgb(25, 25, 25);
   margin-top: 2px;
   box-shadow: 2px 2px 2px 1px #2e2d50;
+  padding: 8px 15px;
+  padding: 6px 10px;
+  resize: none;
+
 }
 
 .run {
-  font-size: 40px;
+  font-size: 30px;
   color: rgb(106, 0, 130);
 }
 
 .save {
   padding-top: 4px;
-  font-size: 33px;
+  font-size: 25px;
   color: rgb(106, 0, 130);
 }
 
@@ -71,7 +81,7 @@
 .output:focus,
 .input:focus {
   outline: none;
-  padding: 0 5px;
+  padding: 6px 10px;
 }
 
 .outputCode {
@@ -82,6 +92,7 @@
   width: fit-content;
   padding: 0 12px;
   font-size: 12px;
+
 }
 
 .inputCode {
@@ -92,10 +103,11 @@
   width: fit-content;
   padding: 0 12px;
   font-size: 12px;
+
 }
 
 .lightTheme {
-  background-color: rgba(2, 0, 113, 0.281);
+  background-color: #263581;
   color: black;
 }
 
@@ -115,9 +127,9 @@ margin-top: 560px;
   z-index: 10;
 }
 .dark {
-  color: purple;
+  color: #3c55d5;
 }
 
 .iconDark{
-    color: white
+    color: rgb(192, 188, 188);;
 }
