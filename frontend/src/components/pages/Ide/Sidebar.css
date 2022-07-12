@@ -45,15 +45,18 @@ main{
 .link{
     display: flex;
     color: white;
-    padding: 12px 15px;
+    padding: 12px 17px;
     gap: 15px;
     transition: all 0.9s;
+  
+    
 }
 
 .link:hover{
     background: rgb(0, 0, 44);
     color: rgb(100, 99, 99);
     transition: all 0.3s;
+    border-radius: 25px;
 }
 
 .active{
