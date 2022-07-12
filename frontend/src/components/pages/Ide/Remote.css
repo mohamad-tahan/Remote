@@ -66,6 +66,8 @@
   display: flex;
   gap: 15px;
   margin-left: 12px;
+  cursor: pointer;
+  width: fit-content;
 }
 
 .fileName {
@@ -125,7 +127,14 @@ margin-top: 560px;
   position: absolute;
   margin-left: 43px;
   z-index: 10;
+ 
 }
+.sun:hover{
+  color: rgb(0, 0, 44);
+  transition: all 0.3s;
+
+}
+
 .dark {
   color: #3c55d5;
 }
