@@ -9,8 +9,29 @@ import { FaReact } from 'react-icons/fa';
 import { TbBrandPhp } from 'react-icons/tb';
 import idePic from "../../../pics/idePic.png"
 import Footer from "./Footer";
+import {useNavigate} from 'react-router-dom';
+import toast from "react-hot-toast";
 
 const Home = () => {
+   let nav = useNavigate();
+   const user_id = localStorage.getItem("user_id");
+   console.log(user_id)
+   
+   
+ 
+ 
+   function openIde(){
+     if(user_id){
+       console.log(user_id)
+       nav('/remote')
+     }
+     else{
+      toast.error("You Are Not Registered.")
+      
+       nav('/login')
+     }
+ 
+   }
     return (
         <div className="main">
     <Navbar/>
@@ -25,7 +46,7 @@ const Home = () => {
          IDE, Editor, Compiler, Interpreter that<br/> runs and hosts in 10+ programming<br/> languages.
         </p><br/> 
 
-        <button className='btn-createRemote btn-start'>Start Your Coding Journey</button>
+        <button className='btn-createRemote btn-start' onClick={openIde}>Start Your Coding Journey</button>
      
      </div>
    
