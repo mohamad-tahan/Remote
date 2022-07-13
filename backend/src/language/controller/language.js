@@ -31,7 +31,20 @@ async function addLanguages(req, res) {
     }
   }
 
+  async function getLanguages(req, res) {
+    try {
+      if (req.body) {
+        const result = await Language.find();
+        console.log("langauges", result);
+        return res.send(result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   module.exports ={
     addLanguages,
+    getLanguages
   }
