@@ -9,6 +9,8 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import Spinner from "../../../Spinner/Spinner";
 import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
+import { AiOutlineClear } from "react-icons/ai";
+
 
 const Remote = () => {
   const [isLight, setIsLight] = useState(false);
@@ -103,7 +105,6 @@ const Remote = () => {
     }
   };
 
-
   const getLanguages = async () => {
     const res = await fetch("http://127.0.0.1:3000/api/user/auth/getLanguages");
     const data = await res.json();
@@ -117,7 +118,7 @@ const Remote = () => {
   }, []);
 
   const changeTheme = (e) => {
-    theme==='light'? setTheme('vs-dark') : setTheme('light');
+    theme === "light" ? setTheme("vs-dark") : setTheme("light");
     toast.success("Theme Changed.", {
       style: {
         border: "1px solid #2e2d50",
@@ -157,18 +158,24 @@ const Remote = () => {
               {" "}
               <VscRunAll />
             </div>
-
+            <div className="clear">
+            <AiOutlineClear/>
+            </div>
             <div />
+            
           </div>
+         
 
           <p className="fileName">filename</p>
 
           <Editor
             height="53vh"
             width="90vh"
-            defaultLanguage="python"
-            options={{ theme:theme, lineDecorationsWidth: 0 }}
+            defaultLanguage="javascript"
+            options={{ theme: theme, lineDecorationsWidth: 0 }}
             onChange={(e) => setCode(e)}
+          
+
           />
 
           <div>
