@@ -143,18 +143,31 @@
 }
 
 div.overflow-guard {
-  border-radius: 15px !important;
+  border-radius: 8px !important;
 }
 
 .clear {
   cursor: pointer;
   color: yellow;
   font-size: 27px;
-  width: 5px;
+  width: fit-content;
   position: absolute;
-  right: 35px;
+  right: 20px;
   top: 10px;
   /* z-index: 10; */
+}
+
+.langDropdown{
+  width: 120px;
+  height: 25px;
+  color: purple;
+  background-color: rgb(35, 32, 32);
+  border-radius: 10px;
+  margin-top: 7px;
+ text-align: center;
+ align-items: center;
+
+  
 }
 
 
