@@ -10,31 +10,21 @@ import axios from "axios";
 import Spinner from "../../../Spinner/Spinner";
 import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 import { AiOutlineClear } from "react-icons/ai";
-
+import LanguagesDropdown from "./LanguagesDropdown";
 
 const Remote = () => {
   const [isLight, setIsLight] = useState(false);
   const [code, setCode] = useState("");
   const [input, setInput] = useState("");
   const [output, setOutput] = useState(null);
-
-  const [language, setLanguage] = useState([]);
-  const [languageId, setLanguageId] = useState(71); //71 is id of python
-
+  const [language, setLanguage] = useState({ id: 63, name: "javascript" , extension: "js"});//63 is id of javascript
   const [spin, setSpin] = useState(false);
-
-  console.log("languages  ", language);
-  console.log(languageId);
-
-  console.log(output);
-  console.log(code);
 
   const handleRun = () => {
     setSpin(true);
-
     const data = new FormData();
     data.append("source_code", btoa(code)); //btoa encode the code wriiten by the user
-    data.append("language_id", languageId);
+    data.append("language_id", language.id);
     data.append("stdin", btoa(input)); //stdin is the standard input of the user
     axios({
       method: "POST",
@@ -57,7 +47,6 @@ const Remote = () => {
         let error = err.response ? err.response.data : err;
         // get error status
         let status = err.response.status;
-        // console.log("status", status);
         if (status === 429) {
           console.log("Freemium ended: ", status);
         }
@@ -105,17 +94,6 @@ const Remote = () => {
     }
   };
 
-  const getLanguages = async () => {
-    const res = await fetch("http://127.0.0.1:3000/api/user/auth/getLanguages");
-    const data = await res.json();
-    console.log(data);
-    setLanguage(data);
-    return data;
-  };
-
-  useEffect(() => {
-    getLanguages();
-  }, []);
 
   const changeTheme = (e) => {
     theme === "light" ? setTheme("vs-dark") : setTheme("light");
@@ -134,6 +112,15 @@ const Remote = () => {
     console.log(e);
   };
   const [theme, setTheme] = useState("vs-dark");
+
+  //handleClear() clears code,input and output
+  const handleClear = (e) => {
+    // e.preventDefault();
+    setCode("");
+    setInput("");
+    setOutput(null);
+  };
+  
   return (
     <div className="idePage">
       <Navbar />
@@ -158,24 +145,22 @@ const Remote = () => {
               {" "}
               <VscRunAll />
             </div>
-            <div className="clear">
-            <AiOutlineClear/>
+            <div className="clear" onClick={(e) => handleClear(e)}>
+              <AiOutlineClear />
             </div>
+            <LanguagesDropdown setLanguage={setLanguage} />
             <div />
-            
           </div>
-         
 
           <p className="fileName">filename</p>
 
           <Editor
             height="53vh"
             width="90vh"
-            defaultLanguage="javascript"
+            defaultLanguage={language.name}
             options={{ theme: theme, lineDecorationsWidth: 0 }}
+            value={code}
             onChange={(e) => setCode(e)}
-          
-
           />
 
           <div>
@@ -185,6 +170,7 @@ const Remote = () => {
               height="20vh"
               options={{ lineDecorationsWidth: 0 }}
               onChange={(e) => setInput(e)}
+              value={input}
             />
           </div>
         </div>
@@ -199,6 +185,7 @@ const Remote = () => {
                   height="76vh"
                   width="40vh"
                   options={{ lineNumbers: "off", lineDecorationsWidth: 0 }}
+                  onChange={(e) => setOutput(e)}
                   value={output}
                 />
               </div>
