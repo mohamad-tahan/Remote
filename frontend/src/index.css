@@ -12,15 +12,17 @@ code {
     monospace;
 } */
 
-
-.App{
+.App {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   background-color: black;
 }
 
-body{
+body {
   background-color: black;
-
+}
+  
+.monaco-editor {
+  border-radius: 15px !important;
 }
