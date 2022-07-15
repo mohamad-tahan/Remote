@@ -1,72 +1,73 @@
-*{
-    margin:0;
-    padding:0;
-    text-decoration: none;
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
 }
 
-.container{
-    display:flex;
+.container {
+  display: flex;
 }
 
-main{
-    width: 100%;
-    padding: 20px;
+main {
+  width: 100%;
+  padding: 20px;
 }
 
-.sidebar{
-    background:rgb(37, 37, 37);
-    color: white;
-    height: 580px;
-    width: 200px;
-    /* transition: all 0.5s; */
-    cursor: pointer;
-    border-radius: 30px;
-    margin-left: 30px;
-    margin-top: 15px;
-    margin-bottom: 10px;
+.sidebar {
+  background: rgb(37, 37, 37);
+  color: white;
+  height: 580px;
+  width: 200px;
+  /* transition: all 0.5s; */
+  cursor: pointer;
+  border-radius: 30px;
+  margin-left: 30px;
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
-.top_section{
-    display: flex;
-    align-items:center;
-    padding:20px 13px;  
+.top_section {
+  display: flex;
+  align-items: center;
+  padding: 20px 13px;
+  position: relative;
 }
 
-.username{
-    font-size: 15px;
+.username {
+  font-size: 15px;
 }
 
-.bars{
-    display: flex;
-    font-size: 20px;
-    margin-left: 50px;
+.bars {
+  display: flex;
+  font-size: 20px;
+  position: absolute;
+  top: 20px;
+  right: 15px;
 }
 
-.link{
-    display: flex;
-    color: white;
-    padding: 12px 17px;
-    gap: 15px;
-    transition: all 0.9s;
-  
-    
+.link {
+  display: flex;
+  color: white;
+  padding: 12px 17px;
+  gap: 15px;
+  transition: all 0.9s;
 }
 
-.link:hover{
-    background: rgb(0, 0, 44);
-    color: rgb(100, 99, 99);
-    transition: all 0.3s;
-    border-radius: 25px;
+.link:hover {
+  background: rgb(0, 0, 44);
+  color: rgb(100, 99, 99);
+  transition: all 0.3s;
+  border-radius: 25px;
 }
 
-.active{
-    color: #000;
+.active {
+  color: #000;
 }
 
-.icon, .link_text{
-    font-size: 14px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    transition: all 0.1s;
-   
+.icon,
+.link_text {
+  font-size: 14px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  transition: all 0.1s;
 }
