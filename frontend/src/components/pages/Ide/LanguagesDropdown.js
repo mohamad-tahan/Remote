@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import "./Remote.css";
 
-const LanguagesDropdown = ({ setLanguage }) => {
+const LanguagesDropdown = ({ onOptionSelect }) => {
   const [languages, setLanguages] = useState([]);
-  
+
   const getLanguages = async () => {
     const res = await fetch("http://127.0.0.1:3000/api/user/auth/getLanguages");
     const data = await res.json();
@@ -21,22 +21,14 @@ const LanguagesDropdown = ({ setLanguage }) => {
     getLanguages();
   }, []);
 
-  const handleSelect = (e) => {
-    e = e.target.value;
-    let name = e.split(" ")[0];
-    let id = e.split(" ")[1];
-    let extension = e.split(" ")[2];
-
-    setLanguage({id: id, name:name, extension:extension});
-  };
 
 
   return (
     <>
-      <select className="langDropdown" onChange={handleSelect}>
+      <select className="langDropdown" onChange={(e)=> onOptionSelect(e.target.value) }>
         {languages.map((i, index) => {
           return (
-            <option key={i.id} value={i.name + " " + i.id + " " + i.extension}>
+            <option key={i.id} value={JSON.stringify(i)}>
               {i.name}
             </option>
           );
