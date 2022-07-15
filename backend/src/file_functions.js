@@ -7,8 +7,8 @@ async function addFile(body) {
     const {
       name,
       code,
-      language_id,
-      user_id,
+      language,
+      owner_id,
       date
      
     } = body;
@@ -17,14 +17,19 @@ async function addFile(body) {
       
         name,
         code,
-        language_id,
-        user_id,
+        language,
+        owner_id,
         date,
      
     });
   
     return await file.save();
   }
+
+
+//   async function getFileById(id) {
+//     return await File.findById(id).populate("langauges");
+//   }
 
   module.exports = {
     addFile,
