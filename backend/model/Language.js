@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
-//users collection 
+//languages collection 
 const languageSchema = new mongoose.Schema({
+  language_id:{
+    type:Number
+  },
+
   name: {
     type: String,
     required: true,
@@ -12,10 +16,6 @@ const languageSchema = new mongoose.Schema({
   extension: {
     type:String,
     required:true,
-  },
-  files: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'File'
   },
 
 });
