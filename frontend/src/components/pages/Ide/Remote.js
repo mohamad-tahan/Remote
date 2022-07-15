@@ -16,15 +16,22 @@ const Remote = () => {
   const [isLight, setIsLight] = useState(false);
   const [code, setCode] = useState("");
   const [input, setInput] = useState("");
-  const [output, setOutput] = useState(null);
-  const [language, setLanguage] = useState({ id: 63, name: "javascript" , extension: "js"});//63 is id of javascript
+  const [output, setOutput] = useState("");
+  const [language, setLanguage] = useState({
+    language_id: 63,
+    name: "javascript",
+    extension: "js",
+    
+  }); //63 is id of javascript
   const [spin, setSpin] = useState(false);
+  console.log(language);
+
 
   const handleRun = () => {
     setSpin(true);
     const data = new FormData();
     data.append("source_code", btoa(code)); //btoa encode the code wriiten by the user
-    data.append("language_id", language.id);
+    data.append("language_id", language.language_id);
     data.append("stdin", btoa(input)); //stdin is the standard input of the user
     axios({
       method: "POST",
@@ -94,7 +101,6 @@ const Remote = () => {
     }
   };
 
-
   const changeTheme = (e) => {
     theme === "light" ? setTheme("vs-dark") : setTheme("light");
     toast.success("Theme Changed.", {
@@ -118,9 +124,10 @@ const Remote = () => {
     // e.preventDefault();
     setCode("");
     setInput("");
-    setOutput(null);
+    setOutput("");
   };
-  
+
+console.log(language)
   return (
     <div className="idePage">
       <Navbar />
@@ -148,7 +155,7 @@ const Remote = () => {
             <div className="clear" onClick={(e) => handleClear(e)}>
               <AiOutlineClear />
             </div>
-            <LanguagesDropdown setLanguage={setLanguage} />
+            <LanguagesDropdown onOptionSelect={(e)=> setLanguage(JSON.parse(e))} />
             <div />
           </div>
 
@@ -166,11 +173,11 @@ const Remote = () => {
           <div>
             <p className="inputCode">Input</p>
 
-            <Editor
-              height="20vh"
-              options={{ lineDecorationsWidth: 0 }}
-              onChange={(e) => setInput(e)}
+            <textarea
+              className={`input ${isLight && " theme"}`}
+              onChange={(e) => setInput(e.target.value)}
               value={input}
+              onKeyPress={(e) => e.key === "Enter" && handleRun()}
             />
           </div>
         </div>
@@ -181,13 +188,13 @@ const Remote = () => {
           {
             <div>
               <div className="output">
-                <Editor
-                  height="76vh"
-                  width="40vh"
-                  options={{ lineNumbers: "off", lineDecorationsWidth: 0 }}
+                <textarea
+                  className={`output ${isLight && " theme"}`}
                   onChange={(e) => setOutput(e)}
                   value={output}
+                  disabled={true}
                 />
+              
               </div>
 
               {}
