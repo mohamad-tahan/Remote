@@ -11,6 +11,10 @@ import Spinner from "../../../Spinner/Spinner";
 import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 import { AiOutlineClear } from "react-icons/ai";
 import LanguagesDropdown from "./LanguagesDropdown";
+import DownloadLink from "react-download-link";
+import { HiDocumentDownload } from "react-icons/hi";
+
+
 
 const Remote = () => {
   const [isLight, setIsLight] = useState(false);
@@ -25,6 +29,9 @@ const Remote = () => {
   }); //63 is id of javascript
   const [spin, setSpin] = useState(false);
   console.log(language);
+
+  const [fileName, setFileName] = useState("Enter Remote Name");
+  const user_id = localStorage.getItem("user_id")
 
 
   const handleRun = () => {
@@ -127,6 +134,35 @@ const Remote = () => {
     setOutput("");
   };
 
+  const handleSave = async (e) => {
+    e.preventDefault();
+  
+   
+      const res = await fetch("http://127.0.0.1:3000/api/user/auth/addFiles", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          name: fileName,
+          code: code,
+          language:language.extension,
+          owner_id:user_id
+        }),
+      });
+      const response = await res.json();
+      console.log(response)
+     
+      if (response) {
+        toast.success(`File Saved`);
+     
+      }
+      else{
+        toast.errot("Error Saving");
+      }
+     
+     
+  };
+
+
 console.log(language)
   return (
     <div className="idePage">
@@ -141,25 +177,43 @@ console.log(language)
 
         <div>
           <div className="ideIcons">
-            <div className={`save ${isLight && " iconDark"}`}>
-              {" "}
+            <div 
+            className={`save ${isLight && " iconDark"}`}
+            onClick={handleSave}
+            >
+             
               <BsSaveFill />
             </div>
             <div
               className={`run ${isLight && " iconDark"}`}
               onClick={handleRun}
             >
-              {" "}
+             
               <VscRunAll />
             </div>
+        
             <div className="clear" onClick={(e) => handleClear(e)}>
               <AiOutlineClear />
             </div>
+            
             <LanguagesDropdown onOptionSelect={(e)=> setLanguage(JSON.parse(e))} />
+            <div className="download"><DownloadLink
+              label={<HiDocumentDownload className="download"/>}
+              filename={fileName +"."+ language.extension }
+              exportFile={() => code}
+          /></div>
             <div />
           </div>
 
-          <p className="fileName">filename</p>
+          <p className="fileName"><input
+            className="inputFile"
+            type="text"
+            value={fileName}
+            onChange={(e) => {
+              setFileName(e.target.value)
+            }}
+          />
+          </p>
 
           <Editor
             height="53vh"
@@ -177,7 +231,7 @@ console.log(language)
               className={`input ${isLight && " theme"}`}
               onChange={(e) => setInput(e.target.value)}
               value={input}
-              onKeyPress={(e) => e.key === "Enter" && handleRun()}
+              // onKeyPress={(e) => e.key === "Enter" && handleRun()}
             />
           </div>
         </div>
