@@ -12,11 +12,11 @@ const fileSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  language_id: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Language'
-  }],
-  user_id: {
+  language: {
+    type: String,
+  },
+
+  owner_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
