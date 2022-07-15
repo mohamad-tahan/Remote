@@ -75,10 +75,23 @@ async function addFiles(req, res) {
     }
   }
 
+  async function getFilesbyUserId(req, res) {
+    try {
+      if (req.body.owner_id) {
+        const result = await File.find({ owner_id: req.body.owner_id })
+        console.log("result of all files of user =>", result);
+        return res.send(result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   module.exports = {
     addFiles,
     getFilesbyId,
     updateFile,
-    removeFile
+    removeFile,
+    getFilesbyUserId,
+   
   }
