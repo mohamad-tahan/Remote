@@ -4,13 +4,13 @@ const Language = require('../model/Language');
 //Adding a new Language
 async function addLanguage(body) {
     const {
-      id,
+      language_id,
       name,
       extension,
     } = body;
   
     const language = new Language({
-      id,
+      language_id,
         name,
         extension,
     });
