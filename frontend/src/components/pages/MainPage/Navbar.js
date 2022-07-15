@@ -10,7 +10,6 @@ import toast from "react-hot-toast";
 const Navbar = () => {
   let nav = useNavigate();
   const user_id = localStorage.getItem("user_id");
-  console.log(user_id)
   
   
 
