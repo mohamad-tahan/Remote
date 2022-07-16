@@ -14,30 +14,29 @@ import LanguagesDropdown from "./LanguagesDropdown";
 import DownloadLink from "react-download-link";
 import { HiDocumentDownload } from "react-icons/hi";
 import FilesDropdown from "./FilesDropdown";
-
-
+import AddRemote from "./AddRemote";
 
 const Remote = () => {
   const [isLight, setIsLight] = useState(false);
   const [code, setCode] = useState("");
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
-  const [language, setLanguage] = useState({
-    language_id: 63,
-    name: "javascript",
-    extension: "js",
-    
-  }); //63 is id of javascript
+  const [language, setLanguage] = useState({language_id: 63, name: "javascript",extension: "js",}); //63 is id of javascript
   const [spin, setSpin] = useState(false);
-  console.log(language);
-
-  const [fileName, setFileName] = useState("");
+  const [fileName, setFileName] = useState("Enter File Name");
   const user_id = localStorage.getItem("user_id");
-  const [file, setFile] = useState();
-  // console.log(file)
+  const [fileId, setFileId] = useState();
+  const [showModel, setShowModel] = useState(false);
+  const[isSaving, setIsSaving] = useState(false);
+  const [theme, setTheme] = useState("vs-dark");
+
 
 
   const handleRun = () => {
+    if(fileName == "Enter File Name"){
+      toast.error("Create a Remote First")
+      return
+    }
     setSpin(true);
     const data = new FormData();
     data.append("source_code", btoa(code)); //btoa encode the code wriiten by the user
@@ -67,10 +66,10 @@ const Remote = () => {
         if (status === 429) {
           console.log("Freemium ended: ", status);
         }
-
         console.log("Catch: ", error);
       });
   };
+  
   const getResponse = async (token) => {
     const res = {
       method: "GET",
@@ -93,7 +92,6 @@ const Remote = () => {
 
       //  statusId = 1 and statusId = 2 stand for in queue and processing so they need some time to get the response
       if (statusId === 1 || statusId === 2) {
-        // getResponse(token)
         setTimeout(() => {
           getResponse(token);
         }, 2000);
@@ -127,8 +125,8 @@ const Remote = () => {
     setIsLight(!isLight);
     console.log(e);
   };
-  const [theme, setTheme] = useState("vs-dark");
 
+  
   //handleClear() clears code,input and output
   const handleClear = (e) => {
     // e.preventDefault();
@@ -136,95 +134,98 @@ const Remote = () => {
     setInput("");
     setOutput("");
   };
+  
 
   const handleSave = async (e) => {
     e.preventDefault();
-  
-   
-      const res = await fetch("http://127.0.0.1:3000/api/user/auth/addFiles", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          name: fileName,
-          code: code,
-          language:language.extension,
-          owner_id:user_id
-        }),
-      });
-      const response = await res.json();
-      console.log(response)
-     
-      if (response) {
-        toast.success(`File Saved`);
-     
-      }
-      else{
-        toast.error("Error Saving");
-      }
-     
-     
+    console.log(fileName)
+    if(fileName == "Enter File Name"){
+      toast.error("Create a Remote First")
+      return
+    }
+
+    const res = await fetch("http://127.0.0.1:3000/api/user/auth/updateFile/?id="+fileId, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        name: fileName,
+        code: code,
+        language: language.extension,
+        owner_id: user_id,
+      }),
+    });
+    
+    const response = await res.json();
+    console.log(response);
+
+    if (response) {
+      toast.success(`File Saved`);
+      setIsSaving(true);
+    } else {
+      toast.error("Error Saving");
+    }
   };
-  const handleFileChange=(e)=>{
-    e=JSON.parse(e);
+  const handleFileChange = (e) => {
+    e = JSON.parse(e);
     setCode(e.code);
-     setFileName(e.name)
-    console.log(e)
+    setFileName(e.name);
+    setFileId(e._id);
+    console.log(e);
+  };
 
-  }
-
-
+  console.log(showModel);
 
   return (
     <div className="idePage">
       <Navbar />
+      {showModel && <AddRemote />}
 
       {spin && <Spinner />}
       <div className={`ide ${isLight && " lightTheme"}`}>
-        <Sidebar />
+        <Sidebar
+          setShowModel={() => {
+            setShowModel(!showModel);
+          }}
+        />
         <div onClick={changeTheme} className={`sun ${isLight && "dark"}`}>
           <BsFillSunFill />
         </div>
 
         <div>
           <div className="ideIcons">
-            <div 
-            className={`save ${isLight && " iconDark"}`}
-            onClick={handleSave}
+            <div
+              className={`save ${isLight && " iconDark"}`}
+              onClick={handleSave}
             >
-             
               <BsSaveFill />
             </div>
             <div
               className={`run ${isLight && " iconDark"}`}
               onClick={handleRun}
             >
-             
               <VscRunAll />
             </div>
-        
+
             <div className="clear" onClick={(e) => handleClear(e)}>
               <AiOutlineClear />
             </div>
-            
-            <LanguagesDropdown onOptionSelect={(e)=> setLanguage(JSON.parse(e))} />
-            <div className="download"><DownloadLink
-              label={<HiDocumentDownload className="download"/>}
-              filename={fileName +"."+ language.extension }
-              exportFile={() => code}
-          /></div>
+
+            <LanguagesDropdown
+              onOptionSelect={(e) => setLanguage(JSON.parse(e))}
+            />
+            <div className="download">
+              <DownloadLink
+                label={<HiDocumentDownload className="download" />}
+                filename={fileName + "." + language.extension}
+                exportFile={() => code}
+              />
+            </div>
             <div />
-           
           </div>
 
-          <p className="fileName"><input
-            className="inputFile"
-            type="text"
-            placeholder="Enter Remote Name"
-            value={fileName}
-            onChange={(e) => {
-              setFileName(e.target.value)
-            }}
-          />
+          <p className="fileName">
+            {fileName}
+           
           </p>
 
           <Editor
@@ -249,7 +250,7 @@ const Remote = () => {
         </div>
 
         <div>
-        <FilesDropdown onFileSelect={(e)=>handleFileChange(e)}/>
+          <FilesDropdown setIsSaving={setIsSaving} isSaving={isSaving} onFileSelect={(e) => handleFileChange(e)} />
           <p className="outputCode">Output</p>
 
           {
@@ -261,7 +262,6 @@ const Remote = () => {
                   value={output}
                   disabled={true}
                 />
-              
               </div>
 
               {}
