@@ -26,11 +26,12 @@ async function addFile(body) {
     return await file.save();
   }
 
-
-//   async function getFileById(id) {
-//     return await File.findById(id).populate("langauges");
-//   }
+  async function getFilesByOwnerId(id) {
+    return await File.find({user:id});
+  }
+  
 
   module.exports = {
     addFile,
+    getFilesByOwnerId,
   }
