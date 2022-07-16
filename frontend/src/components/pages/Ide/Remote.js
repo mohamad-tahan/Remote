@@ -13,6 +13,7 @@ import { AiOutlineClear } from "react-icons/ai";
 import LanguagesDropdown from "./LanguagesDropdown";
 import DownloadLink from "react-download-link";
 import { HiDocumentDownload } from "react-icons/hi";
+import FilesDropdown from "./FilesDropdown";
 
 
 
@@ -30,8 +31,10 @@ const Remote = () => {
   const [spin, setSpin] = useState(false);
   console.log(language);
 
-  const [fileName, setFileName] = useState("Enter Remote Name");
-  const user_id = localStorage.getItem("user_id")
+  const [fileName, setFileName] = useState("");
+  const user_id = localStorage.getItem("user_id");
+  const [file, setFile] = useState();
+  // console.log(file)
 
 
   const handleRun = () => {
@@ -156,14 +159,21 @@ const Remote = () => {
      
       }
       else{
-        toast.errot("Error Saving");
+        toast.error("Error Saving");
       }
      
      
   };
+  const handleFileChange=(e)=>{
+    e=JSON.parse(e);
+    setCode(e.code);
+     setFileName(e.name)
+    console.log(e)
+
+  }
 
 
-console.log(language)
+
   return (
     <div className="idePage">
       <Navbar />
@@ -203,11 +213,13 @@ console.log(language)
               exportFile={() => code}
           /></div>
             <div />
+           
           </div>
 
           <p className="fileName"><input
             className="inputFile"
             type="text"
+            placeholder="Enter Remote Name"
             value={fileName}
             onChange={(e) => {
               setFileName(e.target.value)
@@ -237,6 +249,7 @@ console.log(language)
         </div>
 
         <div>
+        <FilesDropdown onFileSelect={(e)=>handleFileChange(e)}/>
           <p className="outputCode">Output</p>
 
           {
