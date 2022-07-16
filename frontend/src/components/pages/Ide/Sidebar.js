@@ -4,10 +4,11 @@ import {FaBars,FaUserAlt}from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import {AiFillHome, AiOutlinePlus} from "react-icons/ai";
 import {RiLogoutBoxLine} from "react-icons/ri";
+import PlusButton from './PlusButton';
 
 
 
-const Sidebar = () => {
+const Sidebar = ({setShowModel}) => {
     const[isOpen ,setIsOpen] = useState(false);
     const toggle = () => setIsOpen (!isOpen);
     const username = localStorage.getItem("username")
@@ -19,10 +20,11 @@ const Sidebar = () => {
             icon:<AiFillHome/>
         },
         {
-            path:"/profile",
+            path:"",
             name:"New Remote",
-            icon:<AiOutlinePlus/>
+            icon:<PlusButton handlePlusClick={setShowModel}/>
         },
+      
         {
             path:"/profile",
             name:"Profile",
@@ -34,9 +36,10 @@ const Sidebar = () => {
             icon:<RiLogoutBoxLine/>
         },
        
-     
+
        
     ]
+    console.log(menuItem[1])
    
     return (
         <div className="containerr">
@@ -47,6 +50,7 @@ const Sidebar = () => {
                        <FaBars onClick={toggle}/>
                    </div>
                </div>
+               <br/>
                {
                    menuItem.map((item, index)=>(
                        <NavLink to={item.path} key={index} className="link" activeclassName="active">
