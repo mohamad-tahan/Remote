@@ -23,7 +23,7 @@
 } */
 
 .output {
-  background-color: #1E1E1E;
+  background-color: #1e1e1e;
   width: 280px;
   height: 500px;
   border: none;
@@ -37,7 +37,7 @@
 
 .input {
   color: white;
-  background-color: #1E1E1E;
+  background-color: #1e1e1e;
   width: 590px;
   height: 130px;
   border-radius: 5px;
@@ -89,7 +89,7 @@
 
 .outputCode {
   color: white;
-  margin-top: 52px;
+  margin-top: 54px;
   border-radius: 25px;
   background: #2e2d50;
   width: fit-content;
@@ -106,7 +106,6 @@
   padding: 0 12px;
   font-size: 12px;
 }
-
 .lightTheme {
   background-color: #263581;
   color: black;
@@ -144,14 +143,6 @@ div.overflow-guard {
   border-radius: 8px !important;
   box-shadow: 1px 1px 1px 1px #383f25 !important;
   color: red !important;
-  background-color: green !important;
-
-  
-}
-
-.view-overlays{
-  background-color: green !important;
-
 }
 
 .clear {
@@ -164,38 +155,52 @@ div.overflow-guard {
   top: 2px;
 }
 
-.langDropdown{
+.langDropdown {
   width: 120px;
   height: 25px;
   color: purple;
   background-color: rgb(35, 32, 32);
   border-radius: 10px;
   margin-top: 7px;
- text-align: center;
- align-items: center;
-
-  
+  text-align: center;
+  align-items: center;
 }
-.inputFile{
+.inputFile {
   color: white;
   background: #2e2d50;
   width: 568px;
   padding: 0 12px;
-  font-size: 12px;;
+  font-size: 12px;
   border: none;
   text-align: center;
 }
 
-
-section.div{
+section.div {
 }
 
-.download{
+.download {
   font-size: 30px;
   color: purple !important;
   width: fit-content;
   position: absolute;
   right: 25px;
   top: 2px;
+}
 
+.filesDropdown {
+  width: 150px;
+  float: right;
+  margin-right: 40px;
+  margin-top: 5px;
+}
+
+.file {
+  color: purple;
+  font-size: 25px;
+}
+
+.plus{
+  color: white;
+  font-size: 20px;
+ 
 }
