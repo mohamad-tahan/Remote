@@ -6,6 +6,9 @@ const TOKEN_SECRET = process.env.TOKEN_SECRET || "";
 const User = require("../../../model/User")
 const File = require("../../../model/File")
 
+const { getFilesByOwnerId } = require("../../file_functions");
+
+
 async function addFiles(req, res) {
     try {
       const newFile = await addFile(req.body);
@@ -77,9 +80,11 @@ async function addFiles(req, res) {
 
   async function getFilesbyUserId(req, res) {
     try {
-      if (req.body.owner_id) {
-        const result = await File.find({ owner_id: req.body.owner_id })
-        console.log("result of all files of user =>", result);
+  
+      if (req.query.id) {
+        const id = req.query.id;
+        const result = await getFilesByOwnerId(id);
+        console.log("Files of owner =>", result);
         return res.send(result);
       }
     } catch (error) {
