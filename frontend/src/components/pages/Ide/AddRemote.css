@@ -1,0 +1,105 @@
+.addFile {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  min-height: 250px;
+  background: linear-gradient(rgba(18, 4, 20, 0.4), rgba(82, 130, 202, 0.4));
+  border-radius: 10px;
+  box-sizing: border-box;
+  border: 2px solid white;
+  text-align: center;
+  z-index: 1;
+}
+
+.inputBox input[type="text"] {
+  border: none;
+  border-bottom: 2px solid white;
+  outline: none;
+  height: 30px;
+  color: white;
+  background: transparent;
+  font-size: 16px;
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: 40px;
+  width: 65%;
+}
+
+.inputBox input[type="text"]:hover {
+  border: 1px solid rgb(42 70 37 / 87%);
+  box-shadow: 0 0 5px white, 0 0 10px rgba(229, 99, 63, 0.2),
+    0 0 15px rgba(255, 77, 0, 0.1), 0 2px 0 black;
+}
+
+.inputBox input[type="text"]:focus {
+  border-bottom: 2px solid rgb(99, 34, 139);
+}
+
+.addRemote {
+  cursor: pointer;
+  color: #111;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 7px 15px;
+  margin-top: 15px;
+  border: 1px solid #5e0d6a;
+  border-radius: 20px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  margin-top: 35px;
+  background-size: 200% auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  display: inline-block;
+}
+.addRemote:hover {
+  background-color: #5080ba;
+  color: white;
+  background-position: right center;
+}
+
+.title {
+  color: white;
+}
+.addFile img {
+  margin-top: 8px;
+  margin-right: 10px;
+}
+
+.top {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.close {
+  color: white;
+  float: right;
+  margin-right: 12px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: gray;
+}
+
+.closeModal{
+    display: none;
+}
+
+.showModal{
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+}
