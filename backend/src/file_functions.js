@@ -27,7 +27,7 @@ async function addFile(body) {
   }
 
   async function getFilesByOwnerId(id) {
-    return await File.find({user:id});
+    return await File.find({owner_id:id});
   }
   
 
