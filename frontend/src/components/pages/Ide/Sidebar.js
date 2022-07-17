@@ -8,7 +8,7 @@ import PlusButton from './PlusButton';
 
 
 
-const Sidebar = ({setShowModel}) => {
+const Sidebar = ({setShowModel , setIsSaving}) => {
     const[isOpen ,setIsOpen] = useState(false);
     const toggle = () => setIsOpen (!isOpen);
     const username = localStorage.getItem("username")
@@ -35,11 +35,9 @@ const Sidebar = ({setShowModel}) => {
             name:"Log Out",
             icon:<RiLogoutBoxLine/>
         },
-       
-
-       
+             
     ]
-    console.log(menuItem[1])
+ 
    
     return (
         <div className="containerr">
