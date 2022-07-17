@@ -4,10 +4,13 @@ import logo from "../../../pics/logoSpin.png";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-function AddRemote() {
+function AddRemote({setIsSaving}) {
+  const token = localStorage.getItem("token");
   let nav = useNavigate();
   const [name, setName] = useState("");
   const [isClosed, setIsClosed] = useState(false);
+  // const[isSaving, setIsSaving] = useState(false);
+
 
   const addRemote = async (e) => {
     if (name == "") {
@@ -19,7 +22,8 @@ function AddRemote() {
     console.log(user_id);
     const res = await fetch("http://127.0.0.1:3000/api/user/auth/addFiles", {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: { "content-type": "application/json" ,
+    token:token},
       body: JSON.stringify({
         name: name,
         code: " ",
@@ -32,6 +36,7 @@ function AddRemote() {
     console.log(response);
     if (response) {
       toast.success(`Remote Added`);
+      setIsSaving();
     } else {
       toast.error("Error Saving");
     }
