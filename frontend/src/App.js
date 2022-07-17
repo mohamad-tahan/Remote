@@ -20,8 +20,7 @@ function App() {
         <Route path="/navbar" element={<Navbar />}></Route>
         <Route path="/" element={<Home />}></Route>
         <Route path="/remote" element={<Remote />}></Route>
-       
-       
+        
 
         </Routes>
 
