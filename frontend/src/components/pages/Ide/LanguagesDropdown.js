@@ -4,9 +4,15 @@ import "./Remote.css";
 
 const LanguagesDropdown = ({ onOptionSelect }) => {
   const [languages, setLanguages] = useState([]);
+  const token = localStorage.getItem("token");
+
 
   const getLanguages = async () => {
-    const res = await fetch("http://127.0.0.1:3000/api/user/auth/getLanguages");
+    const res = await fetch("http://127.0.0.1:3000/api/user/auth/getLanguages",
+    {  
+      headers: { "content-type": "application/json" ,
+      token:token},
+    });
     const data = await res.json();
 
     if (data) {
