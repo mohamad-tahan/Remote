@@ -9,13 +9,13 @@ router.post('/auth/register', register);
 router.post('/auth/login', login);
 router.get('/auth/getUser', userMiddleware(), (req, res) => getUser(req, res));
 
-router.post('/auth/addFiles', addFiles);
+router.post('/auth/addFiles', userMiddleware(), addFiles);
 
 router.post('/auth/addLanguages', addLanguages);
-router.get('/auth/getLanguages',getLanguages );
+router.get('/auth/getLanguages', userMiddleware(),getLanguages );
 
-router.get('/auth/getFilesbyId', getFilesbyId);
-router.get('/auth/getFilesbyUserId', getFilesbyUserId);
+router.get('/auth/getFilesbyId', userMiddleware(), getFilesbyId);
+router.get('/auth/getFilesbyUserId', userMiddleware(), getFilesbyUserId);
 
 router.put('/auth/updateFile', userMiddleware(), updateFile);
 router.delete('/auth/removeFile',userMiddleware(),  removeFile);
