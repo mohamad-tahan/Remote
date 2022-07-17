@@ -15,27 +15,34 @@ import DownloadLink from "react-download-link";
 import { HiDocumentDownload } from "react-icons/hi";
 import FilesDropdown from "./FilesDropdown";
 import AddRemote from "./AddRemote";
+import logo from "../../../pics/logoSpin.png";
 
 const Remote = () => {
   const [isLight, setIsLight] = useState(false);
   const [code, setCode] = useState("");
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
-  const [language, setLanguage] = useState({language_id: 63, name: "javascript",extension: "js",}); //63 is id of javascript
+  const [language, setLanguage] = useState({
+    language_id: 63,
+    name: "javascript",
+    extension: "js",
+  }); //63 is id of javascript
   const [spin, setSpin] = useState(false);
-  const [fileName, setFileName] = useState("Enter File Name");
+  const [fileName, setFileName] = useState("Create Remote");
   const user_id = localStorage.getItem("user_id");
   const [fileId, setFileId] = useState();
   const [showModel, setShowModel] = useState(false);
-  const[isSaving, setIsSaving] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const [theme, setTheme] = useState("vs-dark");
-
-
+  const token = localStorage.getItem("token");
 
   const handleRun = () => {
-    if(fileName == "Enter File Name"){
-      toast.error("Create a Remote First")
-      return
+    if (fileName == "Create Remote") {
+      toast.error("Create a Remote First");
+      return;
+    } else if (code == "") {
+      toast.error("Code is Empty.");
+      return;
     }
     setSpin(true);
     const data = new FormData();
@@ -69,7 +76,7 @@ const Remote = () => {
         console.log("Catch: ", error);
       });
   };
-  
+
   const getResponse = async (token) => {
     const res = {
       method: "GET",
@@ -126,7 +133,6 @@ const Remote = () => {
     console.log(e);
   };
 
-  
   //handleClear() clears code,input and output
   const handleClear = (e) => {
     // e.preventDefault();
@@ -134,35 +140,39 @@ const Remote = () => {
     setInput("");
     setOutput("");
   };
-  
 
+  console.log(code);
   const handleSave = async (e) => {
     e.preventDefault();
-    console.log(fileName)
-    if(fileName == "Enter File Name"){
-      toast.error("Create a Remote First")
-      return
+    console.log(fileName);
+    if (fileName == "Create Remote") {
+      toast.error("Create a Remote First");
+      return;
     }
 
-    const res = await fetch("http://127.0.0.1:3000/api/user/auth/updateFile/?id="+fileId, {
-      method: "PUT",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        name: fileName,
-        code: code,
-        language: language.extension,
-        owner_id: user_id,
-      }),
-    });
-    
+    const res = await fetch(
+      "http://127.0.0.1:3000/api/user/auth/updateFile/?id=" + fileId,
+      {
+        method: "PUT",
+        headers: { "content-type": "application/json", token: token },
+
+        body: JSON.stringify({
+          name: fileName,
+          code: code,
+          language: language.extension,
+          owner_id: user_id,
+        }),
+      }
+    );
+
     const response = await res.json();
     console.log(response);
 
     if (response) {
-      toast.success(`File Saved`);
+      toast.success(`Remote Saved`);
       setIsSaving(true);
     } else {
-      toast.error("Error Saving");
+      toast.error("Error Saving Remote");
     }
   };
   const handleFileChange = (e) => {
@@ -178,19 +188,24 @@ const Remote = () => {
   return (
     <div className="idePage">
       <Navbar />
-      {showModel && <AddRemote />}
+      {showModel && <AddRemote setIsSaving={() => setIsSaving(true)} />}
 
       {spin && <Spinner />}
-      <div className={`ide ${isLight && " lightTheme"}`}>
-        <Sidebar
-          setShowModel={() => {
-            setShowModel(!showModel);
-          }}
-        />
-        <div onClick={changeTheme} className={`sun ${isLight && "dark"}`}>
+
+      {/* <div> */}
+
+      <div className={`ideContainer ${isLight && " lightTheme"}`}>
+        <div className={`ide ${isLight && " lightTheme"}`}>
+          <Sidebar
+            setShowModel={() => {
+              setShowModel(!showModel);
+            }}
+          />
+
+          <div onClick={changeTheme} className={`sun ${isLight && "dark"}`}>
           <BsFillSunFill />
         </div>
-
+        </div>
         <div>
           <div className="ideIcons">
             <div
@@ -222,11 +237,7 @@ const Remote = () => {
             </div>
             <div />
           </div>
-
-          <p className="fileName">
-            {fileName}
-           
-          </p>
+          <p className="fileName">{fileName}</p>
 
           <Editor
             height="53vh"
@@ -250,25 +261,27 @@ const Remote = () => {
         </div>
 
         <div>
-          <FilesDropdown setIsSaving={setIsSaving} isSaving={isSaving} onFileSelect={(e) => handleFileChange(e)} />
+          <div className="drop">
+            
+            <FilesDropdown
+              setIsSaving={setIsSaving}
+              isSaving={isSaving}
+              onFileSelect={(e) => handleFileChange(e)}
+            />
+          </div>
           <p className="outputCode">Output</p>
 
           {
-            <div>
-              <div className="output">
-                <textarea
-                  className={`output ${isLight && " theme"}`}
-                  onChange={(e) => setOutput(e)}
-                  value={output}
-                  disabled={true}
-                />
-              </div>
-
-              {}
-            </div>
+            <textarea
+              className={`output ${isLight && " theme"}`}
+              onChange={(e) => setOutput(e)}
+              value={output}
+              disabled={true}
+            />
           }
         </div>
       </div>
+      {/* </div> */}
     </div>
   );
 };
