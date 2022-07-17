@@ -11,6 +11,7 @@
   border: 2px solid white;
   text-align: center;
   z-index: 1;
+  background-color: black;
 }
 
 .inputBox input[type="text"] {
