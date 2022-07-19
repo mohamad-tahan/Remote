@@ -3,7 +3,7 @@ import logo from '../pics/logoSpin.png'
 import './Spinner.css'
 function Spinner() {
   return (
-    <div><img src={logo} className="rotate" width="150px" /></div>
+    <div><img src={logo} className="rotate" width="100px" /></div>
   )
 }
 
