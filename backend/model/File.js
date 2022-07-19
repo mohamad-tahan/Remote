@@ -15,11 +15,10 @@ const fileSchema = new mongoose.Schema({
   language: {
     type: String,
   },
-
-  owner_id: {
+  owner_id: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
-  },
+  }],
   date:{ 
     type: Date, 
     default: Date.now
