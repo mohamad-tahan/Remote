@@ -22,6 +22,10 @@ const RemoteSocket = () => {
             toast.error("Socket Connection Failed, Try Again Later.");
             nav("/");
         }
+        socketRef.current.emit("join", {
+          roomId,
+          username:username,
+      });
 
       
     };
