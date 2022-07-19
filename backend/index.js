@@ -59,6 +59,16 @@ io.on('connection', (socket) => {
         io.to(socketId).emit("codeChange", { code });
     });
 
+    socket.on("fileChange", ({ roomId, fileName }) => {
+        socket.in(roomId).emit("fileChange", { fileName });
+    });
+
+    socket.on("codeSocket", ({ socketId, fileName }) => {
+        io.to(socketId).emit("fileChange", { fileName });
+    });
+
+
+
     socket.on('disconnecting', () => {
         const rooms = [...socket.rooms];
         rooms.forEach((roomId) => {
