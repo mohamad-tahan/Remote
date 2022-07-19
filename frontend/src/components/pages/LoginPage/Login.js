@@ -53,7 +53,7 @@ const handleSignup = async (e) => {
       setPassword("");
     }
     else{
-      toast.errot("Error signing up.");
+      toast.error("Error signing up.");
     }
    
    
@@ -75,7 +75,7 @@ const handleSignin = async (e) => {
     try {
       toast.success(`You Are Now Logged in.`);
       localStorage.setItem("token", response["token"]);
-      nav("/remote");
+      nav("/generateRoomId");
       setEmail("");
       setPassword("");
     
