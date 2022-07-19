@@ -39,6 +39,20 @@ const RemoteSocket = () => {
              });
          }
      );
+     // Listening for disconnected Users
+     socketRef.current.on(
+      "disconnected",
+      ({ socketId, username }) => {
+          toast.error(username+" Left The Room.");
+          setUsers((leftUsers) => {
+           
+              return leftUsers.filter(
+                  (user) => user.socketId !== socketId
+              );
+              
+          });
+      }
+  );
 
       
     };
