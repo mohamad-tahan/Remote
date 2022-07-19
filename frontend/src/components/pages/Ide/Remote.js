@@ -29,12 +29,14 @@ const Remote = ({socketRef, roomId }) => {
   }); //63 is id of javascript
   const [spin, setSpin] = useState(false);
   const [fileName, setFileName] = useState("Create Remote");
-  const user_id = localStorage.getItem("user_id");
+  const owner_id = localStorage.getItem("user_id");
   const [fileId, setFileId] = useState();
   const [showModel, setShowModel] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [theme, setTheme] = useState("vs-dark");
   const token = localStorage.getItem("token");
+
+  const [user_id,setUserId] = useState(owner_id)
 
   const handleRun = () => {
     if (fileName == "Create Remote") {
@@ -162,11 +164,13 @@ const Remote = ({socketRef, roomId }) => {
           language: language.extension,
           owner_id: user_id,
         }),
+
       }
     );
 
+
     const response = await res.json();
-    console.log(response);
+  
 
     if (response) {
       toast.success(`Remote Saved`);
@@ -230,6 +234,51 @@ useEffect(()=>{
 });
 },[fileName])
 
+
+useEffect(() => {
+  if (socketRef.current) {
+      socketRef.current.on("fileIdChange", ({fileId}) => {
+          setFileId(fileId);
+      });
+  }
+  return () => {
+    socketRef.current.off("fileIdChange");
+};
+}, [socketRef.current])
+
+
+
+useEffect(()=>{
+  socketRef.current?.emit("fileIdChange", {
+    roomId,
+    fileId,   
+});
+},[fileId])
+
+
+
+
+
+useEffect(() => {
+  if (socketRef.current) {
+      socketRef.current.on("userIdChange", ({user_id}) => {
+          setFileId(user_id);
+          console.log(user_id)
+      });
+  }
+  return () => {
+    socketRef.current.off("userIdChange");
+};
+}, [socketRef.current])
+
+
+
+useEffect(()=>{
+  socketRef.current?.emit("userIdChange", {
+    roomId,
+    user_id,   
+});
+},[user_id])
 
 
   return (
