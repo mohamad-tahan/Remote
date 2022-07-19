@@ -210,6 +210,27 @@ useEffect(()=>{
 });
 },[code])
 
+useEffect(() => {
+  if (socketRef.current) {
+      socketRef.current.on("fileChange", ({fileName}) => {
+          setFileName(fileName);
+      });
+  }
+  return () => {
+    socketRef.current.off("fileChange");
+};
+}, [socketRef.current])
+
+
+
+useEffect(()=>{
+  socketRef.current?.emit("fileChange", {
+    roomId,
+    fileName,   
+});
+},[fileName])
+
+
 
   return (
     <div className="idePage">
