@@ -26,6 +26,19 @@ const RemoteSocket = () => {
           roomId,
           username:username,
       });
+       // Listening for joined users
+       socketRef.current.on(
+        "joined",({ users, username, socketId }) => {
+             if (username !== localStorage.getItem("username")) {
+                 toast.success(username+" Joined The Room.");
+             }
+             setUsers(users);
+             socketRef.current.emit("codeSocket", {
+                 code: codeRef.current,
+                 socketId,
+             });
+         }
+     );
 
       
     };
