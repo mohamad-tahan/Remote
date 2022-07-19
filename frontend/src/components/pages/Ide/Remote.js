@@ -17,7 +17,7 @@ import FilesDropdown from "./FilesDropdown";
 import AddRemote from "./AddRemote";
 import logo from "../../../pics/logoSpin.png";
 
-const Remote = () => {
+const Remote = ({socketRef, roomId }) => {
   const [isLight, setIsLight] = useState(false);
   const [code, setCode] = useState("");
   const [input, setInput] = useState("");
@@ -183,7 +183,33 @@ const Remote = () => {
     console.log(e);
   };
 
-  console.log(showModel);
+
+const handleCodeChange = (e)=>{
+  console.log(e);
+  setCode(e); 
+  
+}
+
+
+//handling code change in socket room
+useEffect(() => {
+  if (socketRef.current) {
+      socketRef.current.on("codeChange", ({code}) => {
+          setCode(code);
+      });
+  }
+  return () => {
+    socketRef.current.off("codeChange");
+};
+}, [socketRef.current])
+
+useEffect(()=>{
+  socketRef.current?.emit("codeChange", {
+    roomId,
+    code,   
+});
+},[code])
+
 
   return (
     <div className="idePage">
@@ -245,7 +271,8 @@ const Remote = () => {
             defaultLanguage={language.name}
             options={{ theme: theme, lineDecorationsWidth: 0 }}
             value={code}
-            onChange={(e) => setCode(e)}
+            onChange={(e) => handleCodeChange(e)}
+            
           />
 
           <div>
