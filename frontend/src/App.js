@@ -4,7 +4,8 @@ import Login from "./components/pages/LoginPage/Login";
 import { Toaster } from 'react-hot-toast';
 import Navbar from "./components/pages/MainPage/Navbar";
 import Home from "./components/pages/MainPage/Home.js";
-import Remote from "./components/pages/Ide/Remote";
+import GenerateRoomId from "./components/pages/Room/GenerateRoomId";
+import RemoteSocket from "./components/pages/Room/RemoteSocket";
 
 function App() {
   return (
@@ -19,7 +20,13 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/navbar" element={<Navbar />}></Route>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/remote" element={<Remote />}></Route>
+        <Route path="/remote/:roomId" element={<RemoteSocket />}></Route>
+        <Route path="/generateRoomId" element={<GenerateRoomId />}></Route>
+
+
+
+
+
         
 
         </Routes>
