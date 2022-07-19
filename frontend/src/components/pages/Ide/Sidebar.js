@@ -5,11 +5,15 @@ import { NavLink } from "react-router-dom";
 import { AiFillHome, AiOutlinePlus } from "react-icons/ai";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import PlusButton from "./PlusButton";
+import { TbCopy } from "react-icons/tb";
+import toast from "react-hot-toast";
+import {useParams} from "react-router-dom";
 
 const Sidebar = ({ setShowModel, setIsSaving }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const username = localStorage.getItem("username");
+  const { roomId } = useParams();
 
   const menuItem = [
     {
@@ -30,11 +34,28 @@ const Sidebar = ({ setShowModel, setIsSaving }) => {
       icon: <FaUserAlt />,
     },
     {
+      path: "",
+      name: "Copy Room Id",
+      icon: <TbCopy onClick={()=>handleClick()}/>,
+      
+    },
+    
+    {
       path: "/logout",
       name: "Log Out",
       icon: <RiLogoutBoxLine />,
     },
   ];
+
+  const handleClick = ()=>{
+    try{
+    navigator.clipboard.writeText(roomId)
+    toast.success("Room Id Copied")
+    }
+    catch{
+      toast.error('Could Not Copy Room ID');
+    }
+  }
 
   return (
     <div className="containerr">
@@ -57,7 +78,7 @@ const Sidebar = ({ setShowModel, setIsSaving }) => {
             key={index}
             className="link"
             activeclassName="active"
-            onClick={item.func ?? null}
+            onClick={item.func ?? null }
           >
             <div className="icon">{item.icon}</div>
             <div
