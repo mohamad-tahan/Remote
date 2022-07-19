@@ -52,6 +52,9 @@ async function updateFile(req, res) {
           code: req.body.code,
           language: req.body.language,
         },
+        $push: {
+          owner_id: req.body.owner_id,
+        },
       }
     );
     return res.send({ message: "File Updated" });
