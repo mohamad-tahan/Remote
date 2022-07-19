@@ -19,8 +19,8 @@ const RemoteSocket = () => {
         
 
         function handleErrors(e) {
-            toast.error("Socket Connection Failed, Try Again Later.");
-            nav("/");
+            toast.error("Socket Connection Failed.");
+            // nav("/");
         }
         socketRef.current.emit("join", {
           roomId,
