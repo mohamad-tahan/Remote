@@ -22,7 +22,7 @@ async function addLanguages(req, res) {
         }
       );
 
-      console.log("updateFile =   ", updateFile)
+      // console.log("updateFile =   ", updateFile)
 
       return res.status(200).send(newLanguage); // 200
     } catch (error) {
@@ -35,7 +35,7 @@ async function addLanguages(req, res) {
     try {
       if (req.body) {
         const result = await Language.find();
-        console.log("langauges", result);
+        // console.log("langauges", result);
         return res.send(result);
       }
     } catch (error) {
