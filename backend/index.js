@@ -67,6 +67,23 @@ io.on('connection', (socket) => {
         io.to(socketId).emit("fileChange", { fileName });
     });
 
+    socket.on("fileIdChange", ({ roomId, fileId }) => {
+        socket.in(roomId).emit("fileIdChange", { fileId });
+    });
+
+    socket.on("codeSocket", ({ socketId, fileId }) => {
+        io.to(socketId).emit("fileIdChange", { fileId });
+    });
+
+    socket.on("userIdChange", ({ roomId, user_id }) => {
+        socket.in(roomId).emit("userIdChange", { user_id });
+    });
+
+    socket.on("codeSocket", ({ socketId, user_id }) => {
+        io.to(socketId).emit("userIdChange", { user_id });
+    });
+
+
 
 
     socket.on('disconnecting', () => {
