@@ -22,7 +22,7 @@ async function addFiles(req, res) {
         },
       }
     );
-    console.log("updateUser =>", updateUser);
+    // console.log("updateUser =>", updateUser);
     return res.status(200).send(newFile); // 200
   } catch (error) {
     console.log(error);
@@ -34,7 +34,7 @@ async function getFilesbyId(req, res) {
   try {
     if (req.query.id) {
       const result = await File.findOne({ _id: req.query.id });
-      console.log("result of specific file of user =>", result);
+      // console.log("result of specific file of user =>", result);
       return res.send(result);
     }
   } catch (error) {
@@ -79,13 +79,15 @@ async function getFilesbyUserId(req, res) {
     if (req.query.id) {
       const id = req.query.id;
       const result = await getFilesByOwnerId(id);
-      console.log("Files of owner =>", result);
+      // console.log("Files of owner =>", result);
       return res.send(result);
     }
   } catch (error) {
     console.log(error);
   }
 }
+
+
 
 module.exports = {
   addFiles,
