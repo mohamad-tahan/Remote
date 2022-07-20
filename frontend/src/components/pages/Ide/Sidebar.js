@@ -7,7 +7,7 @@ import { RiLogoutBoxLine } from "react-icons/ri";
 import PlusButton from "./PlusButton";
 import { TbCopy } from "react-icons/tb";
 import toast from "react-hot-toast";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const Sidebar = ({ setShowModel, setIsSaving }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,10 +36,10 @@ const Sidebar = ({ setShowModel, setIsSaving }) => {
     {
       path: "",
       name: "Copy Room Id",
-      icon: <TbCopy onClick={()=>handleClick()}/>,
-      
+      icon: <TbCopy />,
+      func: () => handleClick(),
     },
-    
+
     {
       path: "/logout",
       name: "Log Out",
@@ -47,15 +47,14 @@ const Sidebar = ({ setShowModel, setIsSaving }) => {
     },
   ];
 
-  const handleClick = ()=>{
-    try{
-    navigator.clipboard.writeText(roomId)
-    toast.success("Room Id Copied")
+  const handleClick = () => {
+    try {
+      navigator.clipboard.writeText(roomId);
+      toast.success("Room Id Copied");
+    } catch {
+      toast.error("Could Not Copy Room ID");
     }
-    catch{
-      toast.error('Could Not Copy Room ID');
-    }
-  }
+  };
 
   return (
     <div className="containerr">
@@ -78,7 +77,7 @@ const Sidebar = ({ setShowModel, setIsSaving }) => {
             key={index}
             className="link"
             activeclassName="active"
-            onClick={item.func ?? null }
+            onClick={item.func ?? null}
           >
             <div className="icon">{item.icon}</div>
             <div
