@@ -15,7 +15,7 @@ import DownloadLink from "react-download-link";
 import { HiDocumentDownload } from "react-icons/hi";
 import FilesDropdown from "./FilesDropdown";
 import AddRemote from "./AddRemote";
-import logo from "../../../pics/logoSpin.png";
+
 
 const Remote = ({socketRef, roomId }) => {
   const [isLight, setIsLight] = useState(false);
@@ -283,7 +283,6 @@ useEffect(()=>{
 
   return (
     <div className="idePage">
-      <Navbar />
       {showModel && <AddRemote setIsSaving={() => setIsSaving(true)} />}
 
       {spin && <Spinner />}
