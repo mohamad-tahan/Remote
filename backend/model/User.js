@@ -36,6 +36,9 @@ const userSchema = new mongoose.Schema({
     type:Number,
     required: true,
   },
+  profilePic:{
+    type:String,
+  },
   
   files: [{
     type: mongoose.Schema.Types.ObjectId,
