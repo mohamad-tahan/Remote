@@ -1,0 +1,26 @@
+.roomNav {
+  display: flex;
+  height: 70px;
+  width: 100%;
+  background: rgb(15, 14, 14);
+  border-bottom: 1px solid rgb(25, 25, 25);
+  padding: 0 27px;
+  justify-items: center;
+  align-items: center;
+}
+
+.joinedUsers {
+  display: flex;
+  gap: 15px;
+  color: white;
+  flex-grow: 1;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.img {
+  padding-top: 10px;
+}
+.username {
+  font-size: 12px;
+}
