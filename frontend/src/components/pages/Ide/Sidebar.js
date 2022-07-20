@@ -8,8 +8,10 @@ import PlusButton from "./PlusButton";
 import { TbCopy } from "react-icons/tb";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({ setShowModel, setIsSaving }) => {
+  let nav = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const username = localStorage.getItem("username");
@@ -41,9 +43,10 @@ const Sidebar = ({ setShowModel, setIsSaving }) => {
     },
 
     {
-      path: "/logout",
+      path: "/",
       name: "Log Out",
       icon: <RiLogoutBoxLine />,
+      func: () => handleLogout(),
     },
   ];
 
@@ -54,6 +57,10 @@ const Sidebar = ({ setShowModel, setIsSaving }) => {
     } catch {
       toast.error("Could Not Copy Room ID");
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.clear();
   };
 
   return (
