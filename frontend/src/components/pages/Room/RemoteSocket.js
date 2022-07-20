@@ -3,6 +3,9 @@ import toast from "react-hot-toast";
 import Remote from "../../pages/Ide/Remote";
 import { initSocket } from "../../../socket";
 import {useNavigate,useParams} from "react-router-dom";
+import UserRoom from "./UserRoom";
+import logo from "../../../pics/logoSpin.png"
+import './RoomSocket.css'
 
 const RemoteSocket = () => {
   const username = localStorage.getItem("username");
@@ -68,6 +71,22 @@ const RemoteSocket = () => {
 
   return (
       <div >
+        
+        <div className="roomNav">
+            <div className="img">
+                <img src={logo} width="60px"></img>
+
+            </div>
+          <div className="joinedUsers">
+                        {users.map((user) => (
+                            <UserRoom
+                                username={user.username}
+                            />
+                        ))}
+                    </div>
+                    </div>
+                    
+
         <Remote
           socketRef={socketRef}
           roomId={roomId}
