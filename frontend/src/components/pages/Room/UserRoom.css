@@ -1,0 +1,11 @@
+.userRoom{
+    display: flex;
+    gap: 15px;
+    color: white;
+    justify-content: center;
+    text-align: center;
+}
+.joinedUsers span{
+    font-size: 12px;
+}
+
