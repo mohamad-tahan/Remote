@@ -14,8 +14,10 @@ function Profile() {
   const [profilePic, setProfilePic] = useState("");
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
+  const [pressed, setPressed] = useState(false);
 
   const [file, setFile] = useState("");
+  const[fileName,setFileName] = useState("");
 
   const getUser = async () => {
     const res = await fetch(
@@ -49,7 +51,6 @@ function Profile() {
       }
     );
     const data = await res.json();
-    console.log(data);
 
     if (data) {
       setFile(data);
@@ -64,25 +65,47 @@ function Profile() {
   const deleteFile = async (id) => {
     console.log(id);
 
-    const res = await fetch("http://localhost:3000/api/user/auth/removeFile/?id=" + id,{
-                method: "DELETE",
-                headers: {
-                  "Content-Type": "application/json",
-                  token: token,
-                },
+    const res = await fetch(
+      "http://localhost:3000/api/user/auth/removeFile/?id=" + id,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          token: token,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        if (res) {
+          toast.success("Remote Deleted Successfully");
         }
-        ) 
-        .then(res=>res.json())
-        .then(res=>{
-            console.log(res);
-            if(res){
-              console.log("Deleted")
-              toast.success("File Deleted Successfully")
-            }
-            getFiles()
-            
-        })
-}
+        getFiles();
+      });
+  };
+
+  const updateFileName = async (id) => {
+    const res = await fetch(
+      "http://127.0.0.1:3000/api/user/auth/updateFileName/?id=" + id,
+      {
+        method: "PUT",
+        headers: { "content-type": "application/json", token: token },
+
+        body: JSON.stringify({
+          name: fileName,
+        }),
+      }
+    );
+    const response = await res.json();
+    if (response) {
+      setPressed(false);
+      toast.success(`Remote Name Uppdated`);
+    } else {
+      toast.error("Error Updating Remote");
+    }
+  };
+  
 
   return (
     <div class="profile">
@@ -104,11 +127,19 @@ function Profile() {
                   <TbBrandJavascript className="js" />
                 ) : (
                   <FaPython className="py" />
-                )}{" "}
-                {i.name}
+                )}{" "} 
+                {pressed ? <input placeholder={i.name} key={i._id} value={fileName}  onChange={(e) => setFileName(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && updateFileName(i._id)}/> : <span>{i.name}</span>}
                 <div className="edit-delete">
-                  <MdModeEditOutline className="editIcon" />{" "}
-                  <MdDeleteForever className="deleteIcon"  onClick={(e)=>deleteFile(i._id)}/>
+                  <MdModeEditOutline
+                    className="editIcon"
+                    onClick={(e) => {
+                      setPressed(!pressed);
+                    }}
+                  />{" "}
+                  <MdDeleteForever
+                    className="deleteIcon"
+                    onClick={(e) => deleteFile(i._id)}
+                  />
                 </div>
               </div>
             );
