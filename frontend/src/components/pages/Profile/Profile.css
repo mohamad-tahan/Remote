@@ -59,3 +59,16 @@
   border-radius: 5px;
   align-items: center;
 }
+
+.deleteIcon:hover {
+  cursor: pointer;
+  color: red;
+  font-size: 23px;
+}
+
+.editIcon:hover {
+  cursor: pointer;
+  color: yellow;
+  font-size: 23px;
+}
+
