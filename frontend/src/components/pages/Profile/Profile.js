@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Profile.css";
 import { toast } from "react-hot-toast";
 import defaultPic from "../../../pics/defaultPic.png";
-import { TbBrandJavascript } from "react-icons/tb";
+import { TbBrandJavascript, TbPlayerStop } from "react-icons/tb";
 import { FaPython } from "react-icons/fa";
 import { MdModeEditOutline } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
@@ -59,7 +59,30 @@ function Profile() {
   };
   useEffect(() => {
     getFiles();
-  }, []);
+  }, [file]);
+
+  const deleteFile = async (id) => {
+    console.log(id);
+
+    const res = await fetch("http://localhost:3000/api/user/auth/removeFile/?id=" + id,{
+                method: "DELETE",
+                headers: {
+                  "Content-Type": "application/json",
+                  token: token,
+                },
+        }
+        ) 
+        .then(res=>res.json())
+        .then(res=>{
+            console.log(res);
+            if(res){
+              console.log("Deleted")
+              toast.success("File Deleted Successfully")
+            }
+            getFiles()
+            
+        })
+}
 
   return (
     <div class="profile">
@@ -85,7 +108,7 @@ function Profile() {
                 {i.name}
                 <div className="edit-delete">
                   <MdModeEditOutline className="editIcon" />{" "}
-                  <MdDeleteForever className="deleteIcon" />
+                  <MdDeleteForever className="deleteIcon"  onClick={(e)=>deleteFile(i._id)}/>
                 </div>
               </div>
             );
