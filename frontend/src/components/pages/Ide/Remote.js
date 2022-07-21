@@ -118,6 +118,11 @@ const Remote = ({socketRef, roomId }) => {
     }
   };
 
+  useEffect(() => {
+    setTheme("vs-dark")
+        },[]);
+
+
   const changeTheme = (e) => {
     theme === "light" ? setTheme("vs-dark") : setTheme("light");
     toast.success("Theme Changed.", {
@@ -143,7 +148,6 @@ const Remote = ({socketRef, roomId }) => {
     setOutput("");
   };
 
-  console.log(code);
   const handleSave = async (e) => {
     e.preventDefault();
     console.log(fileName);
@@ -279,7 +283,6 @@ useEffect(()=>{
     user_id,   
 });
 },[user_id])
-
 
   return (
     <div className="idePage">
