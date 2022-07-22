@@ -90,6 +90,22 @@ async function getFilesbyUserId(req, res) {
   }
 }
 
+async function updateFileName(req, res) {
+  try {
+    const file = await File.findByIdAndUpdate(
+      { _id: req.query.id },
+      {
+        $set: {
+          name: req.body.name,
+        },
+      }
+    );
+    return res.send({ message: "File Name Updated" });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 
 
 module.exports = {
@@ -98,4 +114,5 @@ module.exports = {
   updateFile,
   removeFile,
   getFilesbyUserId,
+  updateFileName,
 };
