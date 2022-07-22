@@ -1,10 +1,15 @@
-const {addUser,getUserByEmail,getUserById,getUsers} = require("../../user_functions");
+const {
+  addUser,
+  getUserByEmail,
+  getUserById,
+  getUsers,
+} = require("../../user_functions");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const TOKEN_SECRET = process.env.TOKEN_SECRET || "";
 
 const User = require("../../../model/User");
-const File = require("../../../model/File")
+const File = require("../../../model/File");
 //registering user
 async function register(req, res) {
   try {
@@ -35,7 +40,12 @@ async function login(req, res) {
     if (!validPassword) return res.status(400).send("Invalid credentials");
 
     const token = jwt.sign(
-      { _id: user._id, name: user.name, username:user.username, email: user.email },
+      {
+        _id: user._id,
+        name: user.name,
+        username: user.username,
+        email: user.email,
+      },
       TOKEN_SECRET
     );
 
@@ -46,14 +56,13 @@ async function login(req, res) {
   }
 }
 
-
 async function getUser(req, res) {
   try {
     //get specific user by id
     if (req.query.id) {
       const id = req.query.id;
       const result = await getUserById(id);
-      return res.status(200).send(result)
+      return res.status(200).send(result);
     }
     //get all users
     const result = await getUsers();
@@ -63,7 +72,6 @@ async function getUser(req, res) {
   }
 }
 
-
 async function updateUser(req, res) {
   try {
     const user = await User.findByIdAndUpdate(
@@ -71,11 +79,12 @@ async function updateUser(req, res) {
       {
         $set: {
           name: req.body.name,
-         username : req.body.username,
+          username: req.body.username,
+          profilePic: req.body.profilePic,
         },
       }
     );
-    return res.send("User Updated");
+    return res.send({message: "User Updated"});
   } catch (error) {
     console.log(error);
   }
@@ -86,10 +95,7 @@ async function removeUser(req, res) {
     const user = await User.findOne({ _id: req.query.id });
     const deleteResult = await user.remove();
 
-    await File.updateOne(
-      { _id: user.files},
-      { $pull: { files: user._id } }
-    );
+    await File.updateOne({ _id: user.files }, { $pull: { files: user._id } });
 
     return res.send({ message: "user Removed" });
   } catch (error) {
@@ -97,12 +103,10 @@ async function removeUser(req, res) {
   }
 }
 
-
-
 module.exports = {
   register,
   login,
   getUser,
   updateUser,
-  removeUser
+  removeUser,
 };
