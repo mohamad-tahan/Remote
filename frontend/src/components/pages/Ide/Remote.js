@@ -16,8 +16,7 @@ import { HiDocumentDownload } from "react-icons/hi";
 import FilesDropdown from "./FilesDropdown";
 import AddRemote from "./AddRemote";
 
-
-const Remote = ({socketRef, roomId }) => {
+const Remote = ({ socketRef, roomId }) => {
   const [isLight, setIsLight] = useState(false);
   const [code, setCode] = useState("");
   const [input, setInput] = useState("");
@@ -36,7 +35,7 @@ const Remote = ({socketRef, roomId }) => {
   const [theme, setTheme] = useState("vs-dark");
   const token = localStorage.getItem("token");
 
-  const [user_id,setUserId] = useState(owner_id)
+  const [user_id, setUserId] = useState(owner_id);
 
   const handleRun = () => {
     if (fileName == "Create Remote") {
@@ -119,9 +118,8 @@ const Remote = ({socketRef, roomId }) => {
   };
 
   useEffect(() => {
-    setTheme("vs-dark")
-        },[]);
-
+    setTheme("vs-dark");
+  }, []);
 
   const changeTheme = (e) => {
     theme === "light" ? setTheme("vs-dark") : setTheme("light");
@@ -168,13 +166,11 @@ const Remote = ({socketRef, roomId }) => {
           language: language.extension,
           owner_id: user_id,
         }),
-
       }
     );
 
-
     const response = await res.json();
-  
+    console.log(response);
 
     if (response) {
       toast.success(`Remote Saved`);
@@ -191,98 +187,90 @@ const Remote = ({socketRef, roomId }) => {
     console.log(e);
   };
 
+  const handleCodeChange = (e) => {
+    setCode(e);
+    socketRef.current?.emit("codeChange", {
+      roomId,
+      code: e,
+      fileId: fileId,
+      user_id: user_id,
+    });
+  };
 
-const handleCodeChange = (e)=>{
-  console.log(e);
-  setCode(e); 
-  
-}
-
-
-//handling code change in socket room
-useEffect(() => {
-  if (socketRef.current) {
-      socketRef.current.on("codeChange", ({code}) => {
-          setCode(code);
+  //handling code change in socket room
+  useEffect(() => {
+    if (socketRef.current) {
+      socketRef.current.on("codeChange", ({ code }) => {
+        console.log(code);
+        setCode(code);
       });
-  }
-  return () => {
-    socketRef.current.off("codeChange");
-};
-}, [socketRef.current])
+    }
+    return () => {
+      socketRef.current.off("codeChange");
+    };
+  }, [socketRef.current]);
 
-useEffect(()=>{
-  socketRef.current?.emit("codeChange", {
-    roomId,
-    code,   
-});
-},[code])
+  // useEffect(()=>{
+  //   socketRef.current?.emit("codeChange", {
+  //     roomId,
+  //     code,
+  // });
+  // },[code])
 
-useEffect(() => {
-  if (socketRef.current) {
-      socketRef.current.on("fileChange", ({fileName}) => {
-          setFileName(fileName);
+  useEffect(() => {
+    if (socketRef.current) {
+      socketRef.current.on("fileChange", ({ fileName }) => {
+        setFileName(fileName);
       });
-  }
-  return () => {
-    socketRef.current.off("fileChange");
-};
-}, [socketRef.current])
+    }
+    return () => {
+      socketRef.current.off("fileChange");
+    };
+  }, [socketRef.current]);
 
+  useEffect(() => {
+    socketRef.current?.emit("fileChange", {
+      roomId,
+      fileName,
+    });
+  }, [fileName]);
 
-
-useEffect(()=>{
-  socketRef.current?.emit("fileChange", {
-    roomId,
-    fileName,   
-});
-},[fileName])
-
-
-useEffect(() => {
-  if (socketRef.current) {
-      socketRef.current.on("fileIdChange", ({fileId}) => {
-          setFileId(fileId);
+  useEffect(() => {
+    if (socketRef.current) {
+      socketRef.current.on("fileIdChange", ({ fileId }) => {
+        setFileId(fileId);
       });
-  }
-  return () => {
-    socketRef.current.off("fileIdChange");
-};
-}, [socketRef.current])
+    }
+    return () => {
+      socketRef.current.off("fileIdChange");
+    };
+  }, [socketRef.current]);
 
+  useEffect(() => {
+    socketRef.current?.emit("fileIdChange", {
+      roomId,
+      fileId,
+    });
+  }, [fileId]);
 
-
-useEffect(()=>{
-  socketRef.current?.emit("fileIdChange", {
-    roomId,
-    fileId,   
-});
-},[fileId])
-
-
-
-
-
-useEffect(() => {
-  if (socketRef.current) {
-      socketRef.current.on("userIdChange", ({user_id}) => {
-          setFileId(user_id);
-          console.log(user_id)
+  useEffect(() => {
+    if (socketRef.current) {
+      socketRef.current.on("userIdChange", ({ user_id }) => {
+        setFileId(user_id);
+        console.log(user_id);
       });
-  }
-  return () => {
-    socketRef.current.off("userIdChange");
-};
-}, [socketRef.current])
+    }
+    return () => {
+      socketRef.current.off("userIdChange");
+    };
+  }, [socketRef.current]);
 
-
-
-useEffect(()=>{
-  socketRef.current?.emit("userIdChange", {
-    roomId,
-    user_id,   
-});
-},[user_id])
+  useEffect(() => {
+    socketRef.current?.emit("userIdChange", {
+      roomId,
+      user_id,
+    });
+  }, [user_id]);
 
   return (
     <div className="idePage">
@@ -301,8 +289,8 @@ useEffect(()=>{
           />
 
           <div onClick={changeTheme} className={`sun ${isLight && "dark"}`}>
-          <BsFillSunFill />
-        </div>
+            <BsFillSunFill />
+          </div>
         </div>
         <div>
           <div className="ideIcons">
@@ -344,7 +332,6 @@ useEffect(()=>{
             options={{ theme: theme, lineDecorationsWidth: 0 }}
             value={code}
             onChange={(e) => handleCodeChange(e)}
-            
           />
 
           <div>
@@ -361,7 +348,6 @@ useEffect(()=>{
 
         <div>
           <div className="drop">
-            
             <FilesDropdown
               setIsSaving={setIsSaving}
               isSaving={isSaving}
