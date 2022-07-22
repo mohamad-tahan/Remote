@@ -7,6 +7,7 @@ import { FaPython } from "react-icons/fa";
 import { MdModeEditOutline } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
 import FileBase64 from "react-file-base64";
+import Navbar from "../MainPage/Navbar";
 
 
 function Profile() {
@@ -146,6 +147,9 @@ function Profile() {
 
 
   return (
+    <div>
+      <Navbar/>
+
     <div class="profile">
       <div class="profile-container">
         <img src={profilePic === "" ? defaultPic : profilePic} width="200px" />
@@ -154,7 +158,7 @@ function Profile() {
         <br />
         <span>{name}</span>
         <br />
-        <button class="edit" onClick={(e) => setProfilePressed(!profilePressed)}>
+        <button class="editProfile" onClick={(e) => setProfilePressed(!profilePressed)}>
          Edit Profile
         </button>
       
@@ -200,6 +204,8 @@ function Profile() {
           })}
       </div>
     </div>
+    </div>
+
   );
 }
 
