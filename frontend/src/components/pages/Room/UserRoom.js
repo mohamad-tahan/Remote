@@ -1,10 +1,6 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
-import Badge from "@mui/material/Badge";
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import logo from "../../../pics/logoSpin.png";
-import { deepOrange } from "@mui/material/colors";
+import {Badge, Avatar, Stack} from '@mui/material'
 import "./RoomSocket.css";
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -35,7 +31,9 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-export default function UserRoom({ username }) {
+export default function UserRoom({ username , profilePic}) {
+
+  
   return (
     <div>
       <div>
@@ -45,7 +43,10 @@ export default function UserRoom({ username }) {
             anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
             variant="dot"
           >
-            <Avatar src={logo} />
+            <Avatar
+alt={username.toUpperCase()}
+src={profilePic} />
+
           </StyledBadge>
         </Stack>
       </div>
