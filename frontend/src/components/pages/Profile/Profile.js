@@ -8,6 +8,8 @@ import { MdModeEditOutline } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
 import FileBase64 from "react-file-base64";
 import Navbar from "../MainPage/Navbar";
+import Test from "./Test";
+import FileMap from "./FileMap";
 
 
 function Profile() {
@@ -64,7 +66,7 @@ function Profile() {
   };
   useEffect(() => {
     getFiles();
-  }, [file]);
+  }, []);
 
   const deleteFile = async (id) => {
     console.log(id);
@@ -89,26 +91,7 @@ function Profile() {
       });
   };
 
-  const updateFileName = async (id) => {
-    const res = await fetch(
-      "http://127.0.0.1:3000/api/user/auth/updateFileName/?id=" + id,
-      {
-        method: "PUT",
-        headers: { "content-type": "application/json", token: token },
 
-        body: JSON.stringify({
-          name: fileName,
-        }),
-      }
-    );
-    const response = await res.json();
-    if (response) {
-      setPressed(false);
-      toast.success(`Remote Name Uppdated`);
-    } else {
-      toast.error("Error Updating Remote");
-    }
-  };
 
   const updateProfile = async (id) => {
     const res = await fetch(
@@ -152,15 +135,21 @@ function Profile() {
 
     <div class="profile">
       <div class="profile-container">
-        <img src={profilePic === "" ? defaultPic : profilePic} width="200px" />
+        <div class="profile-pic">
+        <img src={profilePic === "" ? defaultPic : profilePic} width="180px" />
         <br />
-        <span>@{username}</span>
+        <button className="btn-editProfile">Edit Profile Pic</button>
+        </div>
+        <div className="info">
+        <span>Username: @{username}</span>
         <br />
-        <span>{name}</span>
+        <span>Name: {name}</span>
         <br />
-        <button class="editProfile" onClick={(e) => setProfilePressed(!profilePressed)}>
-         Edit Profile
+        <button class="editInfo" onClick={(e) => setProfilePressed(!profilePressed)}>
+         Edit Info
         </button>
+        </div>
+        </div>
       
         {profilePressed && ( <div class="edit-container">
           <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -173,38 +162,32 @@ function Profile() {
         />
           <button onClick={() => updateProfile(user_id)}>Update</button>
         </div>)}
-      </div>
+    
+
 
       <div class="file-container">
         <h1>My Remotes</h1>
         {file &&
           file.map((i, index) => {
             return (
-              <div className="files" key={i._id} value={i._id}>
-                {i.language === "js" ? (
-                  <TbBrandJavascript className="js" />
-                ) : (
-                  <FaPython className="py" />
-                )}{" "} 
-                {pressed ? <input placeholder={i.name} key={i._id} value={fileName}  onChange={(e) => setFileName(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && updateFileName(i._id)}/> : <span>{i.name}</span>}
-                <div className="edit-delete">
-                  <MdModeEditOutline
-                    className="editIcon"
-                    onClick={(e) => {
-                      setPressed(!pressed);
-                    }}
-                  />{" "}
-                  <MdDeleteForever
-                    className="deleteIcon"
-                    onClick={(e) => deleteFile(i._id)}
-                  />
-                </div>
-              </div>
+           
+              <FileMap
+                i={i}
+                key={index}
+                id={i._id}
+                name={i.name}
+                deleteFile={deleteFile}
+               
+              />
+              
+
+            
             );
           })}
       </div>
     </div>
     </div>
+   
 
   );
 }
