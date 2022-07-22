@@ -72,3 +72,27 @@
   font-size: 23px;
 }
 
+.editProfile {
+  cursor: pointer;
+  background: linear-gradient(to right, #121ecf, #9342c4);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px 30px;
+  margin-top: 15px;
+  border: 1px solid rgb(62, 62, 62);
+  border-radius: 10px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+}
+
+.editProfile:hover {
+  background: linear-gradient(to right, #9342c4, #121ecf);
+}
+
+.profile-container img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 2px solid blue;
+}
