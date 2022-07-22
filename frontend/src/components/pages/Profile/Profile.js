@@ -6,6 +6,8 @@ import { TbBrandJavascript, TbPlayerStop } from "react-icons/tb";
 import { FaPython } from "react-icons/fa";
 import { MdModeEditOutline } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
+import FileBase64 from "react-file-base64";
+
 
 function Profile() {
   const user_id = localStorage.getItem("user_id");
@@ -15,9 +17,10 @@ function Profile() {
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [pressed, setPressed] = useState(false);
-
+  const [profilePressed, setProfilePressed] = useState(false);
   const [file, setFile] = useState("");
   const[fileName,setFileName] = useState("");
+  const [pic, setPic] = useState("");
 
   const getUser = async () => {
     const res = await fetch(
@@ -105,7 +108,42 @@ function Profile() {
       toast.error("Error Updating Remote");
     }
   };
+
+  const updateProfile = async (id) => {
+    const res = await fetch(
+      "http://127.0.0.1:3000/api/user/auth/updateUser/?id=" + id,
+      {
+        method: "PUT",
+        headers: { "content-type": "application/json", token: token },
+
+        body: JSON.stringify({
+          name: name,
+          username: username,
+          profilePic: pic,
+        }),
+      }
+    );
+    const response = await res.json();
+    console.log(response);
+    if (response) {
+      setProfilePressed(false);
+      toast.success(`Profile Updated`);
+    } else {
+      toast.error("Error Updating Profile");
+    }
+  };
   
+  
+  
+  const getProfilepic = (files) => {
+    console.log(files[0].base64)
+    setPic(files[0].base64); 
+  };
+
+  useEffect(() => {
+    getUser();
+  } , [user]);
+
 
   return (
     <div class="profile">
@@ -115,6 +153,22 @@ function Profile() {
         <span>@{username}</span>
         <br />
         <span>{name}</span>
+        <br />
+        <button class="edit" onClick={(e) => setProfilePressed(!profilePressed)}>
+         Edit Profile
+        </button>
+      
+        {profilePressed && ( <div class="edit-container">
+          <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+          <FileBase64
+          multiple={true}
+          onDone={(e) => {
+            getProfilepic(e);
+          }}
+        />
+          <button onClick={() => updateProfile(user_id)}>Update</button>
+        </div>)}
       </div>
 
       <div class="file-container">
