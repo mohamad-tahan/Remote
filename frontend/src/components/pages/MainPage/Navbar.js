@@ -17,7 +17,19 @@ const Navbar = () => {
   function openIde(){
     if(user_id){
       console.log(user_id)
-      nav('/remote')
+      nav('/remote/:roomId')
+    }
+    else{
+      toast.error("You Are Not Registered.")
+      nav('/login')
+    }
+
+  }
+  function openRoom(){
+    if(user_id){
+      console.log(user_id)
+      nav('/generateRoomId')
+
     }
     else{
       toast.error("You Are Not Registered.")
@@ -35,6 +47,7 @@ const Navbar = () => {
         <div className='links'>
         <ul>
             <li className=""><Link to='/' >Home</Link></li>
+            <li className=""><Link to='' onClick={openRoom}>Rooms</Link></li>
             <li className=""><Link to='/login' >Sign in </Link></li>
             <li className=""><Link to='/contactUs' >Contact Us</Link></li>
             <button className='btn-createRemote' onClick={openIde}>Create Remote</button>
