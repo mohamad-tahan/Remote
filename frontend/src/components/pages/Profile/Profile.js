@@ -2,15 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./Profile.css";
 import { toast } from "react-hot-toast";
 import defaultPic from "../../../pics/defaultPic.png";
-import { TbBrandJavascript, TbPlayerStop } from "react-icons/tb";
-import { FaPython } from "react-icons/fa";
-import { MdModeEditOutline } from "react-icons/md";
-import { MdDeleteForever } from "react-icons/md";
 import FileBase64 from "react-file-base64";
 import Navbar from "../MainPage/Navbar";
-import Test from "./Test";
 import FileMap from "./FileMap";
-
+import { MdModeEditOutline, MdDeleteForever } from "react-icons/md";
 
 function Profile() {
   const user_id = localStorage.getItem("user_id");
@@ -19,10 +14,10 @@ function Profile() {
   const [profilePic, setProfilePic] = useState("");
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
-  const [pressed, setPressed] = useState(false);
   const [profilePressed, setProfilePressed] = useState(false);
+  const [usernamePressed, setUsernamePressed] = useState(false);
+  const [namePressed, setNamePressed] = useState(false);
   const [file, setFile] = useState("");
-  const[fileName,setFileName] = useState("");
   const [pic, setPic] = useState("");
 
   const getUser = async () => {
@@ -91,8 +86,6 @@ function Profile() {
       });
   };
 
-
-
   const updateProfile = async (id) => {
     const res = await fetch(
       "http://127.0.0.1:3000/api/user/auth/updateUser/?id=" + id,
@@ -111,84 +104,145 @@ function Profile() {
     console.log(response);
     if (response) {
       setProfilePressed(false);
+      setUsernamePressed(false);
+      setNamePressed(false);
       toast.success(`Profile Updated`);
     } else {
       toast.error("Error Updating Profile");
     }
   };
-  
-  
-  
+
   const getProfilepic = (files) => {
-    console.log(files[0].base64)
-    setPic(files[0].base64); 
+    setPic(files[0].base64);
   };
-
   useEffect(() => {
-    getUser();
-  } , [user]);
-
-
+    console.log(pic);
+  }, [pic]);
+  // console.log(username)
   return (
     <div>
-      <Navbar/>
+      <Navbar />
 
-    <div class="profile">
-      <div class="profile-container">
-        <div class="profile-pic">
-        <img src={profilePic === "" ? defaultPic : profilePic} width="180px" />
-        <br />
-        <button className="btn-editProfile">Edit Profile Pic</button>
-        </div>
-        <div className="info">
-        <span>Username: @{username}</span>
-        <br />
-        <span>Name: {name}</span>
-        <br />
-        <button class="editInfo" onClick={(e) => setProfilePressed(!profilePressed)}>
-         Edit Info
-        </button>
-        </div>
-        </div>
-      
-        {profilePressed && ( <div class="edit-container">
-          <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-          <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-          <FileBase64
-          multiple={true}
-          onDone={(e) => {
-            getProfilepic(e);
-          }}
-        />
-          <button onClick={() => updateProfile(user_id)}>Update</button>
-        </div>)}
-    
-
-
-      <div class="file-container">
-        <h1>My Remotes</h1>
-        {file &&
-          file.map((i, index) => {
-            return (
-           
-              <FileMap
-                i={i}
-                key={index}
-                id={i._id}
-                name={i.name}
-                deleteFile={deleteFile}
-               
+      <div class="profile">
+        <div class="profile-container">
+          <div class="profile-pic">
+            {pic && <img src={pic} width="400px" />}
+            {!pic && (
+              <img
+                src={profilePic === "" ? defaultPic : profilePic}
+                width="400px"
               />
-              
+            )}
+            <br />
+            {profilePressed ? (
+              <div className="editimg">
+                <div className="base64">
+                <FileBase64
+                  multiple={true}
+                  onDone={(e) => {
+                    getProfilepic(e);
+                  }}
+                />
+                </div>
+                
+                <button
+                className="editInfo update"
+                  onClick={(e) => {
+                    updateProfile(user_id);
+                  }}
+                >
+                  update
+                </button>
+              </div>
+            ) : (
+              <div>
+                <button
+                  className="btn-editProfile"
+                  onClick={(e) => setProfilePressed(!profilePressed)}
+                >
+                  Edit Profile Pic
+                </button>
+              </div>
+            )}
+            <br />
 
-            
-            );
-          })}
+          </div>
+
+          <div className="info">
+          <h1>Profile Info</h1>
+
+            <div className="user">
+              
+            {usernamePressed ? (
+              <>
+              <span className="colorInfo">Username:</span>
+
+              <input
+                placeholder={username}
+                value={username}
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
+                onKeyPress={(e) => e.key === "Enter" && updateProfile(user_id)}
+              />
+              </>
+            ) : (
+              <>
+              <div className="colorInfo">Username:</div>
+              <span>@{username}</span>
+              </>
+            )}
+            <MdModeEditOutline  className="btn-edit"
+              onClick={(e) => setUsernamePressed(!usernamePressed)} />
+          
+         
+            </div>
+
+            <div className="name">
+            {namePressed ? ( <> 
+              <span className="colorInfo">Name:</span>
+             
+              <input
+                placeholder={name}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                onKeyPress={(e) => e.key === "Enter" && updateProfile(user_id)}
+              />
+               </>
+            ) : (
+              <>
+              <div className="colorInfo">Name: </div>
+              <br/>
+              <span> {name}</span>
+              </>
+            )}
+            <br />
+            <MdModeEditOutline  className="btn-edit"
+                            onClick={(e) => setNamePressed(!namePressed)}
+                            />
+     
+          </div>
+        </div>
+        </div>
+
+
+        <div class="file-container">
+          <h1>My Remotes</h1>
+          {file &&
+            file.map((i, index) => {
+              return (
+                <FileMap
+                  i={i}
+                  key={index}
+                  id={i._id}
+                  name={i.name}
+                  deleteFile={deleteFile}
+                />
+              );
+            })}
+        </div>
       </div>
     </div>
-    </div>
-   
-
   );
 }
 
