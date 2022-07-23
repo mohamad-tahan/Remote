@@ -42,6 +42,7 @@ function FileMap({ i, deleteFile }) {
         )}{" "}
         {pressed ? (
           <input
+          type="text"
             placeholder={i.name}
             key={i._id}
             value={fileName}
