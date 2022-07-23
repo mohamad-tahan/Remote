@@ -30,8 +30,11 @@ const LanguagesDropdown = ({ onOptionSelect }) => {
 
 
   return (
+
     <>
+  
       <select className="langDropdown" onChange={(e)=> onOptionSelect(e.target.value) }>
+        <option >Language</option>
         {languages.map((i, index) => {
           return (
             <option key={i.id} value={JSON.stringify(i)}>
