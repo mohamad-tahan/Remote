@@ -100,7 +100,9 @@ function Profile() {
         }),
       }
     );
+
     const response = await res.json();
+   localStorage.setItem("username", username);
     console.log(response);
     if (response) {
       setProfilePressed(false);
@@ -178,6 +180,7 @@ function Profile() {
               <span className="colorInfo">Username:</span>
 
               <input
+              type="text"
                 placeholder={username}
                 value={username}
                 onChange={(e) => {
@@ -203,6 +206,7 @@ function Profile() {
               <span className="colorInfo">Name:</span>
              
               <input
+              type="text"
                 placeholder={name}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
