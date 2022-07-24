@@ -15,7 +15,7 @@ function Login(){
       toast.error("All fields are required.");
       return ;
     }
-    if(name.length < 3|| username.length < 3|| !email.length < 3 || !password.length<3 ){
+   else if(name.length < 3|| username.length < 3|| email.length < 3 || password.length<3 ){
       toast.error("Inputs should be more than 3");
       return ;
     }
