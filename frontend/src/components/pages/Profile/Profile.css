@@ -132,7 +132,7 @@
 .profile-container img {
   width: 150px;
   height: 150px;
-  border-radius: 20%;
+  border-radius: 50%;
 }
 
 .btn-editProfile:hover {
