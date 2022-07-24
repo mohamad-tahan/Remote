@@ -16,24 +16,23 @@ const Navbar = () => {
 
   function openIde(){
     if(user_id){
-      console.log(user_id)
-      nav('/remote/:roomId')
+      nav('/generateRoomId')
     }
     else{
-      toast.error("You Are Not Registered.")
-      nav('/login')
+      toast.error("You Are Not Registered. Sign Up First.");
     }
 
   }
-  function openRoom(){
+  function openRoom(e){
+    e.preventDefault();
     if(user_id){
       console.log(user_id)
-      nav('/generateRoomId')
+      nav("/generateRoomId");
+
 
     }
     else{
-      toast.error("You Are Not Registered.")
-      nav('/login')
+      toast.error("You Are Not Registered. Sign up First.")
     }
 
   }
@@ -47,10 +46,10 @@ const Navbar = () => {
         <div className='links'>
         <ul>
             <li className=""><Link to='/' >Home</Link></li>
-            <li className=""><Link to='' onClick={openRoom}>Rooms</Link></li>
+            <li className=""><Link to='' onClick={(e) => openRoom(e)}>Rooms</Link></li>
             <li className=""><Link to='/login' >Sign in </Link></li>
             <li className=""><Link to='/contactUs' >Contact Us</Link></li>
-            <button className='btn-createRemote' onClick={openIde}>Create Remote</button>
+            <button className='btn-createRemote' onClick={(e) => openIde(e)}>Create Remote</button>
        </ul>
        
      
