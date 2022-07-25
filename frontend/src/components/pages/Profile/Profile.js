@@ -45,6 +45,7 @@ function Profile() {
   }, []);
 
   const getFiles = async () => {
+    console.log("get files");
     const res = await fetch(
       "http://127.0.0.1:3000/api/user/auth/getFilesbyUserId/?id=" + user_id,
       {
@@ -63,11 +64,12 @@ function Profile() {
     getFiles();
   }, []);
 
-  const deleteFile = async (id) => {
-    console.log(id);
+  const deleteFile = async (myId) => {
+    console.log(myId);
+    // return;
 
     const res = await fetch(
-      "http://localhost:3000/api/user/auth/removeFile/?id=" + id,
+      "http://localhost:3000/api/user/auth/removeFile/?id=" + myId,
       {
         method: "DELETE",
         headers: {
@@ -82,8 +84,8 @@ function Profile() {
         if (res) {
           toast.success("Remote Deleted Successfully");
         }
-        getFiles();
       });
+    getFiles();
   };
 
   const updateProfile = async (id) => {
@@ -102,7 +104,7 @@ function Profile() {
     );
 
     const response = await res.json();
-   localStorage.setItem("username", username);
+    localStorage.setItem("username", username);
     console.log(response);
     if (response) {
       setProfilePressed(false);
@@ -139,16 +141,16 @@ function Profile() {
             {profilePressed ? (
               <div className="editimg">
                 <div className="base64">
-                <FileBase64
-                  multiple={true}
-                  onDone={(e) => {
-                    getProfilepic(e);
-                  }}
-                />
+                  <FileBase64
+                    multiple={true}
+                    onDone={(e) => {
+                      getProfilepic(e);
+                    }}
+                  />
                 </div>
-                
+
                 <button
-                className="editInfo update"
+                  className="editInfo update"
                   onClick={(e) => {
                     updateProfile(user_id);
                   }}
@@ -167,68 +169,70 @@ function Profile() {
               </div>
             )}
             <br />
-
           </div>
 
           <div className="info">
-          <h1>Profile Info</h1>
+            <h1>Profile Info</h1>
 
             <div className="user">
-              
-            {usernamePressed ? (
-              <>
-              <span className="colorInfo">Username:</span>
+              {usernamePressed ? (
+                <>
+                  <span className="colorInfo">Username:</span>
 
-              <input
-              type="text"
-                placeholder={username}
-                value={username}
-                onChange={(e) => {
-                  setUsername(e.target.value);
-                }}
-                onKeyPress={(e) => e.key === "Enter" && updateProfile(user_id)}
+                  <input
+                    type="text"
+                    placeholder={username}
+                    value={username}
+                    onChange={(e) => {
+                      setUsername(e.target.value);
+                    }}
+                    onKeyPress={(e) =>
+                      e.key === "Enter" && updateProfile(user_id)
+                    }
+                  />
+                </>
+              ) : (
+                <>
+                  <div className="colorInfo">Username:</div>
+                  <span>@{username}</span>
+                </>
+              )}
+              <MdModeEditOutline
+                className="btn-edit"
+                onClick={(e) => setUsernamePressed(!usernamePressed)}
               />
-              </>
-            ) : (
-              <>
-              <div className="colorInfo">Username:</div>
-              <span>@{username}</span>
-              </>
-            )}
-            <MdModeEditOutline  className="btn-edit"
-              onClick={(e) => setUsernamePressed(!usernamePressed)} />
-          
-         
             </div>
 
             <div className="name">
-            {namePressed ? ( <> 
-              <span className="colorInfo">Name:</span>
-             
-              <input
-              type="text"
-                placeholder={name}
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                onKeyPress={(e) => e.key === "Enter" && updateProfile(user_id)}
+              {namePressed ? (
+                <>
+                  <span className="colorInfo">Name:</span>
+
+                  <input
+                    type="text"
+                    placeholder={name}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    onKeyPress={(e) =>
+                      e.key === "Enter" && updateProfile(user_id)
+                    }
+                  />
+                </>
+              ) : (
+                <>
+                  <div className="colorInfo">Name: </div>
+                  <br />
+                  <span> {name}</span>
+                </>
+              )}
+              <br />
+              <MdModeEditOutline
+                className="btn-edit"
+                onClick={(e) => setNamePressed(!namePressed)}
               />
-               </>
-            ) : (
-              <>
-              <div className="colorInfo">Name: </div>
-              <br/>
-              <span> {name}</span>
-              </>
-            )}
-            <br />
-            <MdModeEditOutline  className="btn-edit"
-                            onClick={(e) => setNamePressed(!namePressed)}
-                            />
-     
+            </div>
           </div>
         </div>
-        </div>
-
 
         <div class="file-container">
           <h1>My Remotes</h1>
@@ -237,10 +241,10 @@ function Profile() {
               return (
                 <FileMap
                   i={i}
-                  key={index}
+                  key={i._id}
                   id={i._id}
                   name={i.name}
-                  deleteFile={deleteFile}
+                  deleteFile={() => deleteFile(i._id)}
                 />
               );
             })}
