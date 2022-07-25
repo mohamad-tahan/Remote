@@ -104,7 +104,7 @@
   font-size: 12px;
 }
 .lightTheme {
-  background-color: #263581;
+  background-color: #717171;
   color: black;
 }
 
@@ -155,8 +155,8 @@ div.overflow-guard {
 .langDropdown {
   width: 120px;
   height: 25px;
-  color: purple;
-  background-color: rgb(35, 32, 32);
+  color: white;
+  background-color: rgb(63, 0, 78);
   border-radius: 10px;
   margin-top: 7px;
   text-align: center;
