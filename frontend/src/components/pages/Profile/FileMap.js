@@ -42,7 +42,7 @@ function FileMap({ i, deleteFile }) {
         )}{" "}
         {pressed ? (
           <input
-          type="text"
+            type="text"
             placeholder={i.name}
             key={i._id}
             value={fileName}
@@ -61,7 +61,9 @@ function FileMap({ i, deleteFile }) {
           />{" "}
           <MdDeleteForever
             className="deleteIcon"
-            onClick={(e) => deleteFile(i._id)}
+            onClick={(e) => {
+              deleteFile();
+            }}
           />
         </div>
       </div>
