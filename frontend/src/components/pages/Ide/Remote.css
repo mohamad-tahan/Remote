@@ -51,11 +51,19 @@
   font-size: 30px;
   color: rgb(106, 0, 130);
 }
+.run:hover{
+  font-size: 33px;
+
+}
 
 .save {
   padding-top: 4px;
   font-size: 25px;
   color: rgb(106, 0, 130);
+}
+.save:hover{
+  font-size: 28px;
+
 }
 
 .ideIcons {
@@ -124,12 +132,13 @@
   z-index: 10;
 }
 .sun:hover {
-  color: rgb(0, 0, 44);
+  color: yellow;
   transition: all 0.3s;
+  font-size: 25px;
 }
 
 .dark {
-  color: #3c55d5;
+  color: yellow;
 }
 
 .iconDark {
@@ -150,6 +159,9 @@ div.overflow-guard {
   position: absolute;
   right: 20px;
   top: 2px;
+}
+.clear:hover{
+  font-size: 30px;
 }
 
 .langDropdown {
@@ -179,6 +191,9 @@ div.overflow-guard {
   position: absolute;
   right: 25px;
   top: 2px;
+}
+.download:hover{
+  font-size: 33px;
 }
 
 .filesDropdown {
