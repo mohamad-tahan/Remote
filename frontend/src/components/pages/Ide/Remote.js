@@ -15,6 +15,7 @@ import DownloadLink from "react-download-link";
 import { HiDocumentDownload } from "react-icons/hi";
 import FilesDropdown from "./FilesDropdown";
 import AddRemote from "./AddRemote";
+import MyChatbot from "../Chatbot/MyChatbot";
 
 const Remote = ({ socketRef, roomId }) => {
   const [isLight, setIsLight] = useState(false);
@@ -38,7 +39,7 @@ const Remote = ({ socketRef, roomId }) => {
   const [user_id, setUserId] = useState(owner_id);
 
   const handleRun = () => {
-    if (fileName == "Create Remote") {
+    if (fileName == "Create Remote" || fileName == null) {
       toast.error("Create a Remote First");
       return;
     } else if (code == "") {
@@ -149,7 +150,7 @@ const Remote = ({ socketRef, roomId }) => {
   const handleSave = async (e) => {
     e.preventDefault();
     console.log(fileName);
-    if (fileName == "Create Remote") {
+    if (fileName == "Create Remote" || fileName === null) {
       toast.error("Create a Remote First");
       return;
     }
@@ -272,6 +273,10 @@ const Remote = ({ socketRef, roomId }) => {
     });
   }, [user_id]);
 
+  function handleEditorWillMount(monaco) {
+    monaco.editor.setTheme("vs-dark");
+  }
+
   return (
     <div className="idePage">
       {showModel && <AddRemote setIsSaving={() => setIsSaving(true)} />}
@@ -287,6 +292,8 @@ const Remote = ({ socketRef, roomId }) => {
               setShowModel(!showModel);
             }}
           />
+        <MyChatbot/>
+
 
           <div onClick={changeTheme} className={`sun ${isLight && "dark"}`}>
             <BsFillSunFill />
@@ -294,16 +301,10 @@ const Remote = ({ socketRef, roomId }) => {
         </div>
         <div>
           <div className="ideIcons">
-            <div
-              className={`save ${isLight && " iconDark"}`}
-              onClick={handleSave}
-            >
+            <div className="save" onClick={handleSave}>
               <BsSaveFill />
             </div>
-            <div
-              className={`run ${isLight && " iconDark"}`}
-              onClick={handleRun}
-            >
+            <div className="run" onClick={handleRun}>
               <VscRunAll />
             </div>
 
@@ -332,6 +333,7 @@ const Remote = ({ socketRef, roomId }) => {
             options={{ theme: theme, lineDecorationsWidth: 0 }}
             value={code}
             onChange={(e) => handleCodeChange(e)}
+            beforeMount={handleEditorWillMount}
           />
 
           <div>
