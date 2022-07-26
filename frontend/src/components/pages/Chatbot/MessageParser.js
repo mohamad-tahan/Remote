@@ -6,7 +6,9 @@ const MessageParser = ({ children, actions }) => {
     if (message.includes('hello')) {
       actions.handleHello();
     }
-    
+    if (message.includes('run')) {
+      actions.handleRun();
+    }
   };
 
 

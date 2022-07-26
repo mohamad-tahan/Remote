@@ -1,15 +1,27 @@
-import React from 'react';
+import React from "react";
+import { VscRunAll } from "react-icons/vsc";
 
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   const handleHello = () => {
-    const botMessage = createChatBotMessage('Hello. Nice to meet you.');
+    const botMessage = createChatBotMessage("Hello. Nice to meet you.");
 
     setState((prev) => ({
       ...prev,
       messages: [...prev.messages, botMessage],
     }));
   };
+  const handleRun = () => {
+    const botMessage = createChatBotMessage(
+      <>
+        Type your code then press on  <VscRunAll/> to run it.
+      </>
+    );
 
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
 
   // Put the handleHello function in the actions object to pass to the MessageParser
   return (
@@ -18,7 +30,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
         return React.cloneElement(child, {
           actions: {
             handleHello,
-            
+            handleRun,
           },
         });
       })}
