@@ -1,5 +1,10 @@
 import React from "react";
 import { VscRunAll } from "react-icons/vsc";
+import { BsSaveFill } from "react-icons/bs";
+import { BsFillSunFill } from "react-icons/bs";
+import { HiDocumentDownload } from "react-icons/hi";
+import { AiOutlineClear } from "react-icons/ai";
+
 
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   const handleHello = () => {
@@ -22,6 +27,18 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
       messages: [...prev.messages, botMessage],
     }));
   };
+  const handleDownload = () => {
+    const botMessage = createChatBotMessage(
+      <>
+        Press on <HiDocumentDownload/> to download your file to your pc.
+      </>
+    );
+
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
 
   // Put the handleHello function in the actions object to pass to the MessageParser
   return (
@@ -31,6 +48,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
           actions: {
             handleHello,
             handleRun,
+            handleDownload,
           },
         });
       })}

@@ -9,6 +9,10 @@ const MessageParser = ({ children, actions }) => {
     if (message.includes('run')) {
       actions.handleRun();
     }
+    if (message.includes('download')) {
+      actions.handleDownload();
+    }
+  
   };
 
 
