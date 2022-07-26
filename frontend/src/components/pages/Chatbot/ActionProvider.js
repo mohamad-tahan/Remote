@@ -64,6 +64,19 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
     }));
   };
 
+  const handleTheme = () => {
+    const botMessage = createChatBotMessage(
+      <>
+        Press on <BsFillSunFill/> to switch between dark and light mode.
+      </>
+    );
+
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
+
   // Put the handleHello function in the actions object to pass to the MessageParser
   return (
     <div>
@@ -74,7 +87,8 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
             handleRun,
             handleDownload,
             handleClear,
-            handleSave
+            handleSave,
+            handleTheme
           },
         });
       })}

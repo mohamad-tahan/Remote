@@ -18,8 +18,9 @@ const MessageParser = ({ children, actions }) => {
     if ((message.includes('save') ) || (message.includes('file'))) {
       actions.handleSave();
     }
-
-   
+    if (message.includes('theme' )|| (message.includes('color'))) {
+      actions.handleTheme();
+    }
   };
 
 
