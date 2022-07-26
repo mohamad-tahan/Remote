@@ -12,7 +12,10 @@ const MessageParser = ({ children, actions }) => {
     if (message.includes('download')) {
       actions.handleDownload();
     }
-  
+    if (message.includes('clear')) {
+      actions.handleClear();
+    }
+
   };
 
 

@@ -39,6 +39,18 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
       messages: [...prev.messages, botMessage],
     }));
   };
+  const handleClear = () => {
+    const botMessage = createChatBotMessage(
+      <>
+        Press on <AiOutlineClear/> to clear your code.
+      </>
+    );
+
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
 
   // Put the handleHello function in the actions object to pass to the MessageParser
   return (
@@ -49,6 +61,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
             handleHello,
             handleRun,
             handleDownload,
+            handleClear
           },
         });
       })}
