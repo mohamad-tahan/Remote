@@ -77,6 +77,19 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
     }));
   };
 
+  const handleRemotes = () => {
+    const botMessage = createChatBotMessage(
+      <>
+       Press on My Remotes dropdown to see your remotes.
+      </>
+    );
+
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
+
   // Put the handleHello function in the actions object to pass to the MessageParser
   return (
     <div>
@@ -88,7 +101,8 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
             handleDownload,
             handleClear,
             handleSave,
-            handleTheme
+            handleTheme,
+            handleRemotes,
           },
         });
       })}

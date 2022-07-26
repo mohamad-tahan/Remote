@@ -21,6 +21,9 @@ const MessageParser = ({ children, actions }) => {
     if (message.includes('theme' )|| (message.includes('color'))) {
       actions.handleTheme();
     }
+    if (message.includes('remotes' ) || (message.includes('files')) || (message.includes('remote'))) {
+      actions.handleRemotes();
+    }
   };
 
 
