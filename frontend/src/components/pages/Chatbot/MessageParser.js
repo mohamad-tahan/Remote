@@ -9,13 +9,17 @@ const MessageParser = ({ children, actions }) => {
     if (message.includes('run')) {
       actions.handleRun();
     }
-    if (message.includes('download')) {
+    if ((message.includes('download')) || (message.includes('file'))) {
       actions.handleDownload();
     }
     if (message.includes('clear')) {
       actions.handleClear();
     }
+    if ((message.includes('save') ) || (message.includes('file'))) {
+      actions.handleSave();
+    }
 
+   
   };
 
 

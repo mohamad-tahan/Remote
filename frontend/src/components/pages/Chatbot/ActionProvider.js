@@ -51,6 +51,18 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
       messages: [...prev.messages, botMessage],
     }));
   };
+  const handleSave = () => {
+    const botMessage = createChatBotMessage(
+      <>
+        Press on <BsSaveFill/> to save your remote.
+      </>
+    );
+
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
 
   // Put the handleHello function in the actions object to pass to the MessageParser
   return (
@@ -61,7 +73,8 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
             handleHello,
             handleRun,
             handleDownload,
-            handleClear
+            handleClear,
+            handleSave
           },
         });
       })}
