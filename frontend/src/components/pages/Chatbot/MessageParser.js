@@ -30,6 +30,9 @@ const MessageParser = ({ children, actions }) => {
     if (message.includes('output' )) {
       actions.handleOutput();
     }
+    if (message.includes('input')) {
+      actions.handleInput();
+    }
   };
 
 

@@ -116,7 +116,18 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   };
 
   
+  const handleInput = () => {
+    const botMessage = createChatBotMessage(
+      <>
+      Type the input you want to run in the input section.
+      </>
+    );
 
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
   // Put the handleHello function in the actions object to pass to the MessageParser
   return (
     <div>
