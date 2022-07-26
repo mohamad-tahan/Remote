@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+.robotIcon {
+  color: yellow;
+  font-size: 35px;
+  padding-right: 4px;
+}
+
+.headerBot {
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #1e1e1e;
+  background-image: linear-gradient(
+    to right,
+    #031f3b 0%,
+    #3d0549 51%,
+    #031f3b 100%
+  );
+  font-family: "Press Start 2P", cursive !important;
+  font-weight: lighter;
+}
+
+.react-chatbot-kit-chat-container {
+  color: red;
+}
+
+.react-chatbot-kit-chat-inner-container {
+  background: rgb(37, 37, 37);
+  border-radius: 10px;
+}
+
+.react-chatbot-kit-chat-header {
+  font-family: "Press Start 2P", cursive !important;
+
+  border-radius: 10px;
+}
+
+.react-chatbot-kit-chat-message-container {
+  border-radius: 10px;
+  background: rgb(37, 37, 37);
+}
+
+.react-chatbot-kit-chat-btn-send {
+  width: 60px;
+  background-color: rgb(4, 4, 136) !important;
+}
+
+.react-chatbot-kit-user-chat-message {
+  margin-right: 8px;
+}
+
+.react-chatbot-kit-chat-bot-message {
+  background-color: rgb(56, 2, 56) !important;
+}
+
+.react-chatbot-kit-chat-bot-message-arrow {
+  border-right-color: rgb(56, 2, 56) !important;
+}
+
+.chat {
+  position: absolute;
+  z-index: 11;
+}
+
+.react-chatbot-kit-chat-message-container {
+  overflow: hidden !important;
+  overflow-y: scroll !important;
+}
+
+.chatbot {
+  border-radius: 10px;
+  border: 2px solid rgb(52, 52, 52);
+  position: fixed;
+  bottom: 40px;
+  right: 0;
+  margin-right: 90px;
+  display: none;
+}
+
+.robotIcon2 {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  color: yellow;
+  font-size: 60px;
+  margin-right: 35px;
+  margin-bottom: 6px;
+  z-index: 15;
+}
+
+.chatbotHide {
+  display: block;
+}
+
+.robotIcon2:hover {
+  cursor: pointer;
+  font-size: 70px;
+}
