@@ -24,6 +24,9 @@ const MessageParser = ({ children, actions }) => {
     if (message.includes('remotes' ) || (message.includes('files')) || (message.includes('remote'))) {
       actions.handleRemotes();
     }
+    if (message.includes('language' )) {
+      actions.handleLanguage();
+    }
   };
 
 
