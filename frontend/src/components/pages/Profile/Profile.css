@@ -75,7 +75,7 @@
 }
 
 .editIcon {
-  color: #121ecf;
+  color: #2933ca;
   font-size: 20px;
 }
 
@@ -90,8 +90,26 @@
 }
 
 .py {
-  color: blue;
+  color: rgb(49, 49, 217);
   font-size: 30px;
+  padding: 5px;
+}
+
+.php {
+  color: rgb(110, 67, 161);
+  font-size: 35px;
+  padding: 5px;
+}
+
+.java {
+  color: gray;
+  font-size: 30px;
+  padding: 5px;
+}
+
+.cpp {
+  color: rgb(176, 176, 176);
+  font-size: 15px;
   padding: 5px;
 }
 
@@ -218,7 +236,6 @@
   /* border: 1px solid rgb(102, 102, 102); */
   letter-spacing: 3px;
   font-weight: bolder;
-
 }
 
 .profile input[type="text"] {
@@ -234,21 +251,18 @@
   background-color: #9d9b9b;
 }
 
-.laptop{
-
-
+.laptop {
   width: 550px;
   height: 550px;
 }
 
-.file-pic{
+.file-pic {
   display: flex;
   gap: 50px;
   margin-bottom: 25px;
 }
 
-.fileList{
-
+.fileList {
   align-items: center;
   margin-top: 30px;
 }
