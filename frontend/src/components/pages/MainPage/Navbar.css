@@ -91,4 +91,10 @@
     filter: brightness(120%);
   }
 
+  
+  .img-container img:hover{
+    cursor: pointer;
+  }
+
+
 

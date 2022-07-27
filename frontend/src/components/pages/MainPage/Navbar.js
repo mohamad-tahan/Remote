@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 
 
-const Navbar = () => {
+const Navbar = ({disable=false}) => {
   let nav = useNavigate();
   const user_id = localStorage.getItem("user_id");
   
@@ -41,13 +41,14 @@ const Navbar = () => {
     <div className='navbar'>
       <nav>
         <div className='img-container'>
-            <img src={logo}  />
+            <img src={logo} className="logoNav" onClick={()=>{nav("/")}}/>
         </div>
         <div className='links'>
         <ul>
             <li className=""><Link to='/' >Home</Link></li>
             <li className=""><Link to='' onClick={(e) => openRoom(e)}>Rooms</Link></li>
-            <li className=""><Link to='/login' >Sign in </Link></li>
+            {!disable &&
+            <li className=""><Link to='/login' >Sign in </Link></li>}
             <li className=""><Link to='/contactUs' >Contact Us</Link></li>
             <button className='btn-createRemote' onClick={(e) => openIde(e)}>Create Remote</button>
        </ul>
