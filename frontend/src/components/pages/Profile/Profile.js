@@ -5,7 +5,11 @@ import defaultPic from "../../../pics/defaultPic.png";
 import FileBase64 from "react-file-base64";
 import Navbar from "../MainPage/Navbar";
 import FileMap from "./FileMap";
-import { MdModeEditOutline, MdDeleteForever } from "react-icons/md";
+import { MdModeEditOutline } from "react-icons/md";
+// import character from "../../../pics/character.png";
+import pic1 from "../../../pics/pic1.jpg";
+import pic2 from "../../../pics/pic2.jpg";
+
 
 function Profile() {
   const user_id = localStorage.getItem("user_id");
@@ -128,6 +132,11 @@ function Profile() {
       <Navbar />
 
       <div class="profile">
+        <div className="character">
+          
+          <img src={pic1} className="laptop" />
+         
+        </div>
         <div class="profile-container">
           <div class="profile-pic">
             {pic && <img src={pic} width="400px" />}
@@ -234,8 +243,13 @@ function Profile() {
           </div>
         </div>
 
-        <div class="file-container">
+       
+      </div>
+      <div className="file-pic">
+       
+      <div class="file-container">
           <h1>My Remotes</h1>
+          <div class="fileList">
           {file &&
             file.map((i, index) => {
               return (
@@ -249,7 +263,11 @@ function Profile() {
               );
             })}
         </div>
-      </div>
+        </div>
+        <div>
+          <img src={pic2} className="laptop" />
+        </div>
+        </div>
     </div>
   );
 }
