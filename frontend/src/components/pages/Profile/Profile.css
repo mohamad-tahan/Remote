@@ -1,20 +1,20 @@
 .profile {
   align-items: center;
   display: flex;
-  gap: 50px;
+  gap: 15px;
   margin: 20px;
 }
 .profile-container {
   gap: 30px;
-  display: flex;
+  /* display: flex; */
   color: white;
   border: 2px solid blue;
-  background: linear-gradient(rgba(18, 4, 20, 0.4), rgba(82, 130, 202, 0.4));
+  background: linear-gradient(black, rgba(255, 255, 255, 0.195));
   border-radius: 10px;
   box-sizing: border-box;
-  border: 2px solid white;
+  border: 1px solid rgb(153, 153, 153);
   width: 600px;
-  min-height: 320px;
+  height: 550px;
   padding: 10px;
   text-align: center;
 }
@@ -27,11 +27,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 15px;
 }
 
 .btn-editProfile {
   cursor: pointer;
-  background: linear-gradient(to right, #121ecf, #9342c4);
+  background: linear-gradient(to right, #091392, #4d0579);
   color: white;
   font-size: 14px;
   font-weight: bold;
@@ -45,19 +46,20 @@
 .file-container {
   color: white;
   justify-content: space-between;
-  height: 330px;
-  background: linear-gradient(rgba(18, 4, 20, 0.4), rgba(82, 130, 202, 0.4));
+  width: 600px;
+  height: 550px;
+  background: linear-gradient(black, rgba(255, 255, 255, 0.195));
+  border: 1px solid rgb(153, 153, 153);
   margin-top: 15px;
   overflow-y: scroll;
-  border: 2px solid white;  
   border-radius: 10px;
   padding: 30px;
 }
 
 .files {
   display: flex;
-  width: 400px;
-  background-color: #2b2b2b;
+  width: 470px;
+  background-color: #1d1d1d;
   margin: 13px;
   justify-content: space-between;
   text-align: center;
@@ -78,7 +80,7 @@
 }
 
 .deleteIcon {
-  color: #9342c4;
+  color: #560687;
   font-size: 20px;
 }
 .js {
@@ -94,7 +96,7 @@
 }
 
 .file-container h1 {
-  background: linear-gradient(to right, #121ecf, #9342c4);
+  background: linear-gradient(to right, #091392, #4d0579);
   border-radius: 5px;
   text-align: center;
 }
@@ -113,7 +115,7 @@
 
 .editInfo {
   cursor: pointer;
-  background: linear-gradient(to right, #121ecf, #9342c4);
+  background: linear-gradient(to right, #091392, #4d0579);
   color: white;
   font-size: 14px;
   font-weight: bold;
@@ -126,7 +128,7 @@
 }
 
 .editInfo:hover {
-  background: linear-gradient(to right, #9342c4, #121ecf);
+  background: linear-gradient(to right, #4d0579, #091392);
 }
 
 .profile-container img {
@@ -136,14 +138,19 @@
 }
 
 .btn-editProfile:hover {
-  background: linear-gradient(to right, #9342c4, #121ecf);
+  background: linear-gradient(to right, #4d0579, #091392);
 }
 
 .btn-edit {
   cursor: pointer;
-  color: purple;
+  color: #631692;
   font-size: 20px;
   margin-top: 2px;
+}
+.btn-edit:hover {
+  cursor: pointer;
+  color: yellow;
+  font-size: 23px;
 }
 
 .user {
@@ -156,6 +163,7 @@
   border-radius: 15px;
   margin-bottom: 20px;
   text-align: center;
+  margin-top: 25px;
 }
 
 .name {
@@ -170,14 +178,14 @@
 }
 
 .colorInfo {
-  color: purple;
+  color: #631692;
   font-size: 18px;
   font-weight: bold;
 }
 
 .editimg {
   cursor: pointer;
-  color: purple;
+  color: #5a0b8b;
   font-size: 20px;
   margin-top: 2px;
 }
@@ -202,11 +210,15 @@
 }
 
 .info h1 {
-  background: linear-gradient(to right, #121ecf, #9342c4);
+  /* background: linear-gradient(to right, #091392, #4d0579); */
   border-radius: 5px;
   text-align: center;
   width: 340px;
-  margin-bottom: 50px;
+  margin-top: 15px;
+  /* border: 1px solid rgb(102, 102, 102); */
+  letter-spacing: 3px;
+  font-weight: bolder;
+
 }
 
 .profile input[type="text"] {
@@ -220,4 +232,23 @@
   color: #030960;
   text-align: center;
   background-color: #9d9b9b;
+}
+
+.laptop{
+
+
+  width: 550px;
+  height: 550px;
+}
+
+.file-pic{
+  display: flex;
+  gap: 50px;
+  margin-bottom: 25px;
+}
+
+.fileList{
+
+  align-items: center;
+  margin-top: 30px;
 }
