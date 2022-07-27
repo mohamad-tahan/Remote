@@ -6,9 +6,10 @@ import FileBase64 from "react-file-base64";
 import Navbar from "../MainPage/Navbar";
 import FileMap from "./FileMap";
 import { MdModeEditOutline } from "react-icons/md";
-// import character from "../../../pics/character.png";
-import pic1 from "../../../pics/pic1.jpg";
-import pic2 from "../../../pics/pic2.jpg";
+import comp from "../../../pics/comp.png";
+import character from "../../../pics/character.png";
+
+
 
 
 function Profile() {
@@ -134,7 +135,7 @@ function Profile() {
       <div class="profile">
         <div className="character">
           
-          <img src={pic1} className="laptop" />
+          <img src={character} className="character" />
          
         </div>
         <div class="profile-container">
@@ -265,7 +266,7 @@ function Profile() {
         </div>
         </div>
         <div>
-          <img src={pic2} className="laptop" />
+          <img src={comp} className="laptop" />
         </div>
         </div>
     </div>
