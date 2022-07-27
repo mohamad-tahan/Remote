@@ -129,7 +129,7 @@ function Profile() {
   // console.log(username)
   return (
     <div>
-      <Navbar />
+      <Navbar disable={true} />
 
       <div class="profile">
         <div className="character">
