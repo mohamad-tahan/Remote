@@ -1,3 +1,4 @@
+import React, { useRef } from "react";
 import Navbar from "../MainPage/Navbar";
 import Sidebar from "./Sidebar";
 import "./Remote.css";
@@ -37,6 +38,7 @@ const Remote = ({ socketRef, roomId }) => {
   const token = localStorage.getItem("token");
 
   const [user_id, setUserId] = useState(owner_id);
+  const editorRef = useRef(null);
 
   const handleRun = () => {
     if (fileName == "Create Remote" || fileName == null) {
@@ -273,10 +275,6 @@ const Remote = ({ socketRef, roomId }) => {
     });
   }, [user_id]);
 
-  function handleEditorWillMount(monaco) {
-    monaco.editor.setTheme("vs-dark");
-  }
-
   return (
     <div className="idePage">
       {showModel && <AddRemote setIsSaving={() => setIsSaving(true)} />}
@@ -292,8 +290,7 @@ const Remote = ({ socketRef, roomId }) => {
               setShowModel(!showModel);
             }}
           />
-        <MyChatbot/>
-
+          <MyChatbot />
 
           <div onClick={changeTheme} className={`sun ${isLight && "dark"}`}>
             <BsFillSunFill />
@@ -333,7 +330,7 @@ const Remote = ({ socketRef, roomId }) => {
             options={{ theme: theme, lineDecorationsWidth: 0 }}
             value={code}
             onChange={(e) => handleCodeChange(e)}
-            beforeMount={handleEditorWillMount}
+            language={language.name}
           />
 
           <div>
