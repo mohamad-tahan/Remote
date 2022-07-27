@@ -5,6 +5,12 @@ import { FaPython } from "react-icons/fa";
 import { useState } from "react";
 import FileBase64 from "react-file-base64";
 import { toast } from "react-hot-toast";
+import { FaJava } from "react-icons/fa";
+import { SiPhp } from "react-icons/si";
+
+
+
+
 
 function FileMap({ i, deleteFile }) {
   const [pressed, setPressed] = useState(false);
@@ -35,11 +41,26 @@ function FileMap({ i, deleteFile }) {
   return (
     <div>
       <div className="files" key={i._id} value={i._id}>
+
         {i.language === "js" ? (
           <TbBrandJavascript className="js" />
-        ) : (
+        ) 
+        : i.language === "py" ? (
           <FaPython className="py" />
-        )}{" "}
+        )
+        : i.language === "java" ? (
+          <FaJava className="java" />
+        ): 
+          i.language === "php" ?(
+           <SiPhp className="php" />
+          ) 
+          : i.language === "cpp" ? (
+           <span className="cpp">C++</span>
+          ) 
+          : (
+            "."
+          )}
+          
         {pressed ? (
           <input
             type="text"
