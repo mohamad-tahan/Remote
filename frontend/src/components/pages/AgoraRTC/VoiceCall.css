@@ -28,6 +28,7 @@
 
 .voiceIcon:hover{
     cursor: pointer;
+    font-size: 42px;
 }
 
 .shareScreen{
@@ -37,4 +38,8 @@
     border-radius: 50%;
     padding: 5px;
     margin-left: 10px;
+}
+
+.isFalse{
+    background-color: gray;
 }
