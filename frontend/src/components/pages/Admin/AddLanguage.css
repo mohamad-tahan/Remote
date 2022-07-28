@@ -1,0 +1,84 @@
+.loginBox,
+.addLanguage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  min-height: 400px;
+  background: linear-gradient(black, rgba(255, 255, 255, 0.195));
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 2px solid gray;
+}
+
+.languageBox {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.btn-add {
+  border: none;
+  outline: none;
+  font-size: 18px;
+  background: white;
+  color: black;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 5px 15px;
+}
+
+.btn-add:hover {
+  background-color: #38005b;
+  color: white;
+}
+.add {
+  color: white;
+  font-size: 33px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 25px;
+  padding-left: 10px;
+}
+
+.languageBox input,
+.signupBox input {
+  width: 100%;
+  margin-bottom: 30px;
+}
+.addLanguage input[type="text"],
+.languageBox input[type="text"] {
+  border: none;
+  border-bottom: 2px solid white;
+  outline: none;
+  height: 30px;
+  color: white;
+  background: transparent;
+  font-size: 16px;
+  padding-left: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.addLanguage input[type="text"]:hover {
+  color: white;
+  border: 1px solid rgb(42 70 37 / 87%);
+  box-shadow: 0 0 5px white, 0 0 10px rgba(229, 99, 63, 0.2),
+    0 0 15px rgba(255, 77, 0, 0.1), 0 2px 0 black;
+}
+
+.addLanguage input[type="text"]:focus {
+  border-bottom: 2px solid rgb(64, 0, 64);
+}
+
+h1 {
+  background-color: rgba(14, 60, 2, 0.515);
+  margin-left: 50px;
+  margin-right: 75px;
+}
+
+.btn {
+  text-align: center;
+}
