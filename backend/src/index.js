@@ -4,6 +4,7 @@ const{addFiles,getFilesbyId,updateFile, removeFile,getFilesbyUserId, updateFileN
 const{addLanguages,getLanguages} = require('./language/controller/language')
 const router = Router();
 const userMiddleware = require('../middleware/userMiddleware')
+const Agora = require("agora-access-token");
 
 router.post('/auth/register', register);
 router.post('/auth/login', login);
@@ -23,9 +24,21 @@ router.put('/auth/updateFileName', userMiddleware(), updateFileName);
 
 
 router.put('/auth/updateUser', userMiddleware(), updateUser);
-
 router.delete('/auth/removeUser', userMiddleware(), removeUser);
 
+router.post("/rtctoken", (req, res) => {
+    const appID = "51f779f5682141f7b835504c65cd312a";
+    const appCertificate = "97d424c16b154c65b1b457ae0eb79730";
+    const expirationTimeInSeconds = 9999999;
+    const uid = Math.floor(Math.random() * 100000);
+    const role = req.body.isPublisher ? Agora.RtcRole.PUBLISHER : Agora.RtcRole.SUBSCRIBER;
+    const channel = req.body.channel;
+    const currentTimestamp = Math.floor(Date.now() / 1000);
+    const expirationTimestamp = currentTimestamp + expirationTimeInSeconds;
+  
+    const token = Agora.RtcTokenBuilder.buildTokenWithUid(appID, appCertificate, channel, uid, role, expirationTimestamp);
+    res.send({ uid, token });
+  });
 
 
 module.exports = router;
