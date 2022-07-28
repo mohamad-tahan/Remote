@@ -1,13 +1,16 @@
-import React, {useEffect, useState} from  'react';
-import {useCallEvents, useJoinCall, useCallControls} from '@agnostech/react-agora-ng';
-import "./VoiceCall.css"
+import React, { useEffect, useState } from "react";
+import {
+  useCallEvents,
+  useJoinCall,
+  useCallControls,
+} from "@agnostech/react-agora-ng";
+import "./VoiceCall.css";
 import { MdKeyboardVoice } from "react-icons/md";
-import { IoIosVideocam } from "react-icons/io";
-
+import { useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const AgoraEvents = () => {
-	
-	//register event listeners
+	const [isToggled, setIsToggled] = useState(false);
 	const {events} = useCallEvents();
 	
 	//array of users in this call
@@ -17,14 +20,17 @@ const AgoraEvents = () => {
 	const {loading, error, localUserId} = useJoinCall({
 		channel: 'remote',  
 		userId: null,  
-		token: "00651f779f5682141f7b835504c65cd312aIABtOgV8nLm7/5k12x29GUgy5mw4Kj8nCBMr20F4qCioDLJ/tloAAAAAEABUJOp9W6PiYgEAAQBbo+Ji",  
+		token: "00651f779f5682141f7b835504c65cd312aIABqAcPbILBoLBx5AtNnepxU5FZkpHkUW0nHrXNPKNJIfrJ/tloAAAAAEABUJOp9s9HjYgEAAQCz0eNi",  
 		localVideoDiv: 'test'
 	});
-	
-    const {toggleVideo, 
-        toggleAudio, 
-      } = useCallControls();
 
+	const { toggleVideo, 
+		toggleAudio, 
+		leave, 
+		startScreenShare, 
+		stopScreenShare
+	  } = useCallControls();
+	
 	useEffect(() => {  
 	  switch (events.event) {  
 		  case "user-joined":  
@@ -44,27 +50,32 @@ const AgoraEvents = () => {
 				  return users.filter(oldUser => oldUser.uid !== user.uid);  
 			  });
 			  break;
+		  // check Agora docs for all the supported evebts.
 		}  
    }, [events, setUsers])
 
 
-   console.log("users", users);
 return (  
-  <div className="voiceChat">
-    <IoIosVideocam className='videoChatIcon' onClick={() => toggleVideo('test')}/>
-    
-      <MdKeyboardVoice  className='voiceIcon' onClick={() => toggleAudio()}/>
+  <div className="App">
+   <span>
+        <MdKeyboardVoice
+          className={`voiceIcon ${isToggled && " isFalse"} `}
+          onClick={() => {
+            setIsToggled(!isToggled);
+            toggleAudio();
+          }}
+        />
+      </span>
 	
-	 <div style={{height: '60%'}} id={'test'}></div>  
-	 <div style={{height: '40%'}}>  
+
 		  {users.map(user => (  
-			  <div key={user.uid.toString()} style={{height: '300px', width: '300px'}} id={user.uid.toString()}>  
-				  {user.videoTrack && user.videoTrack.play(user.uid.toString())}
+			  <div key={user.uid.toString()} id={user.uid.toString()}>  
+				  {/* {user.videoTrack && user.videoTrack.play(user.uid.toString())} */}
 				  {user.audioTrack && user.audioTrack.play()}
 			  </div>  
 		  ))}  
-	 </div>  
+	  
   </div>
 );
-          }
+		  }
 export default AgoraEvents;
