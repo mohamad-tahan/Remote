@@ -9,9 +9,6 @@ import { MdModeEditOutline } from "react-icons/md";
 import comp from "../../../pics/comp.png";
 import character from "../../../pics/character.png";
 
-
-
-
 function Profile() {
   const user_id = localStorage.getItem("user_id");
   const token = localStorage.getItem("token");
@@ -26,12 +23,9 @@ function Profile() {
   const [pic, setPic] = useState("");
 
   const getUser = async () => {
-    const res = await fetch(
-      "http://127.0.0.1:3000/api/user/auth/getUser/?id=" + user_id,
-      {
-        headers: { "content-type": "application/json", token: token },
-      }
-    );
+    const res = await fetch("/auth/getUser/?id=" + user_id, {
+      headers: { "content-type": "application/json", token: token },
+    });
     const data = await res.json();
     // console.log(data);
 
@@ -51,12 +45,9 @@ function Profile() {
 
   const getFiles = async () => {
     console.log("get files");
-    const res = await fetch(
-      "http://127.0.0.1:3000/api/user/auth/getFilesbyUserId/?id=" + user_id,
-      {
-        headers: { "content-type": "application/json", token: token },
-      }
-    );
+    const res = await fetch("/auth/getFilesbyUserId/?id=" + user_id, {
+      headers: { "content-type": "application/json", token: token },
+    });
     const data = await res.json();
 
     if (data) {
@@ -74,7 +65,7 @@ function Profile() {
     // return;
 
     const res = await fetch(
-      "http://localhost:3000/api/user/auth/removeFile/?id=" + myId,
+      "/auth/removeFile/?id=" + myId,
       {
         method: "DELETE",
         headers: {
@@ -94,19 +85,16 @@ function Profile() {
   };
 
   const updateProfile = async (id) => {
-    const res = await fetch(
-      "http://127.0.0.1:3000/api/user/auth/updateUser/?id=" + id,
-      {
-        method: "PUT",
-        headers: { "content-type": "application/json", token: token },
+    const res = await fetch("/auth/updateUser/?id=" + id, {
+      method: "PUT",
+      headers: { "content-type": "application/json", token: token },
 
-        body: JSON.stringify({
-          name: name,
-          username: username,
-          profilePic: pic,
-        }),
-      }
-    );
+      body: JSON.stringify({
+        name: name,
+        username: username,
+        profilePic: pic,
+      }),
+    });
 
     const response = await res.json();
     localStorage.setItem("username", username);
@@ -134,9 +122,7 @@ function Profile() {
 
       <div class="profile">
         <div className="character">
-          
           <img src={character} className="character" />
-         
         </div>
         <div class="profile-container">
           <div class="profile-pic">
@@ -243,32 +229,29 @@ function Profile() {
             </div>
           </div>
         </div>
-
-       
       </div>
       <div className="file-pic">
-       
-      <div class="file-container">
+        <div class="file-container">
           <h1>My Remotes</h1>
           <div class="fileList">
-          {file &&
-            file.map((i, index) => {
-              return (
-                <FileMap
-                  i={i}
-                  key={i._id}
-                  id={i._id}
-                  name={i.name}
-                  deleteFile={() => deleteFile(i._id)}
-                />
-              );
-            })}
-        </div>
+            {file &&
+              file.map((i, index) => {
+                return (
+                  <FileMap
+                    i={i}
+                    key={i._id}
+                    id={i._id}
+                    name={i.name}
+                    deleteFile={() => deleteFile(i._id)}
+                  />
+                );
+              })}
+          </div>
         </div>
         <div>
           <img src={comp} className="laptop" />
         </div>
-        </div>
+      </div>
     </div>
   );
 }

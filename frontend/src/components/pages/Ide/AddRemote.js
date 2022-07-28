@@ -20,7 +20,7 @@ function AddRemote({setIsSaving}) {
     e.preventDefault();
     const user_id = localStorage.getItem("user_id");
     console.log(user_id);
-    const res = await fetch("http://127.0.0.1:3000/api/user/auth/addFiles", {
+    const res = await fetch("/auth/addFiles", {
       method: "POST",
       headers: { "content-type": "application/json" ,
     token:token},

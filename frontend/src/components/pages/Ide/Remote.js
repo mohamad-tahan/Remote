@@ -158,7 +158,7 @@ const Remote = ({ socketRef, roomId }) => {
     }
 
     const res = await fetch(
-      "http://127.0.0.1:3000/api/user/auth/updateFile/?id=" + fileId,
+      "/auth/updateFile/?id=" + fileId,
       {
         method: "PUT",
         headers: { "content-type": "application/json", token: token },
