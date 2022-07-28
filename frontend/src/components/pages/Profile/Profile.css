@@ -255,6 +255,10 @@
   width: 550px;
   height: 550px;
 }
+.character {
+  width: 600px;
+  height: 500px;
+}
 
 .file-pic {
   display: flex;
