@@ -22,13 +22,13 @@ const AdminNav = () => {
         <div className="links">
           <ul>
             <li className="">
-              <Link to="/addUser">Add User</Link>
+              <Link to="/admin/addUser">Add User</Link>
             </li>
             <li className="">
-              <Link to="/viewUsers">View Users</Link>
+              <Link to="/admin/viewUsers">View Users</Link>
             </li>
             <li className="">
-              <Link to="/addLanguage">Add Language</Link>
+              <Link to="/admin/addLanguage">Add Language</Link>
             </li>
           </ul>
         </div>
