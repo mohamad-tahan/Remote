@@ -10,7 +10,7 @@
     background-color: rgb(153, 39, 165);
     border-radius: 50%;
     padding: 5px;
-    margin-left: 10px;
+    margin-right: 15px;
 }
 
 .videoChatIcon{
@@ -42,4 +42,9 @@
 
 .isFalse{
     background-color: gray;
+}
+
+.voiceContainer{
+    display: flex;
+    justify-content: flex-end;
 }
