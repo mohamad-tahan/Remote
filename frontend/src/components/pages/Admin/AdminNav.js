@@ -30,6 +30,9 @@ const AdminNav = () => {
             <li className="">
               <Link to="/admin/addLanguage">Add Language</Link>
             </li>
+            <li className="">
+              <Link to="/admin/viewContacts">Messages</Link>
+            </li>
           </ul>
         </div>
       </nav>
