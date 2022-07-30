@@ -1,0 +1,92 @@
+.contactContainer {
+  color: white;
+  display: flex;
+  border-radius: 10px !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  box-shadow: rgba(255, 255, 255, 0.35) 1px 5px 15px;
+  overflow: hidden;
+  border-radius: 10px;
+  height: 520px;
+}
+
+.remoteInfo {
+  padding: 30px 22px;
+  width: 30%;
+  background-color: rgb(15 14 14);
+  font-size: 15px;
+  text-align: justify;
+}
+
+.contactUs {
+  width: 70%;
+  padding: 15px 35px;
+  background-color: #101d38;
+}
+
+.contactUs input,
+.contactUs textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid white;
+  outline: none;
+  height: 30px;
+  color: white;
+  background: transparent;
+  font-size: 16px;
+  padding-left: 2px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.contactUs textarea {
+  height: 100px;
+  resize: none;
+}
+
+.contactIcon {
+  font-size: 20px;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.contactIcons {
+  margin-top: 20px;
+}
+
+.btn-sendContact {
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 7px 20px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  background-size: 200% auto;
+  cursor: pointer;
+  display: inline-block;
+  background-color: rgb(220, 255, 80);
+}
+
+.btn-sendContact:hover {
+    background-color: rgb(145, 181, 0);
+  }
+
+.contactUs h1{
+    margin-bottom: 15px;
+}
+
+.contactUs input:hover,.contactUs textarea:hover {
+    color: white;
+  border: 1px solid rgb(42 70 37 / 87%);
+  box-shadow: 0 0 5px white, 0 0 10px rgba(229, 99, 63, 0.2),
+    0 0 15px rgba(217, 255, 0, 0.393), 0 2px 0 black;
+}
+
+.contactUs input:focus,.contactUs textarea:focus {
+border-bottom: 2px solid rgba(217, 255, 0, 0.393);
+}
