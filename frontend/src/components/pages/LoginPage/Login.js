@@ -73,9 +73,16 @@ function Login() {
       localStorage.setItem("username", user.username);
 
       try {
+        console.log(response);
         toast.success(`You Are Now Logged in.`);
         localStorage.setItem("token", response["token"]);
+        if(user.user_type === 1){
+          nav("/admin/addUser");
+        }
+        else{
+
         nav("/generateRoomId");
+        }
         setEmail("");
         setPassword("");
       } catch {
