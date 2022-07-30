@@ -45,6 +45,7 @@ async function login(req, res) {
         name: user.name,
         username: user.username,
         email: user.email,
+        user_type: user.user_type,
       },
       TOKEN_SECRET
     );
@@ -100,6 +101,7 @@ async function removeUser(req, res) {
     return res.send({ message: "user Removed" });
   } catch (error) {
     console.log(error);
+    res.status(500).send(error);
   }
 }
 
