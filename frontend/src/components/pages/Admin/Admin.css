@@ -1,0 +1,141 @@
+.loginBox,
+.addLanguage,
+.addUser {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  min-height: 400px;
+  background: linear-gradient(black, rgba(255, 255, 255, 0.195));
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 2px solid gray;
+}
+
+.userBox {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.btn-add {
+  border: none;
+  outline: none;
+  font-size: 18px;
+  background: white;
+  color: black;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 5px 15px;
+  margin-top: 20px;
+}
+
+.btn-add:hover {
+  background-color: #38005b;
+  color: white;
+}
+.add {
+  color: white;
+  font-size: 33px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 25px;
+  padding-left: 10px;
+}
+
+.languageBox input,
+.userBox input {
+  width: 100%;
+  margin-bottom: 30px;
+}
+.addLanguage input[type="text"],
+.languageBox input[type="text"],
+.userBox input[type="text"] ,
+.addUser input[type="text"] ,
+.addUser input[type="password"],
+.addUser input[type="email"] {
+  border: none;
+  border-bottom: 2px solid white;
+  outline: none;
+  height: 30px;
+  color: white;
+  background: transparent;
+  font-size: 16px;
+  padding-left: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.addLanguage input[type="text"]:hover,
+.addUser input[type="text"]:hover {
+  color: white;
+  border: 1px solid rgb(42 70 37 / 87%);
+  box-shadow: 0 0 5px white, 0 0 10px rgba(229, 99, 63, 0.2),
+    0 0 15px rgba(255, 77, 0, 0.1), 0 2px 0 black;
+}
+
+.addLanguage input[type="text"]:focus,
+.addUser input[type="text"]:focus,
+.addUser input[type="password"]:focus,
+.addUser input[type="email"]:focus
+ {
+  border-bottom: 2px solid rgb(64, 0, 64);
+}
+
+
+.btn {
+  text-align: center;
+}
+
+
+.table{
+  background-color: white;
+}
+
+
+.table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 70%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* border-radius: 20px; */
+
+
+}
+
+.table td, #table th {
+  border: 1px solid rgb(49, 49, 49);
+  padding: 8px;
+  text-align: center;
+  /* color: white; */
+  color: white;
+
+  
+}
+
+.table tr{
+  background-color: #1d1c1c;
+}
+
+.table tr:hover {background-color: rgb(112, 112, 112);}
+
+.table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background: rgb(163, 163, 163);
+
+  color: black;
+}
+
+.viewUsers{
+  color: white;
+  text-align: center;
+  font-size: 60px;
+  margin-top: 10px;
+}
