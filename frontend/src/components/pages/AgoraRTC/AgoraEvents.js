@@ -7,7 +7,6 @@ import {
 import "./VoiceCall.css";
 import { MdKeyboardVoice } from "react-icons/md";
 import { useParams } from "react-router-dom";
-import toast from "react-hot-toast";
 
 const AgoraEvents = () => {
 	const [isToggled, setIsToggled] = useState(false);
@@ -24,12 +23,7 @@ const AgoraEvents = () => {
 		localVideoDiv: 'test'
 	});
 
-	const { toggleVideo, 
-		toggleAudio, 
-		leave, 
-		startScreenShare, 
-		stopScreenShare
-	  } = useCallControls();
+	const { toggleAudio} = useCallControls();
 	
 	useEffect(() => {  
 	  switch (events.event) {  
@@ -49,14 +43,16 @@ const AgoraEvents = () => {
 				  const user = events.data.remoteUser;  
 				  return users.filter(oldUser => oldUser.uid !== user.uid);  
 			  });
+			  
 			  break;
-		  // check Agora docs for all the supported evebts.
+
+
 		}  
    }, [events, setUsers])
 
 
 return (  
-  <div className="App">
+  <div className="voiceContainer">
    <span>
         <MdKeyboardVoice
           className={`voiceIcon ${isToggled && " isFalse"} `}
@@ -67,10 +63,8 @@ return (
         />
       </span>
 	
-
 		  {users.map(user => (  
 			  <div key={user.uid.toString()} id={user.uid.toString()}>  
-				  {/* {user.videoTrack && user.videoTrack.play(user.uid.toString())} */}
 				  {user.audioTrack && user.audioTrack.play()}
 			  </div>  
 		  ))}  
