@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import AdminNav from './AdminNav'
 import logo from "../../../pics/logo.png"
 import toast from 'react-hot-toast';
-import "./AddLanguage.css"
+import "./Admin.css"
 
 function AddLanguage() {
   const[language_id, setLanguageId] = useState('');
