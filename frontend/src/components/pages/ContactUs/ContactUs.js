@@ -1,18 +1,59 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Navbar from "../MainPage/Navbar";
 import { FaPhoneAlt } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { BiWorld } from "react-icons/bi";
 import { MdLocationOn } from "react-icons/md";
-
 import "./ContactUs.css";
 import toast from "react-hot-toast";
+import emailjs from '@emailjs/browser';
 
 function ContactUs() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+
+  const form = useRef();
+
+  const sendEmail = async (e) => {
+
+    e.preventDefault();
+    validateInputs();
+    const res = await fetch("/auth/addContactUs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        phone: phone,
+        message: message,
+      }),
+    });
+
+    const response = await res.json();
+    if (response.contact) {
+      toast.success("Message Sent");
+
+      emailjs.sendForm('gmail', 'remote', e.target, 'lQTHQdJIO408z0Shk')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+      e.target.reset();
+
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
+    } else {
+      toast.error("Error Sending Message");
+    }
+  
+  };
 
   function validateInputs() {
     if (!name || !email || !phone || !message) {
@@ -93,6 +134,7 @@ function ContactUs() {
           </div>
         </div>
         <div className="contactUs">
+          <form ref={form} onSubmit={sendEmail}>
           <h1>Pitch Us</h1>
           <div>
             <label>Name</label>
@@ -104,6 +146,7 @@ function ContactUs() {
               placeholder="Enter your name"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              name="name"
             />
           </div>
           <br />
@@ -116,6 +159,7 @@ function ContactUs() {
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              name="email"
             />
           </div>
           <br />
@@ -125,9 +169,10 @@ function ContactUs() {
 
             <input
               type="text"
-              placeholder="Enter your email"
+              placeholder="Enter your phone"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
+              name="phone"
             />
           </div>
 
@@ -140,13 +185,19 @@ function ContactUs() {
               placeholder="Enter your message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
+              name="message"
             />
+            
           </div>
+         
           <br />
 
-          <button className="btn-sendContact" onClick={handleClick}>
-            Send Message
+          <button type="submit" value="Send Message" className="btn-sendContact" >
+            Send message
           </button>
+            
+      
+           </form>
         </div>
       </div>
     </div>
