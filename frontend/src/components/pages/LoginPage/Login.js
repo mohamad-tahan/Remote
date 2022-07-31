@@ -65,7 +65,7 @@ function Login() {
       email,
       password,
     });
-
+    console.log(response);
     if ("token" in response) {
       var user = jwt_decode(response.token);
       console.log(user);
@@ -74,13 +74,16 @@ function Login() {
 
       try {
         console.log(response);
-        toast.success(`You Are Now Logged in.`);
         localStorage.setItem("token", response["token"]);
         if(user.user_type === 1){
+        toast.success(`You Are Now Logged in.`);
           nav("/admin/addUser");
         }
+        else if(user.user_type === 2){
+          toast.error("You are Blocked. Contact Admin");
+        }
         else{
-
+        toast.success(`You Are Now Logged in.`);
         nav("/generateRoomId");
         }
         setEmail("");
