@@ -31,7 +31,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-export default function UserRoom({ username , profilePic}) {
+export default function UserRoom({ username }) {
   const generateColor = () => {
     const randomColor = Math.floor(Math.random() * 16777215)
       .toString(16)
@@ -50,20 +50,12 @@ export default function UserRoom({ username , profilePic}) {
             variant="dot"
           >
             
-    {profilePic === "" ? 
-
-       
+    
 <Avatar
   sx={{ bgcolor: generateColor}}
   alt={username.toUpperCase()}
   src="/broken-image.jpg"
 />
-:
-            <Avatar
-alt={username.toUpperCase()}
-src={profilePic} />
-  }
-
 
           </StyledBadge>
         </Stack>

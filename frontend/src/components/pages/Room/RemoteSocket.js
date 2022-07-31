@@ -15,25 +15,8 @@ const RemoteSocket = () => {
   const { roomId } = useParams();
   const [users, setUsers] = useState([]);
   let nav = useNavigate();
-  const [profilePic, setProflePic] = useState("");
   const token = localStorage.getItem("token");
   const user_id = localStorage.getItem("user_id");
-
-  const getUserProfile = async () => {
-    const res = await fetch("/auth/getUser/?id=" + user_id, {
-      headers: { "content-type": "application/json", token: token },
-    });
-    const data = await res.json();
-    // console.log(data);
-
-    if (data) {
-      setProflePic(data.profilePic);
-    } else {
-      toast.error("Something went wrong.");
-    }
-  };
-
-  // console.log("profile", profilePic);
 
   const init = async () => {
     socketRef.current = await initSocket();
@@ -46,29 +29,24 @@ const RemoteSocket = () => {
     socketRef.current.emit("join", {
       roomId: roomId,
       username: username,
-      profilePic: profilePic,
     });
 
     // Listening for joined users
     socketRef.current.on(
       "joined",
-      ({ users, username, socketId, profilePic }) => {
+      ({ users, username, socketId }) => {
         setUsers(users);
         if (username !== localStorage.getItem("username")) {
           toast.success(username + " Joined The Room.");
         }
         setUsers(users);
-        //  setUserProfile(profilePic);
         socketRef.current.emit("codeSocket", {
           code: codeRef.current,
           socketId,
         });
       }
     );
-    //display profile pic of user
-    socketRef.current.on("joined", ({ profilePic }) => {
-      setProflePic(profilePic);
-    });
+
     // Listening for disconnected Users
     socketRef.current.on("disconnected", ({ socketId, username }) => {
       toast.error(username + " Left The Room.");
@@ -78,13 +56,7 @@ const RemoteSocket = () => {
     });
   };
 
-  useEffect(() => {
-    getUserProfile();
-  }, []);
 
-  // useEffect(() => {
-  //   getUserProfile();
-  // }, [profilePic]);
 
   useEffect(() => {
     init();
@@ -111,14 +83,14 @@ const RemoteSocket = () => {
           </div>
           <div className="joinedUsers">
             {users.map((user) => (
-              <UserRoom username={user.username} profilePic={user.profilePic} />
+              <UserRoom username={user.username} />
             ))}
           </div>
         </div>
 
-        <div>
+        {/* <div>
           <VoiceCall />
-        </div>
+        </div> */}
 
         <Remote socketRef={socketRef} roomId={roomId} />
       </div>

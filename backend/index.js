@@ -23,14 +23,12 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 const userSocketMap = {};
-const profilePicMap = {};
 function getConnectedUsers(roomId) {
   return Array.from(io.sockets.adapter.rooms.get(roomId) || []).map(
     (socketId) => {
       return {
         socketId,
         username: userSocketMap[socketId],
-        profilePic: profilePicMap[socketId],
       };
     }
   );
@@ -39,9 +37,8 @@ function getConnectedUsers(roomId) {
 io.on("connection", (socket) => {
   console.log("socket connected", socket.id);
 
-  socket.on("join", ({ roomId, username, profilePic }) => {
+  socket.on("join", ({ roomId, username }) => {
     userSocketMap[socket.id] = username;
-    profilePicMap[socket.id] = profilePic;
 
     socket.join(roomId);
     const users = getConnectedUsers(roomId);
@@ -49,7 +46,6 @@ io.on("connection", (socket) => {
       io.to(socketId).emit("joined", {
         users,
         username,
-        profilePic,
         socketId: socket.id,
       });
     });
@@ -93,11 +89,9 @@ io.on("connection", (socket) => {
       socket.in(roomId).emit("disconnected", {
         socketId: socket.id,
         username: userSocketMap[socket.id],
-        profilePic: profilePicMap[socket.id],
       });
     });
     delete userSocketMap[socket.id];
-    delete profilePicMap[socket.id];
     socket.leave();
   });
 });
