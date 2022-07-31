@@ -2,7 +2,7 @@ const { Router } = require('express');
 const { register, login, getUser, updateUser, removeUser } = require('./user/controller/user');
 const { addFiles, getFilesbyId, updateFile, removeFile, getFilesbyUserId, updateFileName } = require('./file/controller/file');
 const { addLanguages, getLanguages } = require('./language/controller/language')
-const { addContactUs, getContactUs } = require('./contactUs/controller/contact')
+const { addContactUs, getContactUs,deleteContactUs } = require('./contactUs/controller/contact')
 const router = Router();
 const userMiddleware = require('../middleware/userMiddleware')
 const Agora = require("agora-access-token");
@@ -27,6 +27,8 @@ router.delete('/auth/removeUser', userMiddleware(), removeUser);
 
 router.post('/auth/addContactUs', addContactUs);
 router.get('/auth/getContactUs', getContactUs);
+router.delete('/auth/deleteContactUs', deleteContactUs);
+
 
 
 
