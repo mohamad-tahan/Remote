@@ -39,8 +39,20 @@ async function addContact(body) {
         }
     }
 
+    async function deleteContactUs(req, res) {
+        try {
+            const contact = await ContactUs.findByIdAndDelete( req.query.id );
+            return res.send({ message: "Message Removed" });
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
 
     module.exports = {
         addContactUs,
-        getContactUs
+        getContactUs,
+        deleteContactUs
     }
