@@ -23,7 +23,7 @@ const Home = () => {
    function openIde(){
      if(user_id){
        console.log(user_id)
-       nav('/remote')
+       nav('/generateRoomId')
      }
      else{
       toast.error("You Are Not Registered.")

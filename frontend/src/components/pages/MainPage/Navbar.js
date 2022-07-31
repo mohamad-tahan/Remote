@@ -26,8 +26,19 @@ const Navbar = ({disable=false}) => {
   function openRoom(e){
     e.preventDefault();
     if(user_id){
-      console.log(user_id)
       nav("/generateRoomId");
+
+
+    }
+    else{
+      toast.error("You Are Not Registered. Sign up First.")
+    }
+
+  }
+  function openProfile(e){
+    e.preventDefault();
+    if(user_id){
+      nav("/profile");
 
 
     }
@@ -49,6 +60,7 @@ const Navbar = ({disable=false}) => {
             <li className=""><Link to='' onClick={(e) => openRoom(e)}>Rooms</Link></li>
             {!disable &&
             <li className=""><Link to='/login' >Sign in </Link></li>}
+            <li className=""><Link to='' onClick={(e) => openProfile(e)}>Profile</Link></li>
             <li className=""><Link to='/contactUs' >Contact Us</Link></li>
             <button className='btn-createRemote' onClick={(e) => openIde(e)}>Create Remote</button>
        </ul>
