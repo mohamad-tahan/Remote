@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import UserRoom from "./UserRoom";
 import logo from "../../../pics/logoSpin.png";
 import "./RoomSocket.css";
-import VoiceCall from "../AgoraRTC/VoiceCall";
+import Voice from "../Videosdk/Voice";
 
 const RemoteSocket = () => {
   const username = localStorage.getItem("username");
@@ -88,9 +88,9 @@ const RemoteSocket = () => {
           </div>
         </div>
 
-        {/* <div>
-          <VoiceCall />
-        </div> */}
+        <div>
+          <Voice roomId={roomId}/>
+        </div>
 
         <Remote socketRef={socketRef} roomId={roomId} />
       </div>
