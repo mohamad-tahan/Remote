@@ -24,7 +24,7 @@
 .contactUs {
   width: 70%;
   padding: 15px 35px;
-  background-color: #101d38;
+  background-color: rgba(37,37,37,1);
 }
 
 .contactUs input,
