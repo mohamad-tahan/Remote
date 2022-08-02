@@ -12,15 +12,18 @@
 
 <img src="./readme/title2.svg"/>
 
-> The Well app is a mental health and mindfulness app built on top of the science of positive psychology. The Well app is more than just another meditation or journaling app; it encourages you to enhance and reflect on your day with structured, guided activities.
-> 
-> There are 5 daily tasks that the Well app asks you to complete each day: record 3 gratitudes, write a journal entry, perform 3 acts of kindness, exercise for 20 minutes, and meditate for 15 minutes.
-### User Stories
-- As a user, I want to browsse ablums, so that I can find quick links
-- As a user, I want to browsse ablums, so that I can find quick links
-- As a user, I want to browsse ablums, so that I can find quick links
+>Remote is an IDE, Editor, Compiler, Interpreter that runs and hosts in several programming languages and it is managed by an Admin.
 
+>Users are able to collaborate, live code, file share, and talk with each other in real-time.
+
+>A Chatbot is available to give the users instructions on how to use the website.
+
+### User Stories
+- As a user, I want to be able to write code in different languages.
+- As a user, I want to be able to live code with others.
+- As a user, I want to be able to talk with others via live voice chatting.
 <br><br>
+
 
 <img src="./readme/title3.svg"/>
 
