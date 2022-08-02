@@ -38,14 +38,14 @@
 
 > This design was planned before on paper, then moved to Figma app for the fine details.
 Note that i didn't use any styling library or theme, all from scratch and using pure css modules
-| Landing  | Home/Search  |
+| Landing  | Signup  |
 | -----------------| -----|
-<!-- | ![Landing](https://github.com/julescript/spotifyndr/blob/master/demo/Landing_Page.jpg) | ![Home/Search](https://github.com/julescript/spotifyndr/blob/master/demo/Search_Page.jpg) | -->
-<img src="./readme/home.png"/>
+| ![Landing](https://github.com/mohamad-tahan/Remote/blob/main/readme/home.png) | ![Signup](https://github.com/mohamad-tahan/Remote/blob/main/readme/signup.png) |
+<!-- <img src="./readme/home.png"/>
 <img src="./readme/signup.png"/>
 <img src="./readme/signin.png"/>
 <img src="./readme/remote.png"/>
-<img src="./readme/profile.png"/>
+<img src="./readme/profile.png"/> -->
 
 
 
@@ -65,8 +65,8 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 - For persistent storage (database), the app uses the [MongoDB](https://www.mongodb.com/) package which allows the app to create a custom storage schema and save it to a local database.
 - For real-time coding and file sharing, the app uses the [socket.io](https://socket.io/) package.
 - For the voice chatting, the app uses the [videosdk](https://www.videosdk.live/) package.
-- For the ChatBot, the app uses the [react-chatbot-kit](https://fredrikoseberg.github.io/react-chatbot-kit-docs/docs/ package.
-- For sending emails, the app uses [emailJs](https://www.emailjs.com/)package.
+- For the ChatBot, the app uses the [react-chatbot-kit](https://fredrikoseberg.github.io/react-chatbot-kit-docs/docs/)package.
+- For sending emails, the app uses [emailJs](https://www.emailjs.com/) package.
 
 <br><br>
 <img src="./readme/title5.svg"/>
