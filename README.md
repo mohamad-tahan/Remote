@@ -39,7 +39,7 @@
 > This design was planned before on paper, then moved to Figma app for the fine details.
 > Note that i didn't use any styling library or theme, all from scratch and using pure css modules.
 > <br>
-> | Landing | Signup |
+> | Landing | Signup/Signin/Profile |
 > | -----------------| ----------------- |
 > | ![Landing](https://github.com/mohamad-tahan/Remote/blob/main/readme/home.png) | ![Signup](https://github.com/mohamad-tahan/Remote/blob/main/readme/signup.png) ![Signin](https://github.com/mohamad-tahan/Remote/blob/main/readme/signin.png) ![Profile](https://github.com/mohamad-tahan/Remote/blob/main/readme/profile.png) |
 
