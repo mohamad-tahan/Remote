@@ -21,7 +21,16 @@
 ### User Stories
 - As a user, I want to be able to write code in different languages.
 - As a user, I want to be able to live code with others.
+- As a user, I want to be able to save and download other collaborators files.
 - As a user, I want to be able to talk with others via live voice chatting.
+<br><br>
+
+### Admin Stories
+- As an admin, I want to add a new user.
+- As an admin, I want to view all registered users.
+- As an admin, I want to block users.
+- As an admin, I want to view all user messages and delete them.
+- As an admin, I want to add a new programming languague.
 <br><br>
 
 
@@ -50,20 +59,19 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 <img src="./readme/title4.svg"/>
 
-Here's a brief high-level overview of the tech stack the Well app uses:
+Here's a brief high-level overview of the tech stack the Remote app uses:
 
-- This project uses the [Flutter app development framework](https://flutter.dev/). Flutter is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
-- For persistent storage (database), the app uses the [Hive](https://hivedb.dev/) package which allows the app to create a custom storage schema and save it to a local database.
-- To send local push notifications, the app uses the [flutter_local_notifications](https://pub.dev/packages/flutter_local_notifications) package which supports Android, iOS, and macOS.
-  - 🚨 Currently, notifications aren't working on macOS. This is a known issue that we are working to resolve!
-- The app uses the font ["Work Sans"](https://fonts.google.com/specimen/Work+Sans) as its main font, and the design of the app adheres to the material design guidelines.
-
-
+- This project uses the [ReactJS](https://reactjs.org/). ReactJS is a free and open-source front-end JavaScript library for building user interfaces based on UI components.
+- For persistent storage (database), the app uses the [MongoDB](https://www.mongodb.com/) package which allows the app to create a custom storage schema and save it to a local database.
+- For real-time coding and file sharing, the app uses the [socket.io](https://socket.io/) package.
+- For the voice chatting, the app uses the [videosdk](https://www.videosdk.live/) package.
+- For the ChatBot, the app uses the [react-chatbot-kit](https://fredrikoseberg.github.io/react-chatbot-kit-docs/docs/ package.
+- For sending emails, the app uses [emailJs](https://www.emailjs.com/)package.
 
 <br><br>
 <img src="./readme/title5.svg"/>
 
-> Uing the above mentioned tecch stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
+> Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 | Landing  | Home/Search  |
 | -----------------| -----|
 | ![Landing](https://github.com/julescript/spotifyndr/blob/master/demo/Landing_Page.jpg) | ![Home/Search](https://github.com/julescript/spotifyndr/blob/master/demo/Search_Page.jpg) |
