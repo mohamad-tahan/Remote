@@ -41,23 +41,12 @@
 > <br>
 > | Landing | Signup/Signin/Profile |
 > | -----------------| ----------------- |
-> | ![Landing](https://github.com/mohamad-tahan/Remote/blob/main/readme/home.png) | ![Signup](https://github.com/mohamad-tahan/Remote/blob/main/readme/signup.png) ![Signin](https://github.com/mohamad-tahan/Remote/blob/main/readme/signin.png) ![Profile](https://github.com/mohamad-tahan/Remote/blob/main/readme/profile.png) |
+> | ![Landing](https://github.com/mohamad-tahan/Remote/blob/main/readme/home.png) | ![Signup](https://github.com/mohamad-tahan/Remote/blob/main/readme/signup.png)  |
 
 > | Remote |
 > | -----------------|
 > | ![Remote](https://github.com/mohamad-tahan/Remote/blob/main/readme/remote.png) |
 
-<!-- https://github.com/mohamad-tahan/Remote/blob/main/readme/signin.png -->
-
-<!-- <img src="./readme/home.png"/>
-<img src="./readme/signup.png"/>
-<img src="./readme/signin.png"/>
-<img src="./readme/remote.png"/>
-<img src="./readme/profile.png"/> -->
-
-<!-- | Artists results  | Artist's Albums  |
-| -----------------| -----|
-| ![Artists results](https://github.com/julescript/spotifyndr/blob/master/demo/Artists_Page.jpg) | ![Artist's Albums](https://github.com/julescript/spotifyndr/blob/master/demo/Albums_Page.jpg) | -->
 
 <br><br>
 
