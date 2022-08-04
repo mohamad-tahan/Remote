@@ -103,7 +103,8 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 
 > | Real-Time Coding / File Sharing / Voice Chatting |
 > | ----------------- |
-> https://user-images.githubusercontent.com/105279273/182948983-b41a71ba-82d6-46a1-bfed-3d4dc130a834.mp4
+>
+https://user-images.githubusercontent.com/105279273/182948983-b41a71ba-82d6-46a1-bfed-3d4dc130a834.mp4
 
 
 > | Admin / Add a User |
