@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
-import {Badge, Avatar, Stack} from '@mui/material'
+import { Badge, Avatar, Stack } from "@mui/material";
 import "./RoomSocket.css";
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -35,11 +35,10 @@ export default function UserRoom({ username }) {
   const generateColor = () => {
     const randomColor = Math.floor(Math.random() * 16777215)
       .toString(16)
-      .padStart(6, '0');
+      .padStart(6, "0");
     return `#${randomColor}`;
   };
 
-  
   return (
     <div>
       <div>
@@ -49,14 +48,11 @@ export default function UserRoom({ username }) {
             anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
             variant="dot"
           >
-            
-    
-<Avatar
-  sx={{ bgcolor: generateColor}}
-  alt={username.toUpperCase()}
-  src="/broken-image.jpg"
-/>
-
+            <Avatar
+              sx={{ bgcolor: generateColor }}
+              alt={username.toUpperCase()}
+              src="/broken-image.jpg"
+            />
           </StyledBadge>
         </Stack>
       </div>

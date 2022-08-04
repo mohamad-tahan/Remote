@@ -18,12 +18,15 @@
   justify-content: center;
   align-items: center;
 }
+
 .img {
   padding-top: 10px;
 }
+
 .username {
   font-size: 12px;
 }
+
 .img:hover{
   cursor: pointer;
 }

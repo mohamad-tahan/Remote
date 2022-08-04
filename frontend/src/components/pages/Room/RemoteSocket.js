@@ -6,7 +6,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import UserRoom from "./UserRoom";
 import logo from "../../../pics/logoSpin.png";
 import "./RoomSocket.css";
-import Voice from "../Videosdk/Voice";
 
 const RemoteSocket = () => {
   const username = localStorage.getItem("username");
@@ -15,8 +14,6 @@ const RemoteSocket = () => {
   const { roomId } = useParams();
   const [users, setUsers] = useState([]);
   let nav = useNavigate();
-  const token = localStorage.getItem("token");
-  const user_id = localStorage.getItem("user_id");
 
   const init = async () => {
     socketRef.current = await initSocket();
@@ -56,8 +53,6 @@ const RemoteSocket = () => {
     });
   };
 
-
-
   useEffect(() => {
     init();
 
@@ -87,11 +82,6 @@ const RemoteSocket = () => {
             ))}
           </div>
         </div>
-
-        <div>
-          <Voice roomId={roomId}/>
-        </div>
-
         <Remote socketRef={socketRef} roomId={roomId} />
       </div>
     </>
