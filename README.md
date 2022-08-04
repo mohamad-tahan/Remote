@@ -68,15 +68,10 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 > | Landing | 
 > | ----------------- | 
 >  <img width="100%" src="https://github.com/mohamad-tahan/Remote/blob/main/readme/landing.gif"> 
-<!-- > | ![Landing]() |  -->
-
 
 > | Login |
 > | ----------------- |
 >  <img width="100%" src="https://github.com/mohamad-tahan/Remote/blob/main/readme/login.gif"> 
-
-<!-- > | ![Login](https://github.com/mohamad-tahan/Remote/blob/main/readme/login.gif) | -->
-
 
 > | Join a Room | Create a Remote |
 > | ----------- | --------------------- |
@@ -88,15 +83,15 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 
 > | Run User Input |
 > | ----------------- |
-> | ![RunUserInput](https://github.com/mohamad-tahan/Remote/blob/main/readme/inputCode.gif) |
+>  <img width="100%" src="https://github.com/mohamad-tahan/Remote/blob/main/readme/inputCode.gif"> 
 
 > | Save/Download/Clear |
 > | ----------------- |
-> | ![SaveDownloadClear](https://github.com/mohamad-tahan/Remote/blob/main/readme/saveDownloadClear.gif) |
+>  <img width="100%" src="https://github.com/mohamad-tahan/Remote/blob/main/readme/saveDownloadClear.gif"> 
 
 > | ChatBot |
 > | ----------------- |
-> | ![ChatBot](https://github.com/mohamad-tahan/Remote/blob/main/readme/chatbot.gif) |
+>  <img width="100%" src="https://github.com/mohamad-tahan/Remote/blob/main/readme/chatbot.gif"> 
 
 > | Profile/UpdateInfo | Profile/UpdateFile |
 > | ----------------- | ----------------- |
@@ -104,22 +99,22 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 
 > | Contact Us / Email Message |
 > | ----------------- |
-> | ![ContactUs](https://github.com/mohamad-tahan/Remote/blob/main/readme/contactUs.gif) |
+>  <img width="100%" src="https://github.com/mohamad-tahan/Remote/blob/main/readme/contactUs.gif"> 
 
 > | Real-Time Coding / File Sharing / Voice Chatting |
 > | ----------------- |
-> <video src='https://github.com/mohamad-tahan/Remote/blob/main/readme/realTime.mp4' width=180> </video>
+> <video src='https://github.com/mohamad-tahan/Remote/blob/main/readme/realTime.mp4' width="100%"> 
 <!-- <video width="320" height="240" controls>
   <source src="https://github.com/mohamad-tahan/Remote/blob/main/readme/realTime.mp4">
 </video> -->
 
 > | Admin / Add a User |
 > | ----------------- |
-> | ![AddUser](https://github.com/mohamad-tahan/Remote/blob/main/readme/addUser.gif) |
+>  <img width="100%" src="https://github.com/mohamad-tahan/Remote/blob/main/readme/addUser.gif"> 
 
 > | Admin / View - Search - Block Users |
 > | ----------------- |
-> | ![ViewUsers](https://github.com/mohamad-tahan/Remote/blob/main/readme/viewUsers.gif) |
+>  <img width="100%" src="https://github.com/mohamad-tahan/Remote/blob/main/readme/viewUsers.gif"> 
 
 > | Admin / Add a Language |
 > | ----------------- |
@@ -127,7 +122,8 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 
 > | Admin / Messages |
 > | ----------------- |
-> | ![Messages](https://github.com/mohamad-tahan/Remote/blob/main/readme/messages.gif) |
+>  <img width="100%" src="https://github.com/mohamad-tahan/Remote/blob/main/readme/messages.gif"> 
+
 
 <br><br>
 <img src="./readme/title6.svg"/>
