@@ -50,21 +50,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 function SearchBar({ users, setSearch }) {
-  // console.log("usersssssS:   ", users);
-
   const handleSearch = (value) => {
-
     let result = [];
     result = users.filter((user) => {
-      console.log(user)
-      return (
-        user.name.toLowerCase().includes(value) 
-      )
-    }, 
-    );
-    setSearch(result) 
+      return user.name.toLowerCase().includes(value);
+    });
+    setSearch(result);
   };
-
 
   return (
     <div className="search">
@@ -77,7 +69,6 @@ function SearchBar({ users, setSearch }) {
             placeholder="Search…"
             inputProps={{ "aria-label": "search" }}
             onChange={(e) => handleSearch(e.target.value)}
-         
           />
         </Search>
       </Box>
