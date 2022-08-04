@@ -16,9 +16,8 @@ main {
 .sidebar {
   background: rgb(37, 37, 37);
   color: white;
-  height: 580px;
+  height: 88vh;
   width: 200px;
-  /* transition: all 0.5s; */
   cursor: pointer;
   border-radius: 30px;
   margin-left: 30px;

@@ -1,15 +1,12 @@
-import React, { useRef } from "react";
-import Navbar from "../MainPage/Navbar";
+import React, { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 import "./Remote.css";
 import { VscRunAll } from "react-icons/vsc";
-import { BsSaveFill } from "react-icons/bs";
-import { BsFillSunFill } from "react-icons/bs";
-import { useEffect, useState } from "react";
+import { BsSaveFill, BsFillSunFill } from "react-icons/bs";
 import toast from "react-hot-toast";
 import axios from "axios";
 import Spinner from "../../../Spinner/Spinner";
-import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
+import Editor from "@monaco-editor/react";
 import { AiOutlineClear } from "react-icons/ai";
 import LanguagesDropdown from "./LanguagesDropdown";
 import DownloadLink from "react-download-link";
@@ -17,6 +14,7 @@ import { HiDocumentDownload } from "react-icons/hi";
 import FilesDropdown from "./FilesDropdown";
 import AddRemote from "./AddRemote";
 import MyChatbot from "../Chatbot/MyChatbot";
+import Voice from "../Videosdk/Voice";
 
 const Remote = ({ socketRef, roomId }) => {
   const [isLight, setIsLight] = useState(false);
@@ -36,9 +34,7 @@ const Remote = ({ socketRef, roomId }) => {
   const [isSaving, setIsSaving] = useState(false);
   const [theme, setTheme] = useState("vs-dark");
   const token = localStorage.getItem("token");
-
   const [user_id, setUserId] = useState(owner_id);
-  const editorRef = useRef(null);
 
   const handleRun = () => {
     if (fileName == "Create Remote" || fileName == null) {
@@ -60,23 +56,17 @@ const Remote = ({ socketRef, roomId }) => {
       headers: {
         "content-type": "application/json",
         "Content-Type": "application/json",
-        "X-RapidAPI-Key": "c1619b850amshcd9170131f254aep18028fjsn380bac32c1bf",
-        "X-RapidAPI-Host": "judge0-ce.p.rapidapi.com",
+        "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+        "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
       },
       data: data,
     })
       .then(function (response) {
-        console.log(response);
         const token = response.data.token;
         getResponse(token);
       })
       .catch((err) => {
         let error = err.response ? err.response.data : err;
-        // get error status
-        let status = err.response.status;
-        if (status === 429) {
-          console.log("Freemium ended: ", status);
-        }
         console.log("Catch: ", error);
       });
   };
@@ -89,18 +79,15 @@ const Remote = ({ socketRef, roomId }) => {
       headers: {
         "content-type": "application/json",
         "Content-Type": "application/json",
-        "X-RapidAPI-Key": "c1619b850amshcd9170131f254aep18028fjsn380bac32c1bf",
-        "X-RapidAPI-Host": "judge0-ce.p.rapidapi.com",
+        "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+        "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
       },
     };
     try {
       let response = await axios.request(res);
       let statusDescription = response.data.status.description;
       let statusId = response.data.status.id;
-      console.log(response.data.status);
-      console.log(statusId);
       toast(statusDescription);
-
       //  statusId = 1 and statusId = 2 stand for in queue and processing so they need some time to get the response
       if (statusId === 1 || statusId === 2) {
         setTimeout(() => {
@@ -108,21 +95,15 @@ const Remote = ({ socketRef, roomId }) => {
         }, 2000);
         return;
       } else {
-        console.log(response);
         setOutput(atob(response.data.stdout));
         setSpin(false);
-        setInput(atob(response.data.stdin));
-        console.log(atob(response.data.stdout)); //atob decodes the code that we got from the response and stdout is the standard output of the code
+        setInput(atob(response.data.stdin)); //atob decodes the code that we got from the response and stdout is the standard output of the code
         return;
       }
     } catch (err) {
       console.log("Error: ", err);
     }
   };
-
-  useEffect(() => {
-    setTheme("vs-dark");
-  }, []);
 
   const changeTheme = (e) => {
     theme === "light" ? setTheme("vs-dark") : setTheme("light");
@@ -138,43 +119,34 @@ const Remote = ({ socketRef, roomId }) => {
       },
     });
     setIsLight(!isLight);
-    console.log(e);
   };
 
   //handleClear() clears code,input and output
   const handleClear = (e) => {
-    // e.preventDefault();
     setCode("");
     setInput("");
     setOutput("");
   };
 
+  //handleSave() saves the code in the database
   const handleSave = async (e) => {
     e.preventDefault();
-    console.log(fileName);
     if (fileName == "Create Remote" || fileName === null) {
       toast.error("Create a Remote First");
       return;
     }
+    const res = await fetch("/auth/updateFile/?id=" + fileId, {
+      method: "PUT",
+      headers: { "content-type": "application/json", token: token },
 
-    const res = await fetch(
-      "/auth/updateFile/?id=" + fileId,
-      {
-        method: "PUT",
-        headers: { "content-type": "application/json", token: token },
-
-        body: JSON.stringify({
-          name: fileName,
-          code: code,
-          language: language.extension,
-          owner_id: user_id,
-        }),
-      }
-    );
-
+      body: JSON.stringify({
+        name: fileName,
+        code: code,
+        language: language.extension,
+        owner_id: user_id,
+      }),
+    });
     const response = await res.json();
-    console.log(response);
-
     if (response) {
       toast.success(`Remote Saved`);
       setIsSaving(true);
@@ -182,12 +154,12 @@ const Remote = ({ socketRef, roomId }) => {
       toast.error("Error Saving Remote");
     }
   };
+
   const handleFileChange = (e) => {
     e = JSON.parse(e);
     setCode(e.code);
     setFileName(e.name);
     setFileId(e._id);
-    console.log(e);
   };
 
   const handleCodeChange = (e) => {
@@ -200,36 +172,13 @@ const Remote = ({ socketRef, roomId }) => {
     });
   };
 
-  //handling code change in socket room
+  //handling code / userId / fileid / fileName in socket room
   useEffect(() => {
-    if (socketRef.current) {
-      socketRef.current.on("codeChange", ({ code }) => {
-        console.log(code);
-        setCode(code);
-      });
-    }
-    return () => {
-      socketRef.current.off("codeChange");
-    };
-  }, [socketRef.current]);
-
-  // useEffect(()=>{
-  //   socketRef.current?.emit("codeChange", {
-  //     roomId,
-  //     code,
-  // });
-  // },[code])
-
-  useEffect(() => {
-    if (socketRef.current) {
-      socketRef.current.on("fileChange", ({ fileName }) => {
-        setFileName(fileName);
-      });
-    }
-    return () => {
-      socketRef.current.off("fileChange");
-    };
-  }, [socketRef.current]);
+    socketRef.current?.emit("userIdChange", {
+      roomId,
+      user_id,
+    });
+  }, [user_id]);
 
   useEffect(() => {
     socketRef.current?.emit("fileChange", {
@@ -237,17 +186,6 @@ const Remote = ({ socketRef, roomId }) => {
       fileName,
     });
   }, [fileName]);
-
-  useEffect(() => {
-    if (socketRef.current) {
-      socketRef.current.on("fileIdChange", ({ fileId }) => {
-        setFileId(fileId);
-      });
-    }
-    return () => {
-      socketRef.current.off("fileIdChange");
-    };
-  }, [socketRef.current]);
 
   useEffect(() => {
     socketRef.current?.emit("fileIdChange", {
@@ -258,30 +196,41 @@ const Remote = ({ socketRef, roomId }) => {
 
   useEffect(() => {
     if (socketRef.current) {
+      socketRef.current.on("fileIdChange", ({ fileId }) => {
+        setFileId(fileId);
+      });
       socketRef.current.on("userIdChange", ({ user_id }) => {
         setFileId(user_id);
-        console.log(user_id);
+      });
+      socketRef.current.on("fileChange", ({ fileName }) => {
+        setFileName(fileName);
+      });
+      socketRef.current.on("codeChange", ({ code }) => {
+        setCode(code);
       });
     }
     return () => {
       socketRef.current.off("userIdChange");
+      socketRef.current.off("fileIdChange");
+      socketRef.current.off("codeChange");
+      socketRef.current.off("codeChange");
     };
   }, [socketRef.current]);
 
   useEffect(() => {
-    socketRef.current?.emit("userIdChange", {
-      roomId,
-      user_id,
-    });
-  }, [user_id]);
+    setTheme("vs-dark");
+  }, []);
 
   return (
     <div className="idePage">
-      {showModel && <AddRemote setIsSaving={() => setIsSaving(true)} />}
+      {showModel && (
+        <AddRemote
+          setIsSaving={() => setIsSaving(true)}
+          setFileName={setFileName}
+        />
+      )}
 
       {spin && <Spinner />}
-
-      {/* <div> */}
 
       <div className={`ideContainer ${isLight && " lightTheme"}`}>
         <div className={`ide ${isLight && " lightTheme"}`}>
@@ -290,6 +239,7 @@ const Remote = ({ socketRef, roomId }) => {
               setShowModel(!showModel);
             }}
           />
+
           <MyChatbot />
 
           <div onClick={changeTheme} className={`sun ${isLight && "dark"}`}>
@@ -322,7 +272,6 @@ const Remote = ({ socketRef, roomId }) => {
             <div />
           </div>
           <p className="fileName">{fileName}</p>
-
           <Editor
             height="53vh"
             width="90vh"
@@ -331,20 +280,17 @@ const Remote = ({ socketRef, roomId }) => {
             value={code}
             onChange={(e) => handleCodeChange(e)}
             language={language.name}
+            className="editor"
           />
-
           <div>
             <p className="inputCode">Input</p>
-
             <textarea
               className={`input ${isLight && " theme"}`}
               onChange={(e) => setInput(e.target.value)}
               value={input}
-              // onKeyPress={(e) => e.key === "Enter" && handleRun()}
             />
           </div>
         </div>
-
         <div>
           <div className="drop">
             <FilesDropdown
@@ -352,20 +298,17 @@ const Remote = ({ socketRef, roomId }) => {
               isSaving={isSaving}
               onFileSelect={(e) => handleFileChange(e)}
             />
+            <Voice roomId={roomId} />
           </div>
           <p className="outputCode">Output</p>
-
-          {
-            <textarea
-              className={`output ${isLight && " theme"}`}
-              onChange={(e) => setOutput(e)}
-              value={output}
-              disabled={true}
-            />
-          }
+          <textarea
+            className={`output ${isLight && " theme"}`}
+            onChange={(e) => setOutput(e)}
+            value={output}
+            disabled={true}
+          />
         </div>
       </div>
-      {/* </div> */}
     </div>
   );
 };

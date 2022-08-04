@@ -15,14 +15,13 @@
   color: white;
   box-shadow: 2px 2px 2px 1px #2e2d50;
   padding: 6px 10px;
-
   resize: none;
 }
 
 .output {
   background-color: #1e1e1e;
-  width: 280px;
-  height: 500px;
+  width: 42vh;
+  height: 76vh;
   border: none;
   border-radius: 5px;
   box-shadow: 1px 1px 1px 1px #383f25;
@@ -36,8 +35,8 @@
 .input {
   color: white;
   background-color: #1e1e1e;
-  width: 590px;
-  height: 130px;
+  width: 90vh;
+  height: 20vh;
   border-radius: 5px;
   border: 1px solid rgb(25, 25, 25);
   margin-top: 2px;
@@ -51,9 +50,9 @@
   font-size: 30px;
   color: rgb(106, 0, 130);
 }
-.run:hover{
-  font-size: 33px;
 
+.run:hover {
+  font-size: 33px;
 }
 
 .save {
@@ -61,9 +60,8 @@
   font-size: 25px;
   color: rgb(106, 0, 130);
 }
-.save:hover{
+.save:hover {
   font-size: 28px;
-
 }
 
 .ideIcons {
@@ -111,6 +109,7 @@
   padding: 0 12px;
   font-size: 12px;
 }
+
 .lightTheme {
   background-color: #25296e;
   color: black;
@@ -131,6 +130,7 @@
   margin-left: 43px;
   z-index: 10;
 }
+
 .sun:hover {
   color: yellow;
   transition: all 0.3s;
@@ -160,7 +160,8 @@ div.overflow-guard {
   right: 20px;
   top: 2px;
 }
-.clear:hover{
+
+.clear:hover {
   font-size: 30px;
 }
 
@@ -192,12 +193,12 @@ div.overflow-guard {
   right: 25px;
   top: 2px;
 }
-.download:hover{
+.download:hover {
   font-size: 33px;
 }
 
 .filesDropdown {
-  width: 280px;
+  width: 42vh;
   height: 25px;
   margin-right: 40px;
   margin-top: 16px;
@@ -214,7 +215,6 @@ div.overflow-guard {
     #031f3b 100%
   );
 }
-
 
 .file {
   color: purple;
@@ -238,4 +238,31 @@ div.overflow-guard {
   display: flex;
   gap: 20px;
   justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .ideContainer {
+    flex-direction: column;
+  }
+  .save {
+    flex-direction: column;
+  }
+  .output {
+    width: 75vh;
+    height: 20vh;
+    gap: 0;
+    margin-bottom: 10px;
+  }
+  .input {
+    width: 75vh;
+    height: 20vh;
+  }
+  .filesDropdown {
+    width: 100vh;
+    text-align: center;
+    margin: 0;
+  }
+  .editor {
+    width: 75vh;
+  }
 }

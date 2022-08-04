@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import "./Remote.css";
-import { AiFillFileText } from "react-icons/ai";
-import logo from "../../../pics/logoSpin.png";
 
 const FilesDropdown = ({ onFileSelect, setIsSaving, isSaving }) => {
   const [files, setFiles] = useState([]);
@@ -15,11 +13,9 @@ const FilesDropdown = ({ onFileSelect, setIsSaving, isSaving }) => {
       headers: { "content-type": "application/json", token: token },
     });
     const data = await res.json();
-    console.log(data);
 
     if (data) {
       setFiles(data);
-      console.log(data);
     } else {
       toast.error("Something went wrong.");
     }

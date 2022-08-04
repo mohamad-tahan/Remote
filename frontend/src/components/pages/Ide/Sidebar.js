@@ -2,16 +2,14 @@ import React, { useState } from "react";
 import "./Sidebar.css";
 import { FaBars, FaUserAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { AiFillHome, AiOutlinePlus } from "react-icons/ai";
+import { AiFillHome } from "react-icons/ai";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import PlusButton from "./PlusButton";
 import { TbCopy } from "react-icons/tb";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
-const Sidebar = ({ setShowModel, setIsSaving }) => {
-  let nav = useNavigate();
+const Sidebar = ({ setShowModel }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const username = localStorage.getItem("username");
