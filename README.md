@@ -100,17 +100,32 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 > | ----------------- | ----------------- |
 > | ![Profile1](https://github.com/mohamad-tahan/Remote/blob/main/readme/profile1.gif) | ![Profile2](https://github.com/mohamad-tahan/Remote/blob/main/readme/profile2.gif) |
 
-> | Email Sending |
+> | Contact Us / Email Message |
 > | ----------------- |
 > | ![ContactUs](https://github.com/mohamad-tahan/Remote/blob/main/readme/contactUs.gif) |
 
-<!-- > | Real-Time Coding / File Sharing / Voice Chatting |
-> | ----------------- | -->
-<video src='https://github.com/mohamad-tahan/Remote/blob/main/readme/realTime.mp4' width=180> </video>
+> | Real-Time Coding / File Sharing / Voice Chatting |
+> | ----------------- |
+> <video src='https://github.com/mohamad-tahan/Remote/blob/main/readme/realTime.mp4' width=180> </video>
 <!-- <video width="320" height="240" controls>
   <source src="https://github.com/mohamad-tahan/Remote/blob/main/readme/realTime.mp4">
 </video> -->
 
+> | Admin / Add a User |
+> | ----------------- |
+> | ![AddUser](https://github.com/mohamad-tahan/Remote/blob/main/readme/addUser.gif) |
+
+> | Admin / View/Search/Block Users |
+> | ----------------- |
+> | ![ViewUsers](https://github.com/mohamad-tahan/Remote/blob/main/readme/viewUsers.gif) |
+
+> | Admin / Add a Language |
+> | ----------------- |
+> | ![AddLanguage](https://github.com/mohamad-tahan/Remote/blob/main/readme/addLanguage.gif) |
+
+> | Admin / Messages |
+> | ----------------- |
+> | ![Messages](https://github.com/mohamad-tahan/Remote/blob/main/readme/messages.gif) |
 
 <br><br>
 <img src="./readme/title6.svg"/>
