@@ -65,9 +65,20 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 <img src="./readme/title5.svg"/>
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
-> | Landing | Home/Search |
-> | -----------------| -----|
+> | Landing | Login |
+> | ----------------- | ----------------- |
 > | ![Landing](https://github.com/mohamad-tahan/Remote/blob/main/readme/landing.gif) | ![Login](https://github.com/mohamad-tahan/Remote/blob/main/readme/login.gif) |
+
+> | Join a Room | Create a Remote |
+> | ----------------- | ----------------- |
+> | ![JoinRoom](https://github.com/mohamad-tahan/Remote/blob/main/readme/generateroomId.gif) | ![CreateRemote](https://github.com/mohamad-tahan/Remote/blob/main/readme/createRemote.gif) |
+
+> | Run Code |
+> | ----------------- | ----------------- |
+> | ![RunCode1](https://github.com/mohamad-tahan/Remote/blob/main/readme/runCode1.gif) | ![RunCode2](https://github.com/mohamad-tahan/Remote/blob/main/readme/runCode2.gif) |
+
+
+
 
 <br><br>
 <img src="./readme/title6.svg"/>
