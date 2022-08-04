@@ -43,6 +43,7 @@
   color: white;
   background-position: right center;
 }
+
 .add {
   color: white;
   font-size: 33px;
@@ -58,10 +59,11 @@
   width: 100%;
   margin-bottom: 30px;
 }
+
 .addLanguage input,
 .languageBox input,
-.userBox input ,
-.addUser input ,
+.userBox input,
+.addUser input,
 .addUser input,
 .addUser input {
   border: none;
@@ -87,21 +89,17 @@
 .addLanguage input:focus,
 .addUser input:focus,
 .addUser input:focus,
-.addUser input:focus
- {
+.addUser input:focus {
   border-bottom: 2px solid rgb(64, 0, 64);
 }
-
 
 .btn {
   text-align: center;
 }
 
-
-.table{
+.table {
   background-color: white;
 }
-
 
 .table {
   font-family: Arial, Helvetica, sans-serif;
@@ -110,41 +108,39 @@
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 20px;
-
 }
 
-.table td, #table th {
+.table td,
+#table th {
   border: 1px solid rgb(49, 49, 49);
   padding: 8px;
   text-align: center;
-  /* color: white; */
   color: white;
-
-  
 }
 
-.table tr{
+.table tr {
   background-color: #1d1c1c;
 }
 
-.table tr:hover {background-color: rgb(112, 112, 112);}
+.table tr:hover {
+  background-color: rgb(112, 112, 112);
+}
 
 .table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
   background: rgb(163, 163, 163);
-
   color: black;
 }
 
-.viewUsers{
+.viewUsers {
   color: white;
   text-align: center;
   font-size: 60px;
   margin-top: 10px;
 }
 
-.search{
+.search {
   text-align: center;
 }

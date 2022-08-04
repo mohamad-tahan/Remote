@@ -5,7 +5,6 @@ import { BsFillSunFill } from "react-icons/bs";
 import { HiDocumentDownload } from "react-icons/hi";
 import { AiOutlineClear } from "react-icons/ai";
 
-
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   const handleHello = () => {
     const botMessage = createChatBotMessage("Hello. Nice to meet you.");
@@ -18,7 +17,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   const handleRun = () => {
     const botMessage = createChatBotMessage(
       <>
-        Type your code then press on  <VscRunAll/> to run it.
+        Type your code then press on <VscRunAll /> to run it.
       </>
     );
 
@@ -30,7 +29,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   const handleDownload = () => {
     const botMessage = createChatBotMessage(
       <>
-        Press on <HiDocumentDownload/> to download your file to your pc.
+        Press on <HiDocumentDownload /> to download your file to your pc.
       </>
     );
 
@@ -42,7 +41,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   const handleClear = () => {
     const botMessage = createChatBotMessage(
       <>
-        Press on <AiOutlineClear/> to clear your code.
+        Press on <AiOutlineClear /> to clear your code.
       </>
     );
 
@@ -54,7 +53,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   const handleSave = () => {
     const botMessage = createChatBotMessage(
       <>
-        Press on <BsSaveFill/> to save your remote.
+        Press on <BsSaveFill /> to save your remote.
       </>
     );
 
@@ -67,7 +66,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   const handleTheme = () => {
     const botMessage = createChatBotMessage(
       <>
-        Press on <BsFillSunFill/> to switch between dark and light mode.
+        Press on <BsFillSunFill /> to switch between dark and light mode.
       </>
     );
 
@@ -79,9 +78,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
 
   const handleRemotes = () => {
     const botMessage = createChatBotMessage(
-      <>
-       Press on My Remotes dropdown to see your remotes.
-      </>
+      <>Press on My Remotes dropdown to see your remotes.</>
     );
 
     setState((prev) => ({
@@ -91,9 +88,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   };
   const handleLanguage = () => {
     const botMessage = createChatBotMessage(
-      <>
-       Press on Language dropdown to choose a language.
-      </>
+      <>Press on Language dropdown to choose a language.</>
     );
 
     setState((prev) => ({
@@ -101,12 +96,10 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
       messages: [...prev.messages, botMessage],
     }));
   };
-  
+
   const handleOutput = () => {
     const botMessage = createChatBotMessage(
-      <>
-      See the output of your code in the output section.
-      </>
+      <>See the output of your code in the output section.</>
     );
 
     setState((prev) => ({
@@ -115,12 +108,9 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
     }));
   };
 
-  
   const handleInput = () => {
     const botMessage = createChatBotMessage(
-      <>
-      Type the input you want to run in the input section.
-      </>
+      <>Type the input you want to run in the input section.</>
     );
 
     setState((prev) => ({
@@ -130,9 +120,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   };
   const handleNotFound = () => {
     const botMessage = createChatBotMessage(
-      <>
-      Sorry, I didn't understand that.
-      </>
+      <>Sorry, I didn't understand that.</>
     );
 
     setState((prev) => ({

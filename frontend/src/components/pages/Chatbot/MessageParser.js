@@ -1,44 +1,31 @@
-// in MessageParser.js
-import React from 'react';
+import React from "react";
 
 const MessageParser = ({ children, actions }) => {
   const parse = (message) => {
-    if (message.includes('hello') || message.includes('hi')) {
+    if (message.includes("hello") || message.includes("hi")) {
       actions.handleHello();
-    }
-   else if (message.includes('remote' ) ) {
+    } else if (message.includes("remote")) {
       actions.handleRemotes();
-    }
-    else if ((message.includes('save') )) {
+    } else if (message.includes("save")) {
       actions.handleSave();
-    }
-    else if ((message.includes('download'))) {
+    } else if (message.includes("download")) {
       actions.handleDownload();
-    }
-    else if (message.includes('run') || message.includes('execute')) {
+    } else if (message.includes("run") || message.includes("execute")) {
       actions.handleRun();
-    }
-    else if (message.includes('clear')|| message.includes('clean')) {
+    } else if (message.includes("clear") || message.includes("clean")) {
       actions.handleClear();
-    }
-    else if (message.includes('theme' )|| (message.includes('color'))) {
+    } else if (message.includes("theme") || message.includes("color")) {
       actions.handleTheme();
-    }
-    else  if (message.includes('language' )) {
+    } else if (message.includes("language")) {
       actions.handleLanguage();
-    }
-    else if (message.includes('output' )) {
+    } else if (message.includes("output")) {
       actions.handleOutput();
-    }
-    else if (message.includes('input')) {
+    } else if (message.includes("input")) {
       actions.handleInput();
-    }
-    else{
+    } else {
       actions.handleNotFound();
     }
   };
-
-
 
   return (
     <div>
