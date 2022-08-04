@@ -65,32 +65,26 @@ function Login() {
       email,
       password,
     });
-    console.log(response);
     if ("token" in response) {
       var user = jwt_decode(response.token);
-      console.log(user);
       localStorage.setItem("user_id", user._id);
       localStorage.setItem("username", user.username);
 
       try {
-        console.log(response);
         localStorage.setItem("token", response["token"]);
-        if(user.user_type === 1){
-        toast.success(`You Are Now Logged in.`);
+        if (user.user_type === 1) {
+          toast.success(`You Are Now Logged in.`);
           nav("/admin/addUser");
-        }
-        else if(user.user_type === 2){
+        } else if (user.user_type === 2) {
           toast.error("You are Blocked. Contact Admin");
-        }
-        else{
-        toast.success(`You Are Now Logged in.`);
-        nav("/generateRoomId");
+        } else {
+          toast.success(`You Are Now Logged in.`);
+          nav("/generateRoomId");
         }
         setEmail("");
         setPassword("");
       } catch {
         toast.error("Failed.");
-        console.log(response);
       }
     } else {
       toast.error("You are not Authorized!");
@@ -102,11 +96,9 @@ function Login() {
       headers: {
         "Content-Type": "application/json",
       },
-
       body: JSON.stringify(credentials),
     })
       .then((response) => response.json())
-
       .catch((err) => toast.error("You Are Not Authorized. Sign Up"));
   }
 

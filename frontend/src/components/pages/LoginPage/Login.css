@@ -30,7 +30,6 @@
 .span {
   font-size: 12px;
   color: beige;
- 
 }
 
 .text {
@@ -38,8 +37,7 @@
   font-weight: bold;
   line-height: 20px;
   letter-spacing: 0.5px;
-  margin: 20px 0 30px;
-  
+  margin: 20px 0 30px; 
 }
 
 .social {
@@ -72,6 +70,7 @@
 .social-container {
   margin: 20px 0;
 }
+
 .signup{
   margin:12px 0;
 }
@@ -235,5 +234,3 @@
   background-image: linear-gradient(to right, #2281df 0%, #f311d5 51%, #2281df 100%);
   background-position: right center;
 }
-
-
