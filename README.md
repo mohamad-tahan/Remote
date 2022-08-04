@@ -65,8 +65,8 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 <img src="./readme/title5.svg"/>
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
-> | Landing | 
-> | ----------------- | 
+
+
 >  <img width="100%" src="https://github.com/mohamad-tahan/Remote/blob/main/readme/landing.gif"> 
 <!-- > | ![Landing]() |  -->
 
@@ -130,21 +130,19 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 <br><br>
 <img src="./readme/title6.svg"/>
 
-> This is an example of how you may give instructions on setting up your project locally.
-> To get a local copy up and running follow these simple example steps.
+
+> To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
 
 - npm
-  ```sh
-  npm install npm@latest -g
-  ```
+> Download and install ![Node.js](https://nodejs.org/en/download/)
+
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
 1. Clone the repo
    ```sh
