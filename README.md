@@ -115,7 +115,7 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 > | ----------------- |
 > | ![AddUser](https://github.com/mohamad-tahan/Remote/blob/main/readme/addUser.gif) |
 
-> | Admin / View/Search/Block Users |
+> | Admin / View - Search - Block Users |
 > | ----------------- |
 > | ![ViewUsers](https://github.com/mohamad-tahan/Remote/blob/main/readme/viewUsers.gif) |
 
@@ -146,16 +146,36 @@ This is an example of how to list things you need to use the software and how to
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/mohamad-tahan/Remote.git
    ```
-3. Install NPM packages
+2. Get a free API Key to run your code at [Judge0](https://rapidapi.com/judge0-official/api/judge0-ce/)
+
+3. Enter your API in `.env`
+   ```js
+   REACT_APP_RAPID_API_KEY= "ENTER YOUR API KEY";
+   REACT_APP_RAPID_API_HOST= "ENTER YOUR API HOST";
+
+   ```
+
+ #### To Run The Backend:  
+ 1. Navigate to the backend folder
    ```sh
+   cd Remote/backend
+   ```
+ 2. Install NPM Packages  
+  ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = "ENTER YOUR API";
+   #### To Run The Frontend:  
+ 1. Navigate to the frontend folder
+   ```sh
+   cd Remote/frontend
    ```
+2. Install NPM Packages  
+  ```sh
+   npm install
+   ```
+
+  
