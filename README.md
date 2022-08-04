@@ -105,6 +105,9 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 > | ----------------- |
 >
 
+
+
+
 > | Admin / Add a User |
 > | ----------------- |
 >  <img width="100%" src="https://github.com/mohamad-tahan/Remote/blob/main/readme/addUser.gif"> 
