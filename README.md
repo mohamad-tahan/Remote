@@ -66,7 +66,7 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 > | Landing | 
-<!-- > | ----------------- |  -->
+> | ----------------- | 
 >  <img width="100%" src="https://github.com/mohamad-tahan/Remote/blob/main/readme/landing.gif"> 
 <!-- > | ![Landing]() |  -->
 
@@ -92,9 +92,9 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 > | ----------------- |
 > | ![ChatBot](https://github.com/mohamad-tahan/Remote/blob/main/readme/chatbot.gif) |
 
-> | Profile |
-> | ----------------- | ----------------- |
-> | ![Profile1](https://github.com/mohamad-tahan/Remote/blob/main/readme/profile1.gif) | ![Profile2](https://github.com/mohamad-tahan/Remote/blob/main/readme/profile2.gif) |
+> | Profile | 
+> | ----------------- |
+> | ![Profile1](https://github.com/mohamad-tahan/Remote/blob/main/readme/profile1.gif)  ![Profile2](https://github.com/mohamad-tahan/Remote/blob/main/readme/profile2.gif) |
 
 
 
