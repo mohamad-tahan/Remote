@@ -3,13 +3,13 @@
 <div align="center">
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.  
-> **[PROJECT PHILOSOPHY](https://github.com/mohamad-tahan/Remote#philosophy) • [WIREFRAMES](https://github.com/julescript/well_app#-wireframes) • [TECH STACK](https://github.com/julescript/well_app#-tech-stack) • [IMPLEMENTATION](https://github.com/julescript/well_app#-impplementation) • [HOW TO RUN?](https://github.com/julescript/well_app#-how-to-run)**
+> **[PROJECT PHILOSOPHY](https://github.com/mohamad-tahan/Remote#philosophy) • [WIREFRAMES](https://github.com/mohamad-tahan/Remote#wireframes) • [TECH STACK](https://github.com/mohamad-tahan/Remote#tech-stack) • [IMPLEMENTATION](https://github.com/mohamad-tahan/Remote#implementation) • [HOW TO RUN?](https://github.com/mohamad-tahan/Remote#installation)**
 
 </div>
 
 <br><br>
 
-<img src="./readme/title2.svg"/>
+<img id="philosophy" src="./readme/title2.svg"/>
 
 > Remote is an IDE, Editor, Compiler, Interpreter that runs and hosts in several programming languages and it is managed by an Admin.
 
@@ -34,7 +34,7 @@
 - As an admin, I want to add a new programming languague.
   <br><br>
 
-<img id="philosophy" src="./readme/title3.svg"/>
+<img id="wireframes" src="./readme/title3.svg"/>
 
 > This design was planned before on paper, then moved to Figma app for the fine details.
 > Note that i didn't use any styling library or theme, all from scratch and using pure css modules.
@@ -50,7 +50,7 @@
 
 <br><br>
 
-<img src="./readme/title4.svg"/>
+<img id="tech-stack" src="./readme/title4.svg"/>
 
 Here's a brief high-level overview of the tech stack the Remote app uses:
 
@@ -62,7 +62,7 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 - For sending emails, the app uses [emailJS](https://www.emailjs.com/) package.
 
 <br><br>
-<img src="./readme/title5.svg"/>
+<img id="implementation" src="./readme/title5.svg"/>
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 > | Landing | 
@@ -134,7 +134,7 @@ https://user-images.githubusercontent.com/105279273/182948983-b41a71ba-82d6-46a1
 
 
 <br><br>
-<img src="./readme/title6.svg"/>
+<img id="installation" src="./readme/title6.svg"/>
 
 
 > To get a local copy up and running follow these simple steps.
