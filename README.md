@@ -104,11 +104,12 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 > | ----------------- |
 > | ![ContactUs](https://github.com/mohamad-tahan/Remote/blob/main/readme/contactUs.gif) |
 
-> | Real-Time Coding / File Sharing / Voice Chatting |
-> | ----------------- |
-<video width="320" height="240" controls>
+<!-- > | Real-Time Coding / File Sharing / Voice Chatting |
+> | ----------------- | -->
+<video src='https://github.com/mohamad-tahan/Remote/blob/main/readme/realTime.mp4' width=180> </video>
+<!-- <video width="320" height="240" controls>
   <source src="https://github.com/mohamad-tahan/Remote/blob/main/readme/realTime.mp4">
-</video>
+</video> -->
 
 
 <br><br>
