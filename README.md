@@ -81,9 +81,9 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 > | ----------------- | ----------------- |
 > | ![RunCode1](https://github.com/mohamad-tahan/Remote/blob/main/readme/runCode1.gif) | ![RunCode2](https://github.com/mohamad-tahan/Remote/blob/main/readme/runCode2.gif) |
 
-> | Code Example|
+> | Code Example |
 > | ----------------- |
->  <img width="100%" src="https://github.com/mohamad-tahan/Remote/blob/main/readme/idePic.jpg"> 
+>  <img width="100%" src="https://github.com/mohamad-tahan/Remote/blob/main/readme/idepic2.jpg"> 
 
 > | Run User Input |
 > | ----------------- |
