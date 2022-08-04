@@ -103,9 +103,7 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 
 > | Real-Time Coding / File Sharing / Voice Chatting |
 > | ----------------- |
-[![Live Demo](https://youtu.be/T1mY8rg4zyI)
-> test
-[![Live Demo](https://img.youtube.com/vi/T1mY8rg4zyI/0.jpg)](https://www.youtube.com/watch?v=T1mY8rg4zyI)
+>
 
 > | Admin / Add a User |
 > | ----------------- |
