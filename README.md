@@ -103,10 +103,7 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 
 > | Real-Time Coding / File Sharing / Voice Chatting |
 > | ----------------- |
-> <video src='https://github.com/mohamad-tahan/Remote/blob/main/readme/realTime.mp4' width="100%"> 
-<!-- <video width="320" height="240" controls>
-  <source src="https://github.com/mohamad-tahan/Remote/blob/main/readme/realTime.mp4">
-</video> -->
+[![Live Demo](https://youtu.be/T1mY8rg4zyI)
 
 > | Admin / Add a User |
 > | ----------------- |
@@ -118,7 +115,8 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 
 > | Admin / Add a Language |
 > | ----------------- |
-> | ![AddLanguage](https://github.com/mohamad-tahan/Remote/blob/main/readme/addLanguage.gif) |
+>  <img width="100%" src="https://github.com/mohamad-tahan/Remote/blob/main/readme/addLanguage.gif"> 
+
 
 > | Admin / Messages |
 > | ----------------- |
@@ -136,7 +134,7 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 This is an example of how to list things you need to use the software and how to install them.
 
 - npm
-> Download and install ![Node.js](https://nodejs.org/en/download/)
+> Download and install [Node.js](https://nodejs.org/en/download/)
 
 
 ### Installation
