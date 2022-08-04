@@ -1,4 +1,4 @@
-export const authToken = process.env.REACT_APP_VOICE_TOKEN;
+export const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiJiNDgwMmM5Ny00OWJkLTQ0OWUtOGM5OC1jYjkwZGQwY2VlZmMiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTY1OTUyMDcxMywiZXhwIjoxNjYwMTI1NTEzfQ.LHf2F599DU18aNVbxCxacWY2HmvRzWuiv8pWAJ35Pas";
 // API call to create meeting
 export const createMeeting = async ({ token }) => {
   const res = await fetch(`https://api.videosdk.live/v1/meetings`, {
