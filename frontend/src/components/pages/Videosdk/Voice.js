@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import ReactPlayer from "react-player";
 import {
   MeetingProvider,
   MeetingConsumer,
@@ -54,10 +53,13 @@ function Controls() {
   const { toggleMic } = useMeeting();
   return (
     <div className="voiceContainer">
-      <div onClick={()=>{
-        setIsToggled(!isToggled);
-        toggleMic() }} >
-        <MdKeyboardVoice  className={`voiceIcon ${isToggled && "isFalse"} `}  />
+      <div
+        onClick={() => {
+          setIsToggled(!isToggled);
+          toggleMic();
+        }}
+      >
+        <MdKeyboardVoice className={`voiceIcon ${isToggled && "isFalse"} `} />
       </div>
     </div>
   );
@@ -92,7 +94,6 @@ function Voice({ roomId }) {
   useEffect(() => {
     (async () => {
       await createRoomId(roomId).then((res) => {
-        console.log(res);
         setMeetingId(res.roomId);
       });
     })();
@@ -103,6 +104,7 @@ function Voice({ roomId }) {
         config={{
           meetingId,
           micEnabled: false,
+          webcamEnabled: false,
           name: "Mohamad Tahan",
         }}
         joinWithoutUserInteraction={true}
