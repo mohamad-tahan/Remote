@@ -84,6 +84,10 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 > | ----------------- | ----------------- |
 > | ![RunCode1](https://github.com/mohamad-tahan/Remote/blob/main/readme/runCode1.gif) | ![RunCode2](https://github.com/mohamad-tahan/Remote/blob/main/readme/runCode2.gif) |
 
+> | Run User Input |
+> | ----------------- |
+> | ![RunUserInput](https://github.com/mohamad-tahan/Remote/blob/main/readme/inputCode.gif) |
+
 > | Save/Download/Clear |
 > | ----------------- |
 > | ![SaveDownloadClear](https://github.com/mohamad-tahan/Remote/blob/main/readme/saveDownloadClear.gif) |
@@ -92,11 +96,19 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 > | ----------------- |
 > | ![ChatBot](https://github.com/mohamad-tahan/Remote/blob/main/readme/chatbot.gif) |
 
-> | Profile | 
+> | Profile/UpdateInfo | Profile/UpdateFile |
+> | ----------------- | ----------------- |
+> | ![Profile1](https://github.com/mohamad-tahan/Remote/blob/main/readme/profile1.gif) | ![Profile2](https://github.com/mohamad-tahan/Remote/blob/main/readme/profile2.gif) |
+
+> | Email Sending |
 > | ----------------- |
-> | ![Profile1](https://github.com/mohamad-tahan/Remote/blob/main/readme/profile1.gif)  ![Profile2](https://github.com/mohamad-tahan/Remote/blob/main/readme/profile2.gif) |
+> | ![ContactUs](https://github.com/mohamad-tahan/Remote/blob/main/readme/contactUs.gif) |
 
-
+> | Real-Time Coding / File Sharing / Voice Chatting |
+> | ----------------- |
+<video width="320" height="240" controls>
+  <source src="https://github.com/mohamad-tahan/Remote/blob/main/readme/realTime.mp4">
+</video>
 
 
 <br><br>
