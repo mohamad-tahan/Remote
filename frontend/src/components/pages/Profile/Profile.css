@@ -4,9 +4,9 @@
   gap: 15px;
   margin: 20px;
 }
+
 .profile-container {
   gap: 30px;
-  /* display: flex; */
   color: white;
   border: 2px solid blue;
   background: linear-gradient(black, rgba(255, 255, 255, 0.195));
@@ -18,6 +18,7 @@
   padding: 10px;
   text-align: center;
 }
+
 .profile-pic {
   margin-top: 20px;
 }
@@ -43,6 +44,7 @@
   text-transform: uppercase;
   transition: transform 80ms ease-in;
 }
+
 .file-container {
   color: white;
   justify-content: space-between;
@@ -66,6 +68,7 @@
   align-items: center;
   border-radius: 10px;
 }
+
 .files:hover {
   font-size: large;
 }
@@ -83,6 +86,7 @@
   color: #560687;
   font-size: 20px;
 }
+
 .js {
   color: yellow;
   font-size: 30px;
@@ -175,7 +179,7 @@
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  background-color: #1a1919;
+  background-color: black;
   padding: 5px 15px;
   width: 350px;
   border-radius: 15px;
@@ -188,7 +192,7 @@
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  background-color: #1a1919;
+  background-color: black;
   padding: 5px 15px;
   width: 350px;
   border-radius: 15px;
@@ -213,9 +217,11 @@
   align-items: center;
   text-align: center;
 }
+
 .update {
   margin-top: 50px;
 }
+
 .base64 input[type="file" i]::-webkit-file-upload-button {
   cursor: pointer;
   background: #0612bea5;
@@ -228,12 +234,10 @@
 }
 
 .info h1 {
-  /* background: linear-gradient(to right, #091392, #4d0579); */
   border-radius: 5px;
   text-align: center;
   width: 340px;
   margin-top: 15px;
-  /* border: 1px solid rgb(102, 102, 102); */
   letter-spacing: 3px;
   font-weight: bolder;
 }
@@ -243,7 +247,18 @@
   border: 2px solid #030960;
   border-radius: 5px;
   padding: 3px;
-  /* margin-bottom: 10px; */
+  font-size: 12px;
+  font-weight: bold;
+  color: #030960;
+  text-align: center;
+  background-color: #9d9b9b;
+}
+
+.filemap-input{
+  width: 300px;
+  border: 2px solid #030960;
+  border-radius: 5px;
+  padding: 3px;
   font-size: 12px;
   font-weight: bold;
   color: #030960;
@@ -255,6 +270,7 @@
   width: 550px;
   height: 550px;
 }
+
 .character {
   width: 600px;
   height: 500px;

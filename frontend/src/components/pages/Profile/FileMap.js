@@ -17,7 +17,6 @@ function FileMap({ i, deleteFile }) {
     const res = await fetch("/auth/updateFileName/?id=" + id, {
       method: "PUT",
       headers: { "content-type": "application/json", token: token },
-
       body: JSON.stringify({
         name: fileName,
       }),
@@ -56,6 +55,7 @@ function FileMap({ i, deleteFile }) {
             value={fileName}
             onChange={(e) => setFileName(e.target.value)}
             onKeyPress={(e) => e.key === "Enter" && updateFileName(i._id)}
+            className="filemap-input"
           />
         ) : (
           <span>{fileName}</span>

@@ -27,7 +27,6 @@ function Profile() {
       headers: { "content-type": "application/json", token: token },
     });
     const data = await res.json();
-    // console.log(data);
 
     if (data) {
       setUser(data);
@@ -44,7 +43,6 @@ function Profile() {
   }, []);
 
   const getFiles = async () => {
-    console.log("get files");
     const res = await fetch("/auth/getFilesbyUserId/?id=" + user_id, {
       headers: { "content-type": "application/json", token: token },
     });
@@ -61,22 +59,15 @@ function Profile() {
   }, []);
 
   const deleteFile = async (myId) => {
-    console.log(myId);
-    // return;
-
-    const res = await fetch(
-      "/auth/removeFile/?id=" + myId,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          token: token,
-        },
-      }
-    )
+    const res = await fetch("/auth/removeFile/?id=" + myId, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        token: token,
+      },
+    })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         if (res) {
           toast.success("Remote Deleted Successfully");
         }
@@ -88,7 +79,6 @@ function Profile() {
     const res = await fetch("/auth/updateUser/?id=" + id, {
       method: "PUT",
       headers: { "content-type": "application/json", token: token },
-
       body: JSON.stringify({
         name: name,
         username: username,
@@ -98,7 +88,6 @@ function Profile() {
 
     const response = await res.json();
     localStorage.setItem("username", username);
-    console.log(response);
     if (response) {
       setProfilePressed(false);
       setUsernamePressed(false);
@@ -112,10 +101,8 @@ function Profile() {
   const getProfilepic = (files) => {
     setPic(files[0].base64);
   };
-  useEffect(() => {
-    console.log(pic);
-  }, [pic]);
-  // console.log(username)
+  useEffect(() => {}, [pic]);
+
   return (
     <div>
       <Navbar disable={true} />
