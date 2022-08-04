@@ -45,7 +45,7 @@
 
 > | Remote |
 > | -----------------|
-> | ![Remote](https://github.com/mohamad-tahan/Remote/blob/main/readme/remote.png) |
+> | ![Remote](https://github.com/mohamad-tahan/Remote/blob/main/readme/remote1.png) |
 
 
 <br><br>
