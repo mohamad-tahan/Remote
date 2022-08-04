@@ -40,7 +40,7 @@
 > Note that i didn't use any styling library or theme, all from scratch and using pure css modules.
 > <br>
 > | Landing | Signup/Signin/Profile |
-> | -----------------| ----------------- |
+> | ----------------- | ----------------- |
 > | ![Landing](https://github.com/mohamad-tahan/Remote/blob/main/readme/home.png) | ![Signup](https://github.com/mohamad-tahan/Remote/blob/main/readme/signup.png) ![Signin](https://github.com/mohamad-tahan/Remote/blob/main/readme/signin.png) ![Profile](https://github.com/mohamad-tahan/Remote/blob/main/readme/profile.png) |
 
 > | Remote |
@@ -54,12 +54,12 @@
 
 Here's a brief high-level overview of the tech stack the Remote app uses:
 
-- This project uses the [ReactJS](https://reactjs.org/). ReactJS is a free and open-source front-end JavaScript library for building user interfaces based on UI components.
+- This project uses [React](https://reactjs.org/). React is a free and open-source front-end JavaScript library for building user interfaces based on UI components.
 - For persistent storage (database), the app uses the [MongoDB](https://www.mongodb.com/) package which allows the app to create a custom storage schema and save it to a local database.
 - For real-time coding and file sharing, the app uses the [socket.io](https://socket.io/) package.
 - For the voice chatting, the app uses the [videosdk](https://www.videosdk.live/) package.
-- For the ChatBot, the app uses the [react-chatbot-kit](https://fredrikoseberg.github.io/react-chatbot-kit-docs/docs/)package.
-- For sending emails, the app uses [emailJs](https://www.emailjs.com/) package.
+- For the ChatBot, the app uses the [react-chatbot-kit](https://fredrikoseberg.github.io/react-chatbot-kit-docs/docs/) package.
+- For sending emails, the app uses [emailJS](https://www.emailjs.com/) package.
 
 <br><br>
 <img src="./readme/title5.svg"/>
@@ -67,7 +67,7 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 > | Landing | Home/Search |
 > | -----------------| -----|
-> | ![Landing](https://github.com/julescript/spotifyndr/blob/master/demo/Landing_Page.jpg) | ![Home/Search](https://github.com/julescript/spotifyndr/blob/master/demo/Search_Page.jpg) |
+> | ![Landing](https://github.com/mohamad-tahan/Remote/blob/main/readme/landing.gif) | ![Login](https://github.com/mohamad-tahan/Remote/blob/main/readme/login.gif) |
 
 <br><br>
 <img src="./readme/title6.svg"/>
