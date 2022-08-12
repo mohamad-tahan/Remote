@@ -107,7 +107,7 @@ function Profile() {
     <div>
       <Navbar disable={true} />
 
-      <div class="profile">
+      <div className="profile">
         <div className="character">
           <img src={character} className="character" />
         </div>

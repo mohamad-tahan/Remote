@@ -71,3 +71,9 @@ main {
   transition: all 0.1s;
   color: white;
 }
+
+@media (max-width: 768px) {
+  .sidebar {
+   display: none;
+  }
+}
