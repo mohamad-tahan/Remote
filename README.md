@@ -93,6 +93,10 @@ Here's a brief high-level overview of the tech stack the Remote app uses:
 > | ----------------- |
 >  <img width="100%" src="https://github.com/mohamad-tahan/Remote/blob/main/readme/saveDownloadClear.gif"> 
 
+> | Time Complexity |
+> | ----------------- |
+>  <img width="100%" src="https://github.com/mohamad-tahan/Remote/blob/main/readme/timeComplexity.gif"> 
+
 > | Change Theme |
 > | ----------------- |
 >  <img width="100%" src="https://github.com/mohamad-tahan/Remote/blob/main/readme/changeTheme.gif"> 
