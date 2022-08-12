@@ -15,6 +15,7 @@ import FilesDropdown from "./FilesDropdown";
 import AddRemote from "./AddRemote";
 import MyChatbot from "../Chatbot/MyChatbot";
 import Voice from "../Videosdk/Voice";
+import TimeComplexity from "../../TimeComplexity/TimeComplexity";
 
 const Remote = ({ socketRef, roomId }) => {
   const [isLight, setIsLight] = useState(false);
@@ -223,6 +224,7 @@ const Remote = ({ socketRef, roomId }) => {
 
   return (
     <div className="idePage">
+
       {showModel && (
         <AddRemote
           setIsSaving={() => setIsSaving(true)}
@@ -248,12 +250,14 @@ const Remote = ({ socketRef, roomId }) => {
         </div>
         <div>
           <div className="ideIcons">
+
             <div className="save" onClick={handleSave}>
               <BsSaveFill />
             </div>
             <div className="run" onClick={handleRun}>
               <VscRunAll />
             </div>
+            
 
             <div className="clear" onClick={(e) => handleClear(e)}>
               <AiOutlineClear />
@@ -262,15 +266,20 @@ const Remote = ({ socketRef, roomId }) => {
             <LanguagesDropdown
               onOptionSelect={(e) => setLanguage(JSON.parse(e))}
             />
+          <TimeComplexity code={code}/>
+
             <div className="download">
+              
               <DownloadLink
                 label={<HiDocumentDownload className="download" />}
                 filename={fileName + "." + language.extension}
                 exportFile={() => code}
               />
+
             </div>
-            <div />
+           
           </div>
+          
           <p className="fileName">{fileName}</p>
           <Editor
             height="53vh"
