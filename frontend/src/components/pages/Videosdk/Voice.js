@@ -1,29 +1,19 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   MeetingProvider,
   MeetingConsumer,
   useMeeting,
   useParticipant,
 } from "@videosdk.live/react-sdk";
-import { authToken, createMeeting, createRoomId } from "./API";
+import { authToken, createRoomId } from "./API";
 import { MdKeyboardVoice } from "react-icons/md";
 import "./Voice.css";
 
 function VideoComponent(props) {
   const micRef = useRef(null);
-  const { webcamStream, micStream, webcamOn, micOn } = useParticipant(
-    props.participantId
-  );
+  const { micStream, micOn } = useParticipant(props.participantId);
 
-  const videoStream = useMemo(() => {
-    if (webcamOn && webcamStream) {
-      const mediaStream = new MediaStream();
-      mediaStream.addTrack(webcamStream.track);
-      return mediaStream;
-    }
-  }, [webcamStream, webcamOn]);
-
-  useEffect(() => {
+  const micEnabled = () => {
     if (micRef.current) {
       if (micOn && micStream) {
         const mediaStream = new MediaStream();
@@ -38,6 +28,10 @@ function VideoComponent(props) {
         micRef.current.srcObject = null;
       }
     }
+  };
+
+  useEffect(() => {
+    micEnabled();
   }, [micStream, micOn]);
 
   return (
@@ -91,6 +85,7 @@ function Container(props) {
 
 function Voice({ roomId }) {
   const [meetingId, setMeetingId] = useState(null);
+
   useEffect(() => {
     (async () => {
       await createRoomId(roomId).then((res) => {
@@ -98,6 +93,7 @@ function Voice({ roomId }) {
       });
     })();
   }, []);
+  
   return (
     meetingId && (
       <MeetingProvider
