@@ -15,7 +15,7 @@ import FilesDropdown from "./FilesDropdown";
 import AddRemote from "./AddRemote";
 import MyChatbot from "../Chatbot/MyChatbot";
 import Voice from "../Videosdk/Voice";
-import TimeComplexity from "../../TimeComplexity/TimeComplexity";
+import TimeComplexity from "../TimeComplexity/TimeComplexity";
 
 const Remote = ({ socketRef, roomId }) => {
   const [isLight, setIsLight] = useState(false);
